@@ -1,0 +1,48 @@
+name: SDD Contract Validation
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validate-architecture:
+    name: Core & SDD Validation
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      # -------------------------------------------
+      # Node.js Environment (Formatação & Linting)
+      # -------------------------------------------
+      - name: 🛠️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 📦 Install Node Dependencies
+        run: npm ci
+
+      - name: 📝 Validate Markdown (Markdownlint)
+        run: npm run lint:md
+
+      # -------------------------------------------
+      # Python Environment (Motor Pydantic SDD)
+      # -------------------------------------------
+      - name: 🐍 Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: 📦 Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r .agents/scripts/requirements.txt
+
+      - name: 🔍 Run Master Checklist (Pydantic SDD)
+        run: python .agents/scripts/checklist.py

@@ -1,4 +1,6 @@
-# Python
+# ==========================================
+# Python & Virtual Environments
+# ==========================================
 __pycache__/
 *.py[cod]
 *$py.class
@@ -6,15 +8,37 @@ __pycache__/
 env/
 build/
 dist/
+.pytest_cache/
 
-# IDEs
+# ==========================================
+# Node.js & Tooling
+# ==========================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+
+# ==========================================
+# Ambientes de IA, IDEs e Workspaces
+# ==========================================
 .vscode/
 .idea/
 *.swp
+.cursor/
+.windsurf/
 
-# OS
+# ==========================================
+# Segurança e Variáveis de Ambiente (CRÍTICO)
+# ==========================================
+.env
+.env.*
+!.env.example
+*.pem
+secrets.json
+
+# ==========================================
+# OS Files
+# ==========================================
 .DS_Store
 Thumbs.db
-
-# Node
-node_modules
