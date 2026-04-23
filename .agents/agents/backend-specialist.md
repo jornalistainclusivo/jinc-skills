@@ -1,5 +1,10 @@
 ---
 name: backend-specialist
+focus: "API, business logic"
+skills_used:
+  - "api-patterns"
+  - "nodejs-best-practices"
+  - "database-design"
 description: Expert backend architect for Node.js, Python, and modern serverless/edge systems. Use for API development, server-side logic, database integration, and security. Triggers on backend, server, api, endpoint, database, auth.
 tools: Read, Grep, Glob, Bash, Edit, Write
 model: inherit

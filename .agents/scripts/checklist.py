@@ -1,217 +1,121 @@
 #!/usr/bin/env python3
 """
-Master Checklist Runner - Antigravity Kit
-==========================================
-
-Orchestrates all validation scripts in priority order.
-Use this for incremental validation during development.
-
-Usage:
-    python scripts/checklist.py .                    # Run core checks
-    python scripts/checklist.py . --url <URL>        # Include performance checks
-
-Priority Order:
-    P0: Security Scan (vulnerabilities, secrets)
-    P1: Lint & Type Check (code quality)
-    P2: Schema Validation (if database exists)
-    P3: Test Runner (unit/integration tests)
-    P4: UX Audit (psychology laws, accessibility)
-    P5: SEO Check (meta tags, structure)
-    P6: Performance (lighthouse - requires URL)
+Antigravity Kit - SDD Contract Validator
+========================================
+Valida a estrutura YAML (Frontmatter) de Agentes e Skills
+garantindo a conformidade com o Desenvolvimento Orientado a Especificações.
 """
 
 import sys
-import subprocess
-import argparse
+import yaml
 from pathlib import Path
-from typing import List, Tuple, Optional
+from pydantic import BaseModel, ValidationError
 
-# ANSI colors for terminal output
+# ANSI colors
 class Colors:
-    HEADER = '\033[95m'
-    BLUE = '\033[94m'
     CYAN = '\033[96m'
     GREEN = '\033[92m'
-    YELLOW = '\033[93m'
     RED = '\033[91m'
+    YELLOW = '\033[93m'
     ENDC = '\033[0m'
     BOLD = '\033[1m'
 
-def print_header(text: str):
-    print(f"\n{Colors.BOLD}{Colors.CYAN}{'='*60}{Colors.ENDC}")
-    print(f"{Colors.BOLD}{Colors.CYAN}{text.center(60)}{Colors.ENDC}")
-    print(f"{Colors.BOLD}{Colors.CYAN}{'='*60}{Colors.ENDC}\n")
+# ==========================================
+# 1. Contratos Estritos (Schemas SDD)
+# ==========================================
 
-def print_step(text: str):
-    print(f"{Colors.BOLD}{Colors.BLUE}🔄 {text}{Colors.ENDC}")
+class SkillSchema(BaseModel):
+    name: str
+    description: str
 
-def print_success(text: str):
-    print(f"{Colors.GREEN}✅ {text}{Colors.ENDC}")
+class AgentSchema(BaseModel):
+    name: str
+    focus: str
+    skills_used: str | list[str]
 
-def print_warning(text: str):
-    print(f"{Colors.YELLOW}⚠️  {text}{Colors.ENDC}")
+# ==========================================
+# 2. Motor de Extração
+# ==========================================
 
-def print_error(text: str):
-    print(f"{Colors.RED}❌ {text}{Colors.ENDC}")
-
-# Define priority-ordered checks
-CORE_CHECKS = [
-    ("Security Scan", ".agents/skills/vulnerability-scanner/scripts/security_scan.py", True),
-    ("Lint Check", ".agents/skills/lint-and-validate/scripts/lint_runner.py", True),
-    ("Schema Validation", ".agents/skills/database-design/scripts/schema_validator.py", False),
-    ("Test Runner", ".agents/skills/testing-patterns/scripts/test_runner.py", False),
-    ("UX Audit", ".agents/skills/frontend-design/scripts/ux_audit.py", False),
-    ("SEO Check", ".agents/skills/seo-fundamentals/scripts/seo_checker.py", False),
-]
-
-PERFORMANCE_CHECKS = [
-    ("Lighthouse Audit", ".agents/skills/performance-profiling/scripts/lighthouse_audit.py", True),
-    ("Playwright E2E", ".agents/skills/webapp-testing/scripts/playwright_runner.py", False),
-]
-
-def check_script_exists(script_path: Path) -> bool:
-    """Check if script file exists"""
-    return script_path.exists() and script_path.is_file()
-
-def run_script(name: str, script_path: Path, project_path: str, url: Optional[str] = None) -> dict:
-    """
-    Run a validation script and capture results
-    
-    Returns:
-        dict with keys: name, passed, output, skipped
-    """
-    if not check_script_exists(script_path):
-        print_warning(f"{name}: Script not found, skipping")
-        return {"name": name, "passed": True, "output": "", "skipped": True}
-    
-    print_step(f"Running: {name}")
-    
-    # Build command
-    cmd = ["python", str(script_path), project_path]
-    if url and ("lighthouse" in script_path.name.lower() or "playwright" in script_path.name.lower()):
-        cmd.append(url)
-    
-    # Run script
+def extract_yaml_frontmatter(file_path: Path) -> dict:
+    """Extrai e higieniza o bloco YAML de um arquivo Markdown."""
     try:
-        result = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            timeout=300  # 5 minute timeout
-        )
+        content = file_path.read_text(encoding='utf-8')
+        if not content.startswith('---'):
+            return {}
         
-        passed = result.returncode == 0
+        yaml_block = content.split('---')[1]
+        metadata = yaml.safe_load(yaml_block) or {}
         
-        if passed:
-            print_success(f"{name}: PASSED")
-        else:
-            print_error(f"{name}: FAILED")
-            if result.stderr:
-                print(f"  Error: {result.stderr[:200]}")
-        
-        return {
-            "name": name,
-            "passed": passed,
-            "output": result.stdout,
-            "error": result.stderr,
-            "skipped": False
-        }
-    
-    except subprocess.TimeoutExpired:
-        print_error(f"{name}: TIMEOUT (>5 minutes)")
-        return {"name": name, "passed": False, "output": "", "error": "Timeout", "skipped": False}
-    
+        # Higienização contra artefatos da IDE Antigravity
+        metadata.pop("$typeName", None)
+        return metadata
     except Exception as e:
-        print_error(f"{name}: ERROR - {str(e)}")
-        return {"name": name, "passed": False, "output": "", "error": str(e), "skipped": False}
+        print(f"{Colors.RED}[ERRO DE LEITURA] {file_path.name}: {e}{Colors.ENDC}")
+        return {}
 
-def print_summary(results: List[dict]):
-    """Print final summary report"""
-    print_header("📊 CHECKLIST SUMMARY")
+# ==========================================
+# 3. Lógica de Validação
+# ==========================================
+
+def validate_directory(target_dir: Path, schema_class, entity_name: str) -> int:
+    """Valida arquivos .md contra o schema Pydantic."""
+    print(f"\n{Colors.BOLD}{Colors.CYAN}🔍 Validando {entity_name} em: {target_dir}{Colors.ENDC}")
     
-    passed_count = sum(1 for r in results if r["passed"] and not r.get("skipped"))
-    failed_count = sum(1 for r in results if not r["passed"] and not r.get("skipped"))
-    skipped_count = sum(1 for r in results if r.get("skipped"))
-    
-    print(f"Total Checks: {len(results)}")
-    print(f"{Colors.GREEN}✅ Passed: {passed_count}{Colors.ENDC}")
-    print(f"{Colors.RED}❌ Failed: {failed_count}{Colors.ENDC}")
-    print(f"{Colors.YELLOW}⏭️  Skipped: {skipped_count}{Colors.ENDC}")
-    print()
-    
-    # Detailed results
-    for r in results:
-        if r.get("skipped"):
-            status = f"{Colors.YELLOW}⏭️ {Colors.ENDC}"
-        elif r["passed"]:
-            status = f"{Colors.GREEN}✅{Colors.ENDC}"
-        else:
-            status = f"{Colors.RED}❌{Colors.ENDC}"
-        
-        print(f"{status} {r['name']}")
-    
-    print()
-    
-    if failed_count > 0:
-        print_error(f"{failed_count} check(s) FAILED - Please fix before proceeding")
-        return False
+    if not target_dir.exists():
+        print(f"{Colors.YELLOW}  ⚠️ Diretório não encontrado.{Colors.ENDC}")
+        return 0
+
+    # FILTRO ARQUITETURAL CORRIGIDO:
+    if entity_name == "Skills":
+        # Nas skills, apenas o manifesto SKILL.md importa para o SDD
+        md_files = list(target_dir.rglob('SKILL.md'))
     else:
-        print_success("All checks PASSED ✨")
-        return True
+        # Nos agentes, varre .md ignorando a documentação global do ecossistema
+        md_files = [f for f in target_dir.rglob('*.md') if f.name.upper() not in ['README.MD', 'ARCHITECTURE.MD', 'AGENTS.MD', 'GEMINI.MD']]
+    
+    if not md_files:
+        print(f"{Colors.YELLOW}  ⚠️ Nenhum manifesto encontrado.{Colors.ENDC}")
+        return 0
+
+    errors = 0
+    for file in md_files:
+        data = extract_yaml_frontmatter(file)
+        if not data:
+            print(f"{Colors.RED}  ❌ {file.name} ({file.parent.name}): Frontmatter YAML ausente ou inválido.{Colors.ENDC}")
+            errors += 1
+            continue
+            
+        try:
+            schema_class(**data)
+            print(f"{Colors.GREEN}  ✅ {file.name} ({file.parent.name}){Colors.ENDC}")
+        except ValidationError as e:
+            print(f"{Colors.RED}  ❌ {file.name} ({file.parent.name}): Quebra de Contrato SDD{Colors.ENDC}")
+            for err in e.errors():
+                print(f"{Colors.RED}     -> Campo '{err['loc'][0]}': {err['msg']}{Colors.ENDC}")
+            errors += 1
+            
+    return errors
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Run Antigravity Kit validation checklist",
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""
-Examples:
-  python scripts/checklist.py .                      # Core checks only
-  python scripts/checklist.py . --url http://localhost:3000  # Include performance
-        """
-    )
-    parser.add_argument("project", help="Project path to validate")
-    parser.add_argument("--url", help="URL for performance checks (lighthouse, playwright)")
-    parser.add_argument("--skip-performance", action="store_true", help="Skip performance checks even if URL provided")
+    print(f"\n{Colors.BOLD}{Colors.CYAN}{'='*60}{Colors.ENDC}")
+    print(f"{Colors.BOLD}{Colors.CYAN}      JINC SKILLS - SDD CONTRACT VALIDATOR{Colors.ENDC}")
+    print(f"{Colors.BOLD}{Colors.CYAN}{'='*60}{Colors.ENDC}")
+
+    # Determina o diretório base (.agents)
+    base_dir = Path('.agents') if Path('.agents').exists() else Path('.')
     
-    args = parser.parse_args()
+    total_errors = 0
+    total_errors += validate_directory(base_dir / "skills", SkillSchema, "Skills")
+    total_errors += validate_directory(base_dir / "agents", AgentSchema, "Agentes")
     
-    project_path = Path(args.project).resolve()
-    
-    if not project_path.exists():
-        print_error(f"Project path does not exist: {project_path}")
+    print(f"\n{Colors.BOLD}{Colors.CYAN}{'='*60}{Colors.ENDC}")
+    if total_errors > 0:
+        print(f"{Colors.RED}❌ Falha: {total_errors} erro(s) estrutural(is) detectado(s). Corrija antes de commitar.{Colors.ENDC}\n")
         sys.exit(1)
-    
-    print_header("🚀 ANTIGRAVITY KIT - MASTER CHECKLIST")
-    print(f"Project: {project_path}")
-    print(f"URL: {args.url if args.url else 'Not provided (performance checks skipped)'}")
-    
-    results = []
-    
-    # Run core checks
-    print_header("📋 CORE CHECKS")
-    for name, script_path, required in CORE_CHECKS:
-        script = project_path / script_path
-        result = run_script(name, script, str(project_path))
-        results.append(result)
-        
-        # If required check fails, stop
-        if required and not result["passed"] and not result.get("skipped"):
-            print_error(f"CRITICAL: {name} failed. Stopping checklist.")
-            print_summary(results)
-            sys.exit(1)
-    
-    # Run performance checks if URL provided
-    if args.url and not args.skip_performance:
-        print_header("⚡ PERFORMANCE CHECKS")
-        for name, script_path, required in PERFORMANCE_CHECKS:
-            script = project_path / script_path
-            result = run_script(name, script, str(project_path), args.url)
-            results.append(result)
-    
-    # Print summary
-    all_passed = print_summary(results)
-    
-    sys.exit(0 if all_passed else 1)
+    else:
+        print(f"{Colors.GREEN}✅ Sucesso: Todos os contratos SDD estão em conformidade.{Colors.ENDC}\n")
+        sys.exit(0)
 
 if __name__ == "__main__":
     main()

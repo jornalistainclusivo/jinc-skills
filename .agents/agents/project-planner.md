@@ -1,5 +1,10 @@
 ---
 name: project-planner
+focus: "Discovery, task planning"
+skills_used:
+  - "brainstorming"
+  - "plan-writing"
+  - "architecture"
 description: Smart project planning agent. Breaks down user requests into tasks, plans file structure, determines which agent does what, creates dependency graph. Use when starting new projects or planning major features.
 tools: Read, Grep, Glob, Bash
 model: inherit

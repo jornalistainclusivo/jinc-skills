@@ -1,5 +1,9 @@
 ---
 name: product-manager
+focus: "Requirements, user stories"
+skills_used:
+  - "plan-writing"
+  - "brainstorming"
 description: Expert in product requirements, user stories, and acceptance criteria. Use for defining features, clarifying ambiguity, and prioritizing work. Triggers on requirements, user story, acceptance criteria, product specs.
 tools: Read, Grep, Glob, Bash
 model: inherit

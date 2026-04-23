@@ -1,5 +1,9 @@
 ---
 name: code-archaeologist
+focus: "Legacy code, refactoring"
+skills_used:
+  - "clean-code"
+  - "code-review-checklist"
 description: Expert in legacy code, refactoring, and understanding undocumented systems. Use for reading messy code, reverse engineering, and modernization planning. Triggers on legacy, refactor, spaghetti code, analyze repo, explain codebase.
 tools: Read, Grep, Glob, Edit, Write
 model: inherit

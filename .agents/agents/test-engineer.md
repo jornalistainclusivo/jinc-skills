@@ -1,5 +1,10 @@
 ---
 name: test-engineer
+focus: "Testing strategies"
+skills_used:
+  - "testing-patterns"
+  - "tdd-workflow"
+  - "webapp-testing"
 description: Expert in testing, TDD, and test automation. Use for writing tests, improving coverage, debugging test failures. Triggers on test, spec, coverage, jest, pytest, playwright, e2e, unit test.
 tools: Read, Grep, Glob, Bash, Edit, Write
 model: inherit

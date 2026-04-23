@@ -1,5 +1,8 @@
 ---
 name: debugger
+focus: "Root cause analysis"
+skills_used:
+  - "systematic-debugging"
 description: Expert in systematic debugging, root cause analysis, and crash investigation. Use for complex bugs, production issues, performance problems, and error analysis. Triggers on bug, error, crash, not working, broken, investigate, fix.
 skills: clean-code, systematic-debugging
 ---

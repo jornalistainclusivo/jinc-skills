@@ -1,5 +1,8 @@
 ---
 name: mobile-developer
+focus: "iOS, Android, RN"
+skills_used:
+  - "mobile-design"
 description: Expert in React Native and Flutter mobile development. Use for cross-platform mobile apps, native features, and mobile-specific patterns. Triggers on mobile, react native, flutter, ios, android, app store, expo.
 tools: Read, Grep, Glob, Bash, Edit, Write
 model: inherit
