@@ -8,7 +8,7 @@ Reference file for the `spec-creator` skill. Load only the sections you need.
 
 ### REST Endpoint Specification
 
-```markdown
+````markdown
 ### Endpoint: Publish Article
 
 #### 🤖 AI-Ready Layer
@@ -27,50 +27,52 @@ Reference file for the `spec-creator` skill. Load only the sections you need.
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/ArticleId'
+          $ref: "#/components/schemas/ArticleId"
     requestBody:
       required: false
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PublishArticleRequest'
+            $ref: "#/components/schemas/PublishArticleRequest"
     responses:
-      '200':
+      "200":
         description: Article published successfully
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ArticlePublishedResponse'
-      '400':
+              $ref: "#/components/schemas/ArticlePublishedResponse"
+      "400":
         description: Validation failed
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ApiError'
+              $ref: "#/components/schemas/ApiError"
             examples:
               missing_alt_text:
                 value:
                   code: E_ACCESSIBILITY_REQUIRED
                   message: "Alt text missing on 2 image(s). Provide alt text before publishing."
-                  fields: ["content.images[0].altText", "content.images[2].altText"]
-      '403':
+                  fields:
+                    ["content.images[0].altText", "content.images[2].altText"]
+      "403":
         description: Insufficient role
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ApiError'
+              $ref: "#/components/schemas/ApiError"
             examples:
               contributor_blocked:
                 value:
                   code: E_AUTH_FORBIDDEN
                   message: "Contributors cannot publish directly. Submit for review."
-      '409':
+      "409":
         description: Article already published or archived
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ApiError'
+              $ref: "#/components/schemas/ApiError"
 ```
+````
 
 **Concrete I/O Examples**
 
@@ -105,6 +107,7 @@ Response 400:
 #### 🔧 Implementation Layer
 
 **Algorithm:**
+
 1. Resolve `articleId` from path parameter. If not found → 404
 2. Assert `article.status` is `draft` or `review`. If `published` or `archived` → 409 E_CONFLICT
 3. Assert caller has role `editor` or `admin`. If `contributor` → 403 E_AUTH_FORBIDDEN
@@ -115,20 +118,24 @@ Response 400:
 8. Return 200 with updated article summary
 
 **Preconditions:**
+
 - Article exists in DB and belongs to the caller's organization
 - JWT is valid and not expired
 - Request passes rate limit: 10 publish operations per minute per user
 
 **Postconditions:**
+
 - `article.status === "published"` in DB
 - `article.publishedAt` is set and immutable after this point
 - Event `article.published` is in the event queue (at-least-once delivery)
 
 #### 🔗 Traceability Layer
+
 - Covers: FR-002 (alt-text required), FR-005 (role-based publishing)
 - ADR-003 (SDD): Supabase RLS enforces org-level access at DB level
 - Rationale for 409 over 400 on status conflict: Idempotency concern — client may retry; 409 signals "state mismatch" not "bad input"
-```
+
+````
 
 ---
 
@@ -199,19 +206,19 @@ const articleLifecycleMachine = createMachine({
     },
   },
 });
-```
+````
 
 **State Transition Table**
 
-| From | Event | Guard | To | Side Effect |
-|------|-------|-------|----|-------------|
-| `draft` | `SUBMIT_FOR_REVIEW` | `hasRequiredContent` | `in_review` | Notify reviewer |
-| `draft` | `PUBLISH_DIRECTLY` | `isEditorOrAdmin` | `published` | Emit `article.published` event |
-| `in_review` | `APPROVE` | `isReviewerOrAdmin` | `published` | Emit `article.published` event |
-| `in_review` | `REJECT` | `isReviewerOrAdmin` | `draft` | Notify author with reason |
-| `published` | `ARCHIVE` | `isEditorOrAdmin` | `archived` | Emit `article.archived` event |
-| `published` | `UNPUBLISH` | `isAdmin` | `draft` | Audit log entry required |
-| `archived` | — | — | — | Terminal. No exits. |
+| From        | Event               | Guard                | To          | Side Effect                    |
+| ----------- | ------------------- | -------------------- | ----------- | ------------------------------ |
+| `draft`     | `SUBMIT_FOR_REVIEW` | `hasRequiredContent` | `in_review` | Notify reviewer                |
+| `draft`     | `PUBLISH_DIRECTLY`  | `isEditorOrAdmin`    | `published` | Emit `article.published` event |
+| `in_review` | `APPROVE`           | `isReviewerOrAdmin`  | `published` | Emit `article.published` event |
+| `in_review` | `REJECT`            | `isReviewerOrAdmin`  | `draft`     | Notify author with reason      |
+| `published` | `ARCHIVE`           | `isEditorOrAdmin`    | `archived`  | Emit `article.archived` event  |
+| `published` | `UNPUBLISH`         | `isAdmin`            | `draft`     | Audit log entry required       |
+| `archived`  | —                   | —                    | —           | Terminal. No exits.            |
 
 #### 🔧 Implementation Layer
 
@@ -222,28 +229,33 @@ const guards = {
   hasRequiredContent: ({ context, event }) =>
     event.article.title.length > 0 &&
     event.article.content.length >= 100 &&
-    event.article.images.every(img => img.altText !== null && img.altText !== ''),
+    event.article.images.every(
+      (img) => img.altText !== null && img.altText !== "",
+    ),
 
   isEditorOrAdmin: ({ context, event }) =>
-    ['editor', 'admin'].includes(event.callerRole),
+    ["editor", "admin"].includes(event.callerRole),
 
   isReviewerOrAdmin: ({ context, event }) =>
-    event.callerRole === 'admin' ||
-    (event.callerRole === 'editor' && event.callerId === context.reviewerId),
+    event.callerRole === "admin" ||
+    (event.callerRole === "editor" && event.callerId === context.reviewerId),
 
-  isAdmin: ({ context, event }) => event.callerRole === 'admin',
+  isAdmin: ({ context, event }) => event.callerRole === "admin",
 };
 ```
 
 **Invariants (never violated regardless of transition):**
+
 - `publishedAt` is immutable once set (only set once on transition → `published`)
 - `archived` articles cannot be directly edited — clone and create new draft instead
 - `rejectionReason` is always displayed to the original author; never silently discarded
 
 #### 🔗 Traceability Layer
+
 - Covers: FR-009 (workflow states), FR-010 (role-based transitions), FR-011 (audit trail)
 - ADR-004 (SDD): Status stored as `TEXT` with CHECK constraint in Postgres, not enum (allows migration without schema change)
-```
+
+````
 
 ---
 
@@ -281,7 +293,7 @@ BR-PUB-003: Published Date Is Immutable
   I/O Example:
     Input:    PATCH /articles/art_456 { publishedAt: "2020-01-01" }
     Output:   200 OK — but publishedAt unchanged in DB
-```
+````
 
 ---
 
@@ -292,13 +304,13 @@ Define all error codes the feature introduces. Reference in Business Rules and A
 ```markdown
 ### Error Codes — [Feature Name]
 
-| Code | HTTP Status | Trigger Condition | User-Facing Message |
-|------|-------------|-------------------|---------------------|
-| `E_ACCESSIBILITY_REQUIRED` | 400 | Alt text missing on publish | "Alt text required on all images before publishing." |
-| `E_AUTH_FORBIDDEN` | 403 | Role insufficient for action | "Your role does not permit this action." |
-| `E_AUTH_REQUIRED` | 401 | No valid JWT | "Authentication required." |
-| `E_NOT_FOUND` | 404 | Resource doesn't exist | "Resource not found." |
-| `E_CONFLICT` | 409 | State mismatch (e.g., already published) | "Cannot perform this action in the current state." |
-| `E_VALIDATION_FAILED` | 422 | Input schema validation failure | "Input validation failed. See fields for details." |
-| `E_RATE_LIMITED` | 429 | Exceeded rate limit | "Too many requests. Try again in {retryAfter}s." |
+| Code                       | HTTP Status | Trigger Condition                        | User-Facing Message                                  |
+| -------------------------- | ----------- | ---------------------------------------- | ---------------------------------------------------- |
+| `E_ACCESSIBILITY_REQUIRED` | 400         | Alt text missing on publish              | "Alt text required on all images before publishing." |
+| `E_AUTH_FORBIDDEN`         | 403         | Role insufficient for action             | "Your role does not permit this action."             |
+| `E_AUTH_REQUIRED`          | 401         | No valid JWT                             | "Authentication required."                           |
+| `E_NOT_FOUND`              | 404         | Resource doesn't exist                   | "Resource not found."                                |
+| `E_CONFLICT`               | 409         | State mismatch (e.g., already published) | "Cannot perform this action in the current state."   |
+| `E_VALIDATION_FAILED`      | 422         | Input schema validation failure          | "Input validation failed. See fields for details."   |
+| `E_RATE_LIMITED`           | 429         | Exceeded rate limit                      | "Too many requests. Try again in {retryAfter}s."     |
 ```

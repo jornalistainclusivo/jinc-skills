@@ -346,7 +346,6 @@ Create a complete Product Requirements Document:
 - **Primary**: [Main success metric and target]
 - **Secondary**: [Supporting metrics to track]
 - **Timeline**: [When to measure and review]
-
 ```
 
 ## QUALITY CHECKLIST

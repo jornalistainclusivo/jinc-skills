@@ -7,6 +7,7 @@ Reference for the `spec-creator` skill. Contains battle-tested patterns for the 
 ## Core Principle: Types as Executable Documentation
 
 Every type in a Spec serves two masters simultaneously:
+
 1. **The AI Agent** — reads the type shape and generates correct implementation code
 2. **The Runtime** — validated by a paired Zod schema at the system boundary
 
@@ -25,46 +26,48 @@ type Brand<T, B extends string> = T & { readonly [__brand]: B };
 
 // ── Entity ID Types ────────────────────────────────────────────────────
 /** @example "art_01HZXK3N9Y..." — ULID prefixed with entity abbreviation */
-type ArticleId   = Brand<string, 'ArticleId'>;
-type UserId      = Brand<string, 'UserId'>;
-type CategoryId  = Brand<string, 'CategoryId'>;
-type OrgId       = Brand<string, 'OrgId'>;
+type ArticleId = Brand<string, "ArticleId">;
+type UserId = Brand<string, "UserId">;
+type CategoryId = Brand<string, "CategoryId">;
+type OrgId = Brand<string, "OrgId">;
 
 // ── Constrained String Types ───────────────────────────────────────────
 /** Non-empty string — prevents empty alt texts, titles, etc. */
-type NonEmptyString = Brand<string, 'NonEmptyString'>;
+type NonEmptyString = Brand<string, "NonEmptyString">;
 
 /** URL-safe slug: lowercase letters, digits, hyphens only */
-type Slug = Brand<string, 'Slug'>;
+type Slug = Brand<string, "Slug">;
 
 /** ISO 8601 date-time string (from DB timestamptz) */
-type ISODateTime = Brand<string, 'ISODateTime'>;
+type ISODateTime = Brand<string, "ISODateTime">;
 
 /** Semantic version string */
-type SemVer = Brand<string, 'SemVer'>;
+type SemVer = Brand<string, "SemVer">;
 
 // ── Zod Schema for Branded Types ──────────────────────────────────────
-import { z } from 'zod';
+import { z } from "zod";
 
 const ArticleIdSchema = z
   .string()
-  .regex(/^art_[0-9A-Z]{26}$/, 'Invalid ArticleId format')
-  .transform(s => s as ArticleId);
+  .regex(/^art_[0-9A-Z]{26}$/, "Invalid ArticleId format")
+  .transform((s) => s as ArticleId);
 
 const NonEmptyStringSchema = z
   .string()
-  .min(1, 'Cannot be empty')
-  .transform(s => s as NonEmptyString);
+  .min(1, "Cannot be empty")
+  .transform((s) => s as NonEmptyString);
 
 const SlugSchema = z
   .string()
-  .regex(/^[a-z0-9-]+$/, 'Slug must be lowercase letters, digits, and hyphens only')
+  .regex(
+    /^[a-z0-9-]+$/,
+    "Slug must be lowercase letters, digits, and hyphens only",
+  )
   .max(255)
-  .transform(s => s as Slug);
+  .transform((s) => s as Slug);
 
 // ── Runtime Constructor Helper (avoids type assertion at call sites) ──
-const asArticleId = (raw: string): ArticleId =>
-  ArticleIdSchema.parse(raw);
+const asArticleId = (raw: string): ArticleId => ArticleIdSchema.parse(raw);
 ```
 
 ---
@@ -74,7 +77,7 @@ const asArticleId = (raw: string): ArticleId =>
 Standard structure for any domain entity in a JINC Spec.
 
 ```typescript
-import { z } from 'zod';
+import { z } from "zod";
 
 // ── 1. TypeScript Interface (structural contract) ──────────────────────
 
@@ -93,18 +96,18 @@ interface Article {
   slug: Slug;
 
   // Content
-  content: string;              // HTML string; max 200_000 chars
-  excerpt: string | null;       // Auto-generated if null; max 500 chars
-  images: ArticleImage[];       // Alt text required on all before publish
+  content: string; // HTML string; max 200_000 chars
+  excerpt: string | null; // Auto-generated if null; max 500 chars
+  images: ArticleImage[]; // Alt text required on all before publish
 
   // Classification
   categoryId: CategoryId | null;
-  tags: NonEmptyString[];       // Max 10 tags
+  tags: NonEmptyString[]; // Max 10 tags
 
   // Lifecycle
-  status: ArticleStatus;        // Controlled via ArticleLifecycleMachine
+  status: ArticleStatus; // Controlled via ArticleLifecycleMachine
   authorId: UserId;
-  reviewerId: UserId | null;    // Set on SUBMIT_FOR_REVIEW
+  reviewerId: UserId | null; // Set on SUBMIT_FOR_REVIEW
 
   // Timestamps (all UTC, from DB timestamptz)
   readonly createdAt: ISODateTime;
@@ -114,24 +117,25 @@ interface Article {
 
   // Accessibility (JINC requirement)
   altTexts: Record<string, NonEmptyString>; // key: image URL, value: alt text
-  audioDescription: string | null;          // Long-form audio description for complex images
+  audioDescription: string | null; // Long-form audio description for complex images
 }
 
 // ── 2. Discriminated Union for Status ─────────────────────────────────
 // Prefer discriminated unions over optional fields for per-state shapes
 
-type ArticleStatus =
-  | 'draft'
-  | 'in_review'
-  | 'published'
-  | 'archived';
+type ArticleStatus = "draft" | "in_review" | "published" | "archived";
 
 // When different states need different fields, use a discriminated union:
 type ArticleByStatus =
-  | { status: 'draft';     publishedAt: null; archivedAt: null; reviewerId: null }
-  | { status: 'in_review'; publishedAt: null; archivedAt: null; reviewerId: UserId }
-  | { status: 'published'; publishedAt: ISODateTime; archivedAt: null }
-  | { status: 'archived';  publishedAt: ISODateTime; archivedAt: ISODateTime };
+  | { status: "draft"; publishedAt: null; archivedAt: null; reviewerId: null }
+  | {
+      status: "in_review";
+      publishedAt: null;
+      archivedAt: null;
+      reviewerId: UserId;
+    }
+  | { status: "published"; publishedAt: ISODateTime; archivedAt: null }
+  | { status: "archived"; publishedAt: ISODateTime; archivedAt: ISODateTime };
 
 // ── 3. Zod Runtime Schema ──────────────────────────────────────────────
 
@@ -145,7 +149,7 @@ const ArticleImageSchema = z.object({
 
 const ArticleSchema = z.object({
   id: ArticleIdSchema,
-  orgId: z.string().transform(s => s as OrgId),
+  orgId: z.string().transform((s) => s as OrgId),
 
   title: NonEmptyStringSchema,
   slug: SlugSchema,
@@ -156,14 +160,31 @@ const ArticleSchema = z.object({
   categoryId: z.string().nullable(),
   tags: z.array(NonEmptyStringSchema).max(10),
 
-  status: z.enum(['draft', 'in_review', 'published', 'archived']),
-  authorId: z.string().transform(s => s as UserId),
-  reviewerId: z.string().nullable().transform(s => s == null ? null : s as UserId),
+  status: z.enum(["draft", "in_review", "published", "archived"]),
+  authorId: z.string().transform((s) => s as UserId),
+  reviewerId: z
+    .string()
+    .nullable()
+    .transform((s) => (s == null ? null : (s as UserId))),
 
-  createdAt: z.string().datetime().transform(s => s as ISODateTime),
-  updatedAt: z.string().datetime().transform(s => s as ISODateTime),
-  publishedAt: z.string().datetime().nullable().transform(s => s == null ? null : s as ISODateTime),
-  archivedAt: z.string().datetime().nullable().transform(s => s == null ? null : s as ISODateTime),
+  createdAt: z
+    .string()
+    .datetime()
+    .transform((s) => s as ISODateTime),
+  updatedAt: z
+    .string()
+    .datetime()
+    .transform((s) => s as ISODateTime),
+  publishedAt: z
+    .string()
+    .datetime()
+    .nullable()
+    .transform((s) => (s == null ? null : (s as ISODateTime))),
+  archivedAt: z
+    .string()
+    .datetime()
+    .nullable()
+    .transform((s) => (s == null ? null : (s as ISODateTime))),
 
   altTexts: z.record(z.string().url(), NonEmptyStringSchema),
   audioDescription: z.string().nullable(),
@@ -176,7 +197,7 @@ type ArticleRuntime = z.infer<typeof ArticleSchema>;
 
 const CreateArticleRequestSchema = z.object({
   title: NonEmptyStringSchema,
-  content: z.string().max(200_000).optional().default(''),
+  content: z.string().max(200_000).optional().default(""),
   categoryId: z.string().nullable().optional(),
   tags: z.array(NonEmptyStringSchema).max(10).optional().default([]),
 });
@@ -185,7 +206,7 @@ const ArticleSummarySchema = z.object({
   id: ArticleIdSchema,
   title: NonEmptyStringSchema,
   slug: SlugSchema,
-  status: z.enum(['draft', 'in_review', 'published', 'archived']),
+  status: z.enum(["draft", "in_review", "published", "archived"]),
   authorId: z.string(),
   publishedAt: z.string().datetime().nullable(),
   updatedAt: z.string().datetime(),
@@ -202,13 +223,12 @@ Inline OpenAPI fragments to be consolidated into `spec.openapi.yaml`.
 # ── Reusable Schemas ─────────────────────────────────────────────────────
 components:
   schemas:
-
     # Branded ID types
     ArticleId:
       type: string
-      pattern: '^art_[0-9A-Z]{26}$'
-      example: 'art_01HZXK3N9Y2B4C5D6E7F8G9H0'
-      description: 'ULID prefixed with entity abbreviation. Immutable after creation.'
+      pattern: "^art_[0-9A-Z]{26}$"
+      example: "art_01HZXK3N9Y2B4C5D6E7F8G9H0"
+      description: "ULID prefixed with entity abbreviation. Immutable after creation."
 
     NonEmptyString:
       type: string
@@ -216,14 +236,14 @@ components:
 
     Slug:
       type: string
-      pattern: '^[a-z0-9-]+$'
+      pattern: "^[a-z0-9-]+$"
       maxLength: 255
-      example: 'inclusive-journalism-guide-2024'
+      example: "inclusive-journalism-guide-2024"
 
     ISODateTime:
       type: string
       format: date-time
-      example: '2024-11-15T18:30:00.000Z'
+      example: "2024-11-15T18:30:00.000Z"
 
     # Domain entity — Summary (list responses)
     ArticleSummary:
@@ -231,21 +251,21 @@ components:
       required: [id, title, slug, status, authorId, updatedAt]
       properties:
         id:
-          $ref: '#/components/schemas/ArticleId'
+          $ref: "#/components/schemas/ArticleId"
         title:
-          $ref: '#/components/schemas/NonEmptyString'
+          $ref: "#/components/schemas/NonEmptyString"
         slug:
-          $ref: '#/components/schemas/Slug'
+          $ref: "#/components/schemas/Slug"
         status:
           type: string
           enum: [draft, in_review, published, archived]
         authorId:
           type: string
         publishedAt:
-          $ref: '#/components/schemas/ISODateTime'
+          $ref: "#/components/schemas/ISODateTime"
           nullable: true
         updatedAt:
-          $ref: '#/components/schemas/ISODateTime'
+          $ref: "#/components/schemas/ISODateTime"
 
     # Standard error envelope
     ApiError:
@@ -254,16 +274,16 @@ components:
       properties:
         code:
           type: string
-          example: 'E_ACCESSIBILITY_REQUIRED'
+          example: "E_ACCESSIBILITY_REQUIRED"
         message:
           type: string
-          example: 'Alt text missing on 2 image(s).'
+          example: "Alt text missing on 2 image(s)."
         fields:
           type: array
           items:
             type: string
-          description: 'Dot-path references to invalid fields (for validation errors)'
-          example: ['content.images[0].altText']
+          description: "Dot-path references to invalid fields (for validation errors)"
+          example: ["content.images[0].altText"]
 
     # Pagination meta (all list responses)
     PaginationMeta:
@@ -285,7 +305,7 @@ components:
         nextCursor:
           type: string
           nullable: true
-          description: 'Cursor for keyset pagination (preferred over offset for large datasets)'
+          description: "Cursor for keyset pagination (preferred over offset for large datasets)"
 
     # Wrapped response envelopes
     ArticleSummaryListResponse:
@@ -295,16 +315,16 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/ArticleSummary'
+            $ref: "#/components/schemas/ArticleSummary"
         meta:
-          $ref: '#/components/schemas/PaginationMeta'
+          $ref: "#/components/schemas/PaginationMeta"
 
   securitySchemes:
     BearerAuth:
       type: http
       scheme: bearer
       bearerFormat: JWT
-      description: 'Supabase JWT via PKCE flow. Expires in 1 hour.'
+      description: "Supabase JWT via PKCE flow. Expires in 1 hour."
 ```
 
 ---
@@ -316,11 +336,13 @@ Use `.refine()` for constraints that can't be expressed in base schema.
 ```typescript
 // Accessibility constraint: all images must have alt text before publish
 const PublishableArticleSchema = ArticleSchema.refine(
-  (article) => article.images.every(img => img.altText !== null && img.altText !== ''),
+  (article) =>
+    article.images.every((img) => img.altText !== null && img.altText !== ""),
   {
-    message: 'All images must have non-empty alt text before the article can be published.',
-    path: ['images'],
-  }
+    message:
+      "All images must have non-empty alt text before the article can be published.",
+    path: ["images"],
+  },
 );
 
 // Slug uniqueness is checked at the DB level, but format validated here
@@ -333,26 +355,32 @@ const SlugAvailabilityRequestSchema = z.object({
 const BulkArchiveRequestSchema = z.object({
   articleIds: z
     .array(ArticleIdSchema)
-    .min(1, 'At least one article ID required')
-    .max(100, 'Cannot bulk archive more than 100 articles at once'),
+    .min(1, "At least one article ID required")
+    .max(100, "Cannot bulk archive more than 100 articles at once"),
   reason: z.string().max(500).optional(),
 });
 
 // Conditional schema — different validation based on status
-const ArticleUpdateSchema = z.discriminatedUnion('status', [
-  z.object({
-    status: z.literal('in_review'),
-    reviewerId: z.string().min(1, 'Reviewer ID required when submitting for review'),
-  }),
-  z.object({
-    status: z.literal('draft'),
-    reviewerId: z.string().nullable().optional(),
-  }),
-]).and(z.object({
-  title: NonEmptyStringSchema.optional(),
-  content: z.string().max(200_000).optional(),
-  tags: z.array(NonEmptyStringSchema).max(10).optional(),
-}));
+const ArticleUpdateSchema = z
+  .discriminatedUnion("status", [
+    z.object({
+      status: z.literal("in_review"),
+      reviewerId: z
+        .string()
+        .min(1, "Reviewer ID required when submitting for review"),
+    }),
+    z.object({
+      status: z.literal("draft"),
+      reviewerId: z.string().nullable().optional(),
+    }),
+  ])
+  .and(
+    z.object({
+      title: NonEmptyStringSchema.optional(),
+      content: z.string().max(200_000).optional(),
+      tags: z.array(NonEmptyStringSchema).max(10).optional(),
+    }),
+  );
 ```
 
 ---
@@ -370,9 +398,9 @@ For event-driven sections of the Spec (use when SDD specifies an event bus).
  */
 
 interface ArticlePublishedEvent {
-  type: 'article.published';
-  version: '1.0';
-  id: string;             // Event UUID (for deduplication)
+  type: "article.published";
+  version: "1.0";
+  id: string; // Event UUID (for deduplication)
   timestamp: ISODateTime;
   payload: {
     articleId: ArticleId;
@@ -384,14 +412,14 @@ interface ArticlePublishedEvent {
     tags: NonEmptyString[];
   };
   metadata: {
-    traceId: string;      // OpenTelemetry trace propagation
-    source: 'cms-api';
+    traceId: string; // OpenTelemetry trace propagation
+    source: "cms-api";
   };
 }
 
 interface ArticleArchivedEvent {
-  type: 'article.archived';
-  version: '1.0';
+  type: "article.archived";
+  version: "1.0";
   id: string;
   timestamp: ISODateTime;
   payload: {
@@ -403,14 +431,12 @@ interface ArticleArchivedEvent {
   };
   metadata: {
     traceId: string;
-    source: 'cms-api';
+    source: "cms-api";
   };
 }
 
 // Discriminated union for all editorial events
-type EditorialEvent =
-  | ArticlePublishedEvent
-  | ArticleArchivedEvent;
+type EditorialEvent = ArticlePublishedEvent | ArticleArchivedEvent;
 
 // AsyncAPI 2.x channel definition fragment
 const asyncApiFragment = `
@@ -442,9 +468,9 @@ type DeepReadonly<T> = {
 
 /** Pagination params for list endpoints */
 interface PaginationParams {
-  page?: number;     // Default: 1, Min: 1
-  perPage?: number;  // Default: 20, Min: 1, Max: 100
-  cursor?: string;   // Keyset cursor (exclusive with page/perPage)
+  page?: number; // Default: 1, Min: 1
+  perPage?: number; // Default: 20, Min: 1, Max: 100
+  cursor?: string; // Keyset cursor (exclusive with page/perPage)
 }
 
 /** Standard paginated response envelope */
@@ -462,15 +488,13 @@ interface PaginatedResponse<T> {
 interface ApiError {
   code: string;
   message: string;
-  fields?: string[];  // Dot-path references for validation errors
+  fields?: string[]; // Dot-path references for validation errors
 }
 
 /** Result type for service layer (avoids throw/catch at business logic level) */
-type Result<T, E = ApiError> =
-  | { ok: true;  value: T }
-  | { ok: false; error: E };
+type Result<T, E = ApiError> = { ok: true; value: T } | { ok: false; error: E };
 
 // Constructor helpers
-const ok  = <T>(value: T): Result<T>         => ({ ok: true,  value });
-const err = <E>(error: E): Result<never, E>  => ({ ok: false, error });
+const ok = <T>(value: T): Result<T> => ({ ok: true, value });
+const err = <E>(error: E): Result<never, E> => ({ ok: false, error });
 ```

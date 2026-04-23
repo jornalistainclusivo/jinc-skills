@@ -5,7 +5,7 @@ description: How to process journalistic drafts in Strapi 5 and generate AI meta
 
 # 🎼 Orquestrador Editorial Inteligente para Strapi 5
 
-Esta skill habilita a capacidade de **Engenharia Editorial Autônoma**. Ela orienta a IA para atuar como um Editor de Acessibilidade e SEO de alto nível, operando diretamente nos ciclos de vida (*lifecycles*) e utilitários de prompt do Strapi 5. O foco é a transformação de rascunhos fragmentados em artefatos jornalísticos estruturados e acessíveis.
+Esta skill habilita a capacidade de **Engenharia Editorial Autônoma**. Ela orienta a IA para atuar como um Editor de Acessibilidade e SEO de alto nível, operando diretamente nos ciclos de vida (_lifecycles_) e utilitários de prompt do Strapi 5. O foco é a transformação de rascunhos fragmentados em artefatos jornalísticos estruturados e acessíveis.
 
 ## 🎯 Escopo de Atuação Técnica
 

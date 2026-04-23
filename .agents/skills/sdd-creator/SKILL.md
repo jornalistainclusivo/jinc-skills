@@ -34,6 +34,7 @@ Read the user's signal and jump directly to the correct phase. Don't force linea
 **Trigger:** User describes an idea in any format — bullet points, audio transcript, rough sketch, one-liner, or even a vague feeling.
 
 **Actions:**
+
 - Accept **any input format** without friction
 - If user provides an existing PRD, requirements doc, or spec → activate **PRD Inference Mode** (see below) instead
 - Silently extract: core purpose, primary users, key flows, implied constraints, approximate scale
@@ -88,17 +89,17 @@ Immediately reflect your understanding using this exact structure:
 
 **Recognize and react to short commands in real-time:**
 
-| Command (PT/EN) | Action |
-|---|---|
-| `"simplifica"` / `"simplify"` | Reduce stack complexity, consolidate services |
-| `"escala isso"` / `"scale this"` | Add load balancer, caching (Redis), read replicas to diagrams |
-| `"adiciona observabilidade"` / `"add observability"` | Inject OTel + Grafana/Loki/Tempo into the stack |
-| `"serverless"` | Convert architecture to Lambda / CF Workers / Supabase Edge |
-| `"troca X por Y"` / `"swap X for Y"` | Update the relevant section and regenerate affected diagrams |
-| `"não gostei desse fluxo"` / `"change this flow"` | Propose 2 alternative flows side-by-side |
-| `"mais seguro"` / `"more secure"` | Add WAF, mTLS, secrets vault, RBAC layer |
-| `"adiciona cache"` / `"add cache"` | Introduce Redis/Upstash caching layer with invalidation strategy |
-| `"event-driven"` | Restructure to event bus pattern (Kafka / SQS / Pub-Sub) |
+| Command (PT/EN)                                      | Action                                                           |
+| ---------------------------------------------------- | ---------------------------------------------------------------- |
+| `"simplifica"` / `"simplify"`                        | Reduce stack complexity, consolidate services                    |
+| `"escala isso"` / `"scale this"`                     | Add load balancer, caching (Redis), read replicas to diagrams    |
+| `"adiciona observabilidade"` / `"add observability"` | Inject OTel + Grafana/Loki/Tempo into the stack                  |
+| `"serverless"`                                       | Convert architecture to Lambda / CF Workers / Supabase Edge      |
+| `"troca X por Y"` / `"swap X for Y"`                 | Update the relevant section and regenerate affected diagrams     |
+| `"não gostei desse fluxo"` / `"change this flow"`    | Propose 2 alternative flows side-by-side                         |
+| `"mais seguro"` / `"more secure"`                    | Add WAF, mTLS, secrets vault, RBAC layer                         |
+| `"adiciona cache"` / `"add cache"`                   | Introduce Redis/Upstash caching layer with invalidation strategy |
+| `"event-driven"`                                     | Restructure to event bus pattern (Kafka / SQS / Pub-Sub)         |
 
 Update Mermaid diagrams and markdown in real-time as the user jams. Keep 🟡/🟢/🔴 states visible on each key decision.
 
@@ -109,6 +110,7 @@ Update Mermaid diagrams and markdown in real-time as the user jams. Keep 🟡/�
 **Trigger:** User says `"lock it"`, `"bora codar"`, `"final"`, `"aprovado"`, `"done"`, `"generate the SDD"`, or equivalent signal.
 
 **Actions:**
+
 1. Compile the complete SDD from all Jam decisions
 2. Apply intelligent section skipping (see rules below)
 3. Generate output file structure
@@ -148,13 +150,13 @@ Read the full 8-section template from `references/core-template.md`.
 
 Apply these skipping rules automatically, but always document skipped sections with a one-liner ADR comment:
 
-| Condition | Section to Skip | Example ADR Comment |
-|---|---|---|
-| Purely serverless / no relational DB | `er-model.mmd` | `<!-- Skipped: ER model — event-driven serverless; no persistent relational DB -->` |
-| Complexity ≤ medium (single domain, 1-3 services) | C4 Component diagram | `<!-- Skipped: C4 Component — low complexity; Context + Container sufficient -->` |
-| No external API integrations | Full OpenAPI/AsyncAPI | Use simplified endpoint table in SDD.md instead |
-| MVP-only scope | Delivery Phases (V1 + Scale) | Keep only MVP phase; note future phases as TBD |
-| Monolith / single service architecture | C4 Container separations | Simplify to single container with internal modules noted |
+| Condition                                         | Section to Skip              | Example ADR Comment                                                                 |
+| ------------------------------------------------- | ---------------------------- | ----------------------------------------------------------------------------------- |
+| Purely serverless / no relational DB              | `er-model.mmd`               | `<!-- Skipped: ER model — event-driven serverless; no persistent relational DB -->` |
+| Complexity ≤ medium (single domain, 1-3 services) | C4 Component diagram         | `<!-- Skipped: C4 Component — low complexity; Context + Container sufficient -->`   |
+| No external API integrations                      | Full OpenAPI/AsyncAPI        | Use simplified endpoint table in SDD.md instead                                     |
+| MVP-only scope                                    | Delivery Phases (V1 + Scale) | Keep only MVP phase; note future phases as TBD                                      |
+| Monolith / single service architecture            | C4 Container separations     | Simplify to single container with internal modules noted                            |
 
 ---
 
@@ -237,15 +239,18 @@ Then generate this pre-filled PR description:
 ## 📐 [docs] SDD: <feature-name>
 
 ### Summary
+
 Architecture spec for [feature]. Defines scope, stack decisions, data contracts, and delivery roadmap.
 
 ### Artifacts Generated
+
 - `docs/SDD.md` — Master document
 - `docs/diagrams/c4-context.mmd` — System context
 - `docs/diagrams/c4-container.mmd` — Container architecture
 - `docs/contracts/api-v1.yaml` — API contract (if applicable)
 
 ### Section Status
+
 - [ ] 1. North Star 🟢
 - [ ] 2. Functional Scope 🟢
 - [ ] 3. Architecture C4 🟢
@@ -256,6 +261,7 @@ Architecture spec for [feature]. Defines scope, stack decisions, data contracts,
 - [ ] 8. Delivery Phases 🟢
 
 ### Review Checklist
+
 - [ ] North Star aligns with product vision
 - [ ] C4 diagrams render correctly in Mermaid
 - [ ] API contracts consistent with existing endpoints
@@ -274,6 +280,7 @@ When the user mentions code evolution that may conflict with the SDD, proactivel
 > `🟡 SDD Drift Detected — Implementation may have diverged from the spec. Should I run a Diff Session to sync the document?`
 
 **Trigger conditions:**
+
 - New API endpoints mentioned that aren't in the contract
 - Database schema changes affecting the ER model
 - New services or integrations not in the C4 container diagram

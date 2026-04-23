@@ -8,68 +8,69 @@ This file guides the SDD Architect skill when making JINC-specific recommendatio
 
 ### Web (Next.js — JINC Standard)
 
-| Layer | Preferred | Acceptable | Avoid |
-|-------|-----------|------------|-------|
-| Framework | Next.js 15 (App Router) | Astro (content sites) | Pages Router (legacy), CRA |
-| Styling | Vanilla CSS + CSS Variables | Tailwind CSS | Inline styles, CSS-in-JS |
-| State | Zustand | React Context (local) | Redux (unless existing) |
-| Auth | Supabase Auth (PKCE) | Clerk | NextAuth (unless existing) |
-| Database | Supabase (Postgres) | PlanetScale, Neon | SQLite (prod), MongoDB |
-| ORM | Prisma | Drizzle ORM | Raw SQL (unless optimization needed) |
-| API Style | REST (Next.js API Routes) | tRPC (fullstack TS) | GraphQL (unless needed) |
-| Cache | Upstash Redis | Vercel KV | In-memory (stateful servers) |
-| Deployment | Vercel | Railway, Fly.io | Self-hosted (unless required) |
-| Testing | Vitest + Playwright | Jest + Cypress | — |
+| Layer      | Preferred                   | Acceptable            | Avoid                                |
+| ---------- | --------------------------- | --------------------- | ------------------------------------ |
+| Framework  | Next.js 15 (App Router)     | Astro (content sites) | Pages Router (legacy), CRA           |
+| Styling    | Vanilla CSS + CSS Variables | Tailwind CSS          | Inline styles, CSS-in-JS             |
+| State      | Zustand                     | React Context (local) | Redux (unless existing)              |
+| Auth       | Supabase Auth (PKCE)        | Clerk                 | NextAuth (unless existing)           |
+| Database   | Supabase (Postgres)         | PlanetScale, Neon     | SQLite (prod), MongoDB               |
+| ORM        | Prisma                      | Drizzle ORM           | Raw SQL (unless optimization needed) |
+| API Style  | REST (Next.js API Routes)   | tRPC (fullstack TS)   | GraphQL (unless needed)              |
+| Cache      | Upstash Redis               | Vercel KV             | In-memory (stateful servers)         |
+| Deployment | Vercel                      | Railway, Fly.io       | Self-hosted (unless required)        |
+| Testing    | Vitest + Playwright         | Jest + Cypress        | —                                    |
 
 ### Mobile (React Native — JINC Standard)
 
-| Layer | Preferred | Acceptable | Avoid |
-|-------|-----------|------------|-------|
-| Framework | Expo (managed workflow) | Expo (bare) | RN CLI alone |
-| Navigation | Expo Router | React Navigation | Custom routing |
-| State | Zustand | Jotai | Redux |
-| API Client | TanStack Query + Axios | SWR + Fetch | Raw fetch without error handling |
-| Auth | Supabase Auth | Clerk | Custom JWT |
-| Storage | Expo SecureStore | AsyncStorage (non-sensitive) | LocalStorage |
-| Testing | Jest + Detox | — | Manual only |
+| Layer      | Preferred               | Acceptable                   | Avoid                            |
+| ---------- | ----------------------- | ---------------------------- | -------------------------------- |
+| Framework  | Expo (managed workflow) | Expo (bare)                  | RN CLI alone                     |
+| Navigation | Expo Router             | React Navigation             | Custom routing                   |
+| State      | Zustand                 | Jotai                        | Redux                            |
+| API Client | TanStack Query + Axios  | SWR + Fetch                  | Raw fetch without error handling |
+| Auth       | Supabase Auth           | Clerk                        | Custom JWT                       |
+| Storage    | Expo SecureStore        | AsyncStorage (non-sensitive) | LocalStorage                     |
+| Testing    | Jest + Detox            | —                            | Manual only                      |
 
 ### Backend / API (Node.js — JINC Standard)
 
-| Layer | Preferred | Acceptable | Avoid |
-|-------|-----------|------------|-------|
-| Runtime | Node.js 20 LTS | Bun | Deno (unless WASM target) |
-| Framework | Fastify | Express, Hono | NestJS (over-engineered for most cases) |
-| Validation | Zod | Yup | Joi |
-| Queue | BullMQ (Redis) | Inngest | Home-grown polling |
-| Observability | OpenTelemetry + Sentry | Datadog | console.log only |
-| Config | `dotenv` + `env-schema` | `t3-env` | Hardcoded values |
+| Layer         | Preferred               | Acceptable    | Avoid                                   |
+| ------------- | ----------------------- | ------------- | --------------------------------------- |
+| Runtime       | Node.js 20 LTS          | Bun           | Deno (unless WASM target)               |
+| Framework     | Fastify                 | Express, Hono | NestJS (over-engineered for most cases) |
+| Validation    | Zod                     | Yup           | Joi                                     |
+| Queue         | BullMQ (Redis)          | Inngest       | Home-grown polling                      |
+| Observability | OpenTelemetry + Sentry  | Datadog       | console.log only                        |
+| Config        | `dotenv` + `env-schema` | `t3-env`      | Hardcoded values                        |
 
 ### CMS (JINC Standard — Strapi 5)
 
-| Aspect | Convention |
-|--------|-----------|
-| Version | Strapi 5.x (current) |
-| DB | Postgres 16 (never SQLite in prod) |
-| Media | Cloudinary provider |
-| Auth | JWT + API tokens per service |
-| Deployment | Railway (CMS) + Vercel (Frontend) |
+| Aspect        | Convention                                       |
+| ------------- | ------------------------------------------------ |
+| Version       | Strapi 5.x (current)                             |
+| DB            | Postgres 16 (never SQLite in prod)               |
+| Media         | Cloudinary provider                              |
+| Auth          | JWT + API tokens per service                     |
+| Deployment    | Railway (CMS) + Vercel (Frontend)                |
 | Content Types | Use `type: collectionType` for editorial content |
-| Webhooks | Use for content pipeline triggers |
+| Webhooks      | Use for content pipeline triggers                |
 
 ---
 
 ## 🎨 Design System Rules (Non-Negotiable)
 
 ### Color System — Neutral-First Palette
+
 JINC uses a **semantic neutral** color system. No category colors on UI elements.
 
 ```css
 /* JINC Color Tokens */
---color-neutral-50: #FAFAFA;
---color-neutral-100: #F5F5F5;
---color-neutral-200: #E5E5E5;
---color-neutral-300: #D4D4D4;
---color-neutral-400: #A3A3A3;
+--color-neutral-50: #fafafa;
+--color-neutral-100: #f5f5f5;
+--color-neutral-200: #e5e5e5;
+--color-neutral-300: #d4d4d4;
+--color-neutral-400: #a3a3a3;
 --color-neutral-500: #737373;
 --color-neutral-600: #525252;
 --color-neutral-700: #404040;
@@ -86,12 +87,14 @@ JINC uses a **semantic neutral** color system. No category colors on UI elements
 **🚫 Purple/Violet Ban:** Never use violet or purple (`#6B21A8`, `purple`, `violet`, `hsl(270-300, *)`) in any UI element.
 
 **Typography:**
+
 - Serif font: Body content (articles, long-form text)
 - Sans-serif font: UI elements (buttons, labels, navigation)
 - Maximum content width: `70ch` (readability lock)
 - Minimum text contrast: 7:1 ratio (WCAG AAA)
 
 ### Accessibility Requirements (WCAG 2.2 AAA)
+
 - Keyboard navigation: Full `Tab` / `Shift+Tab` with logical order
 - Focus indicator: `focus-visible:ring-2` on all interactive elements
 - Screen readers: `aria-label` on icon-only buttons, `aria-hidden` on decorative elements
@@ -126,6 +129,7 @@ Use this format for all ADRs in the Tech Stack section:
 | [Alt 2] | [Reason] |
 
 **Consequences:**
+
 - **Positive:** [Benefits of this decision]
 - **Negative:** [Trade-offs or risks accepted]
 - **Technical debt:** [Any shortcuts taken that must be revisited]
@@ -161,6 +165,7 @@ POST   /api/v1/articles/:id/archive  → Archive action
 ```
 
 **Response envelope standard:**
+
 ```json
 {
   "data": { ... },           // or array for collections
@@ -174,6 +179,7 @@ POST   /api/v1/articles/:id/archive  → Archive action
 ```
 
 **Error codes:** Always prefix with `E_` followed by domain and issue:
+
 - `E_AUTH_REQUIRED` — unauthenticated
 - `E_AUTH_FORBIDDEN` — authenticated but unauthorized
 - `E_VALIDATION_FAILED` — input validation error (include `fields` array)
@@ -214,6 +220,7 @@ ALTER TABLE articles ENABLE ROW LEVEL SECURITY;
 ```
 
 **Naming rules:**
+
 - Tables: `plural_snake_case` (e.g., `user_profiles`, `article_revisions`)
 - Columns: `snake_case`
 - PKs: Always `id UUID` with `gen_random_uuid()`
@@ -248,6 +255,7 @@ main          ← Production. Protected. No direct pushes.
 ```
 
 Types:
+
 - `feat` — new feature
 - `fix` — bug fix
 - `docs` — documentation (including SDD)
@@ -262,6 +270,7 @@ Types:
 ### Git Tag — State Saving (JINC Versionamento Perpétuo)
 
 When a milestone is reached:
+
 ```bash
 git tag -a v{Major}.{Minor}.{Patch}-{branch-name} -m "feat: [what was completed and validated]"
 git push origin v{Major}.{Minor}.{Patch}-{branch-name}
@@ -292,6 +301,7 @@ Unit Tests (Vitest / Jest)        ← Business rules, utils, components (60-70%)
 ```
 
 **Test file placement:**
+
 - Unit: Colocated with source — `feature.ts` → `feature.test.ts`
 - Integration: `tests/integration/`
 - E2E: `tests/e2e/` (Playwright)

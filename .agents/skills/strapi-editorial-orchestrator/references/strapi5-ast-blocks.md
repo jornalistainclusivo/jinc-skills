@@ -58,9 +58,7 @@ Links são nós de nível médio que possuem seu próprio array de `children`.
 {
   "type": "link",
   "url": "[https://jinc.com.br/acessibilidade](https://jinc.com.br/acessibilidade)",
-  "children": [
-    { "type": "text", "text": "Saiba mais", "italic": true }
-  ]
+  "children": [{ "type": "text", "text": "Saiba mais", "italic": true }]
 }
 ```
 

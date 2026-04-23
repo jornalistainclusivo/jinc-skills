@@ -30,9 +30,9 @@ Always use XML tags (e.g., `<context>`, `<instructions>`, `<examples>`) to separ
 
 ### 2. The Power of "Why" (Theory of Mind)
 
-Don't just tell the AI *what* to do; explain *why* it matters. This helps modern LLMs generalize better and make smarter edge-case decisions.
-*Bad*: "Never use the color purple."
-*Good*: "Avoid the color purple because it conflicts with our brand's neutral-first accessibility guidelines."
+Don't just tell the AI _what_ to do; explain _why_ it matters. This helps modern LLMs generalize better and make smarter edge-case decisions.
+_Bad_: "Never use the color purple."
+_Good_: "Avoid the color purple because it conflicts with our brand's neutral-first accessibility guidelines."
 
 ### 3. Progressive Disclosure
 
@@ -44,6 +44,7 @@ If you want a specific output format, always provide Examples.
 
 ```markdown
 ## Example Format:
+
 **Input:** User wants a login button
 **Output:** <button class="btn-primary" aria-label="Login">Login</button>
 ```
@@ -65,19 +66,24 @@ Example of a standard system prompt template:
 
 ```markdown
 # Role
+
 You are...
 
 # Context
+
 [INSERT CONTEXT]
 
 # Instructions
+
 1. ...
 2. ...
 
 # Constraints
+
 - ...
 
 # Output Format
+
 Please format your response as...
 ```
 

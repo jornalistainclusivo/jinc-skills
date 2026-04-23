@@ -39,7 +39,7 @@ O esquema de cores foi selecionado para garantir legibilidade máxima.
 ### 🖼️ Imagens e Mídia
 
 - **Imagens Decorativas:** `alt=""` (vazio) ou `aria-hidden="true"`.
-- **Imagens Informativas:** `alt` descritivo que transmite o *conteúdo* e a *função* da imagem, não apenas a aparência.
+- **Imagens Informativas:** `alt` descritivo que transmite o _conteúdo_ e a _função_ da imagem, não apenas a aparência.
 - **Gráficos/Infográficos:** Devem ter uma descrição longa (`longdesc` ou texto adjacente) acessível.
 
 ### 🏗️ Semântica HTML

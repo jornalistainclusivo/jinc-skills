@@ -14,22 +14,28 @@ This is the canonical structure for a JINC Apps SDD. Each section has guidance o
 ## 1. North Star
 
 ### Vision
+
 [One sentence: What does the world look like when this succeeds? Focus on user outcome, not feature list.]
+
 > Example: "Journalists with any disability level can independently publish, edit, and manage editorial content without needing technical assistance."
 
 ### Problem Statement
+
 [2-3 sentences: What is broken today? Who suffers? What is the cost of inaction?]
 
 ### Jobs to be Done (JTBD)
+
 - **When** [context/trigger], **I want to** [motivation], **so I can** [outcome]
 - [Repeat for 3-5 primary jobs]
 
 ### Success Metrics (OKR-ready)
-| Metric | Baseline | Target | Timeline |
-|--------|----------|--------|----------|
+
+| Metric                       | Baseline  | Target | Timeline  |
+| ---------------------------- | --------- | ------ | --------- |
 | [e.g., Task completion rate] | [current] | [goal] | [quarter] |
 
 ### Non-Goals (Explicit Exclusions)
+
 - [What this system deliberately does NOT do — prevents scope creep]
 ```
 
@@ -43,18 +49,21 @@ This is the canonical structure for a JINC Apps SDD. Each section has guidance o
 
 **Required fields:**
 
-```markdown
+````markdown
 ## 2. Functional Scope
 
 ### User Personas
-| Persona | Context | Primary Goal | Tech Literacy |
-|---------|---------|--------------|---------------|
-| [Name] | [Role/situation] | [Core need] | [Low/Med/High] |
+
+| Persona | Context          | Primary Goal | Tech Literacy  |
+| ------- | ---------------- | ------------ | -------------- |
+| [Name]  | [Role/situation] | [Core need]  | [Low/Med/High] |
 
 ### User Stories (Gherkin format)
+
 **Epic: [Epic Name]**
 
 **Story US-001:** [Short title]
+
 - **As a** [persona]
 - **I want to** [action]
 - **So that** [outcome]
@@ -63,6 +72,7 @@ This is the canonical structure for a JINC Apps SDD. Each section has guidance o
   - [ ] Given [edge case], When [action], Then [graceful result]
 
 ### User Journeys (Critical Flows)
+
 ```mermaid
 journey
     title [Flow name]
@@ -71,12 +81,15 @@ journey
     section [Phase 2]
       [Step]: [satisfaction]: [Persona]
 ```
+````
 
 ### Feature Map
-| Feature | Priority | Complexity | Phase |
-|---------|----------|------------|-------|
+
+| Feature        | Priority | Complexity  | Phase        |
+| -------------- | -------- | ----------- | ------------ |
 | [Feature name] | P0/P1/P2 | XS/S/M/L/XL | MVP/V1/Scale |
-```
+
+````
 
 **Quality signal:** Every story should be independently testable. If you can't write a "Given/When/Then" for it, it's not a story — it's a goal. Break it down.
 
@@ -99,22 +112,23 @@ C4Context
   Person(adminUser, "[Admin]", "[Admin role]")
   System(system, "[This System]", "[Core function]")
   System_Ext(extSystem, "[External System]", "[Purpose]")
-  
+
   Rel(user, system, "Uses", "HTTPS")
   Rel(system, extSystem, "Calls", "REST/webhook")
-```
+````
 
 ### Container Diagram (Level 2) — What runs?
+
 ```mermaid
 C4Container
   title Container Diagram — [System Name]
   Person(user, "[User]")
-  
+
   Container(webapp, "[Web App]", "[Next.js / React]", "[Serves UI]")
   Container(api, "[API]", "[Node.js / FastAPI]", "[Business logic]")
   ContainerDb(db, "[Database]", "[Postgres / Supabase]", "[Persistent data]")
   Container(cache, "[Cache]", "[Redis / Upstash]", "[Session + query cache]")
-  
+
   Rel(user, webapp, "Uses", "HTTPS")
   Rel(webapp, api, "API calls", "REST/GraphQL")
   Rel(api, db, "Reads/writes", "SQL")
@@ -122,14 +136,17 @@ C4Container
 ```
 
 ### Component Diagram (Level 3) — [Only if complexity > medium]
+
 [Show internals of the most complex container]
 
 ### Architecture Decision Records (ADRs)
-| # | Decision | Rationale | Consequences | Status |
-|---|----------|-----------|--------------|--------|
+
+| #       | Decision                              | Rationale                                          | Consequences              | Status      |
+| ------- | ------------------------------------- | -------------------------------------------------- | ------------------------- | ----------- |
 | ADR-001 | [e.g., Use Supabase over custom Auth] | [e.g., Built-in RLS, PKCE flows, team familiarity] | [e.g., Vendor dependency] | 🟢 Accepted |
-| ADR-002 | [Decision] | [Why] | [Trade-offs] | 🟡 Proposed |
-```
+| ADR-002 | [Decision]                            | [Why]                                              | [Trade-offs]              | 🟡 Proposed |
+
+````
 
 **Quality signal:** Anyone joining the team cold should understand the system topology in 5 minutes from these diagrams alone.
 
@@ -172,15 +189,17 @@ interface Article {
   created_at: Date;
   updated_at: Date;
 }
-```
+````
 
 ### Authentication & Authorization
-| Scope | Method | Token Lifetime | Notes |
-|-------|--------|----------------|-------|
-| Public read | None | — | Rate-limited: 100 req/min |
-| Authenticated | JWT (PKCE) | 1h access / 30d refresh | Supabase Auth |
-| Admin | JWT + role claim | 1h | RLS policy enforced at DB level |
-```
+
+| Scope         | Method           | Token Lifetime          | Notes                           |
+| ------------- | ---------------- | ----------------------- | ------------------------------- |
+| Public read   | None             | —                       | Rate-limited: 100 req/min       |
+| Authenticated | JWT (PKCE)       | 1h access / 30d refresh | Supabase Auth                   |
+| Admin         | JWT + role claim | 1h                      | RLS policy enforced at DB level |
+
+````
 
 ---
 
@@ -215,7 +234,7 @@ interface Article {
 | Limitation | Impact | Mitigation | Revisit At |
 |-----------|--------|------------|------------|
 | [e.g., Supabase connection pooling limit: 200] | [Bottleneck at ~5k concurrent users] | [PgBouncer via Supabase Pro] | [V1 milestone] |
-```
+````
 
 ---
 
@@ -223,10 +242,11 @@ interface Article {
 
 **Purpose:** Formalize business logic as explicit, testable rules — not buried in code comments.
 
-```markdown
+````markdown
 ## 6. Business Rules Engine
 
 ### Rule Table Format
+
 Use decision tables for conditional logic. Use pseudo-code for sequential rules.
 
 **Rule BR-001: Article Publication Eligibility**
@@ -239,6 +259,7 @@ Use decision tables for conditional logic. Use pseudo-code for sequential rules.
 | Word count | < 100 words | ⚠️ WARN — confirm intent |
 
 **Rule BR-002: [Rule Name]**
+
 ```pseudo
 IF user.role == "contributor"
   AND article.status == "review"
@@ -246,14 +267,17 @@ IF user.role == "contributor"
 THEN allow article.publish()
 ELSE raise PermissionError("CONTRIBUTOR_NEEDS_REVIEW")
 ```
+````
 
 ### Edge Cases & Error Scenarios
-| Scenario | Expected Behavior | Error Code |
-|----------|------------------|------------|
-| User publishes without alt text | Block with clear accessibility error | `E_ACCESSIBILITY_REQUIRED` |
-| Concurrent edits to same article | Last-write-wins + conflict notification | `E_CONFLICT_DETECTED` |
-| Session expires mid-draft | Auto-save to localStorage, prompt re-auth | — |
-```
+
+| Scenario                         | Expected Behavior                         | Error Code                 |
+| -------------------------------- | ----------------------------------------- | -------------------------- |
+| User publishes without alt text  | Block with clear accessibility error      | `E_ACCESSIBILITY_REQUIRED` |
+| Concurrent edits to same article | Last-write-wins + conflict notification   | `E_CONFLICT_DETECTED`      |
+| Session expires mid-draft        | Auto-save to localStorage, prompt re-auth | —                          |
+
+````
 
 ---
 
@@ -287,7 +311,7 @@ ELSE raise PermissionError("CONTRIBUTOR_NEEDS_REVIEW")
 - [ ] Key events are logged (article.published, user.auth, error.*)
 - [ ] Alerts configured for p95 latency > 500ms
 - [ ] Error rate alert configured (> 1% errors triggers page)
-```
+````
 
 ---
 
@@ -299,7 +323,9 @@ ELSE raise PermissionError("CONTRIBUTOR_NEEDS_REVIEW")
 ## 8. Delivery Phases
 
 ### Phase 0 — Foundation (Week 1-2)
+
 **Goal:** Infrastructure ready, team unblocked
+
 - [ ] Repository setup with JINC DevOps conventions
 - [ ] CI/CD pipeline (GitHub Actions)
 - [ ] Environment configuration (dev/staging/prod)
@@ -307,38 +333,47 @@ ELSE raise PermissionError("CONTRIBUTOR_NEEDS_REVIEW")
 - [ ] Authentication flows working end-to-end
 
 ### Phase 1 — MVP (Week 3-6)
+
 **Goal:** Core value delivered to first users
 **Scope:**
+
 - [User Story US-001]: [Feature]
 - [User Story US-002]: [Feature]
 - [User Story US-003]: [Feature]
 
 **NOT in MVP (explicitly excluded):**
+
 - [Feature]: Deferred to V1 because [reason]
 
 **MVP Exit Criteria:**
+
 - [ ] [N] real users can complete [core flow] successfully
 - [ ] Error rate < 1% in production
 - [ ] All P0 stories pass acceptance tests
 
 ### Phase 2 — V1 (Week 7-12)
+
 **Goal:** Feature complete for general release
 **Scope:**
+
 - [Remaining P1 stories]
 - Performance optimization
 - Analytics integration
 - [Platform expansion if applicable]
 
 ### Phase 3 — Scale
+
 **Goal:** System handles 10x current load without re-architecture
+
 - Caching strategy review
 - Database indexing audit
 - CDN and edge optimization
 - Load testing with [target: X req/s]
 
 ### Risk Register
-| Risk | Probability | Impact | Mitigation |
-|------|-------------|--------|------------|
-| [e.g., Supabase rate limits in MVP] | Medium | High | Implement request queuing early |
-| [External API instability] | Low | Medium | Circuit breaker pattern |
+
+| Risk                                | Probability | Impact | Mitigation                      |
+| ----------------------------------- | ----------- | ------ | ------------------------------- |
+| [e.g., Supabase rate limits in MVP] | Medium      | High   | Implement request queuing early |
+| [External API instability]          | Low         | Medium | Circuit breaker pattern         |
 ```

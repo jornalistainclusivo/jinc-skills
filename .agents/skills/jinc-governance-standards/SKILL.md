@@ -53,7 +53,7 @@ Sistemas devem suportar padrões de redação profissional:
 ### 1.1 Estratégia de Branching
 
 - **main:** Protegida. Apenas via Pull Request.
-- **feat/*, fix/*, docs/*, hotfix/*:** Branches efêmeras para desenvolvimento.
+- **feat/_, fix/_, docs/_, hotfix/_:** Branches efêmeras para desenvolvimento.
 - **Proibido:** Commits diretos na `main`.
 
 ### 1.2 Protocolo de Sincronização (Linear History)
@@ -64,7 +64,7 @@ Sistemas devem suportar padrões de redação profissional:
 
 ### 1.3 Semântica de Commit
 
-Padrão *Conventional Commits* com extensões JINC:
+Padrão _Conventional Commits_ com extensões JINC:
 
 - **ethics:** Mudanças em regras editoriais ou algoritmos de diversidade.
 - **a11y:** Mudanças estruturais de acessibilidade.

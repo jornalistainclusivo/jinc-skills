@@ -7,18 +7,21 @@ trigger: always_on
 Este protocolo estabelece as diretrizes mandatórias para a colaboração entre o Arquiteto Humano e os Agentes de IA na organização **Jornalista Inclusivo (JINC Apps)**. Seu objetivo é garantir que toda automação resulte em código acessível, seguro e arquiteturalmente coerente.
 
 ---
+
 name: devops-jinc-protocol
 version: 1.3
 status: Core-Governance
 location: .agents\rules\devops-jinc-protocol.md
 description: Framework de governança para Vibe-Coding, Engenharia Híbrida e Versionamento Perpétuo.
 Principles:
+
 - Accessibility-First (WCAG 2.2 AAA)
 - Zero-Trust Security (No exposed secrets)
 - Atomic Commits (Clean history)
 - Documentation-as-Code (ADRs and Logs)
 - Immutable Versioning (Git Tags State Saving)
 - Environment Hygiene (No local contamination)
+
 ---
 
 ## 1. Fluxo de Trabalho (The JINC Way)
@@ -132,6 +135,4 @@ _Sempre que o Agente finalizar uma tarefa, ele deve gerar o conteúdo abaixo pre
 3. Testar comportamento em: `http://localhost:3000/...`
 
 ---
-
 ```
-

@@ -31,17 +31,17 @@ authors: [Name]
 
 ## 1. Executive Summary
 
-| Field | Value |
-|-------|-------|
-| **Vision** | [One sentence: what does the world look like when this succeeds?] |
-| **Target Users** | [Primary persona(s)] |
-| **Core Problem** | [What's broken today — in one sentence] |
-| **Proposed Solution** | [What the product does — no implementation details] |
-| **Strategic Alignment** | [Which JINC OKR or mission pillar this serves] |
-| **Key Differentiator** | [Why JINC's version of this is uniquely valuable] |
-| **Success Metric (Primary)** | [The one number that proves this worked] |
-| **Timeline Target** | [When MVP should be in users' hands] |
-| **Resource Estimate** | [🟡 Assumed — ballpark: N engineers × N weeks] |
+| Field                        | Value                                                             |
+| ---------------------------- | ----------------------------------------------------------------- |
+| **Vision**                   | [One sentence: what does the world look like when this succeeds?] |
+| **Target Users**             | [Primary persona(s)]                                              |
+| **Core Problem**             | [What's broken today — in one sentence]                           |
+| **Proposed Solution**        | [What the product does — no implementation details]               |
+| **Strategic Alignment**      | [Which JINC OKR or mission pillar this serves]                    |
+| **Key Differentiator**       | [Why JINC's version of this is uniquely valuable]                 |
+| **Success Metric (Primary)** | [The one number that proves this worked]                          |
+| **Timeline Target**          | [When MVP should be in users' hands]                              |
+| **Resource Estimate**        | [🟡 Assumed — ballpark: N engineers × N weeks]                    |
 
 ---
 
@@ -52,6 +52,7 @@ authors: [Name]
 [2-4 paragraphs. Structure: What is happening today? Who is affected and how many? What is the cost of inaction (in time, money, or mission impact)? What has been tried before and why it failed?]
 
 **Quantified Impact (current state):**
+
 - [Metric 1]: [Current baseline] → [User experience consequence]
 - [Metric 2]: [Current baseline] → [Business consequence]
 
@@ -68,13 +69,13 @@ authors: [Name]
 
 ### Opportunity
 
-| Dimension | Assessment |
-|-----------|-----------|
-| **Market size** | [Number of affected users / potential users] |
-| **Revenue opportunity** | [🟡 Assumed if estimating] |
-| **Mission alignment** | [How this advances inclusive journalism] |
+| Dimension                 | Assessment                                                    |
+| ------------------------- | ------------------------------------------------------------- |
+| **Market size**           | [Number of affected users / potential users]                  |
+| **Revenue opportunity**   | [🟡 Assumed if estimating]                                    |
+| **Mission alignment**     | [How this advances inclusive journalism]                      |
 | **Competitive landscape** | [Who else is solving this? How is JINC's approach different?] |
-| **Window of opportunity** | [Why now? What changes if we wait 6 months?] |
+| **Window of opportunity** | [Why now? What changes if we wait 6 months?]                  |
 
 ---
 
@@ -83,6 +84,7 @@ authors: [Name]
 ### Primary Personas
 
 **Persona 1: [Name / Role]**
+
 - **Context:** [Situation in which they use the product]
 - **Goals:** [What they're trying to achieve]
 - **Pain points:** [What frustrates them today]
@@ -91,6 +93,7 @@ authors: [Name]
 - **Quote (real or representative):** _"[Voice of the user]"_
 
 **Persona 2: [Name / Role]**
+
 - [Same structure]
 
 ### Jobs to be Done
@@ -102,19 +105,22 @@ When [context/trigger], I want to [action/motivation], so I can [outcome/benefit
 - [Add 3-7 JTBDs — the most important ones]
 
 ### User Journey Map
-
 ```
+
 [Persona: Name] — Flow: [Core Use Case]
 
 Current (Painful) Journey:
+
 1. [Step 1] → 😤 Pain: [what's wrong]
 2. [Step 2] → ⏱️ Friction: [what slows them down]
 3. [Step 3] → 🔴 Blocker: [what stops them entirely]
 
 Future (With Product) Journey:
+
 1. [Step 1] → ✅ [Improved experience]
 2. [Step 2] → ✅ [Time/effort saved]
 3. [Step 3] → ✅ [New outcome achieved]
+
 ```
 
 ### User Stories

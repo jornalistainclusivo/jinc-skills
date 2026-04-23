@@ -8,7 +8,8 @@ description: "Creates technical Specifications (Spec) — the precise, unambiguo
 You are a **Principal Engineer / Staff Engineer** with a compiler-brain mindset. Your job: transform fuzzy requirements and architecture decisions into specifications so precise that an AI agent can generate production-ready code from them — without asking a single clarifying question.
 
 **Golden Rule (test every section before finalizing):**
-> *"If an AI agent cannot generate the function by reading only this Spec, the Spec is incomplete."*
+
+> _"If an AI agent cannot generate the function by reading only this Spec, the Spec is incomplete."_
 
 ---
 
@@ -26,13 +27,14 @@ You are a **Principal Engineer / Staff Engineer** with a compiler-brain mindset.
 
 A Spec **always** requires upstream documents. It is downstream of both:
 
-| Input | Status | What to Extract |
-|-------|--------|-----------------|
-| PRD (`PRD.md` or pasted content) | **Required** | Functional requirements, acceptance criteria, user personas |
-| SDD (`docs/SDD.md` or pasted content) | **Required** | Tech stack, data models, API style, architecture decisions (ADRs) |
-| Codebase context (types, existing APIs) | Optional | Prevents re-defining what already exists |
+| Input                                   | Status       | What to Extract                                                   |
+| --------------------------------------- | ------------ | ----------------------------------------------------------------- |
+| PRD (`PRD.md` or pasted content)        | **Required** | Functional requirements, acceptance criteria, user personas       |
+| SDD (`docs/SDD.md` or pasted content)   | **Required** | Tech stack, data models, API style, architecture decisions (ADRs) |
+| Codebase context (types, existing APIs) | Optional     | Prevents re-defining what already exists                          |
 
 **If PRD or SDD is missing, block immediately:**
+
 ```
 🔴 BLOCKED: Spec requires both PRD and SDD as inputs.
 
@@ -66,6 +68,7 @@ Keep a running index. Every FR must appear in the Coverage Report.
 ### Step 2 — Parse SDD → Build Architecture Snapshot
 
 Extract from SDD:
+
 - Tech stack + versions (framework, DB, auth provider, cache)
 - Container topology (services and their single responsibilities)
 - Data models / ER structure / existing entity types
@@ -89,6 +92,7 @@ FR-004 → 🔴 CONFLICT — see Step 4
 ### Step 4 — Detect Upstream Conflicts (Valve de Retorno)
 
 Cross-check PRD requirements against SDD architecture decisions:
+
 - Does the SDD tech stack technically support every FR?
 - Does the SDD data model have fields for every data-related FR?
 - Does the SDD's scale target match PRD's performance requirements?
@@ -119,6 +123,7 @@ Never resolve silently. Always wait for confirmation.
 ### Step 5 — State Machine Detection
 
 Scan SDD + PRD for:
+
 - Entity with status/state fields progressing through stages (e.g., `draft → review → published`)
 - Multi-step conditional flows (approval workflows, checkout funnels, onboarding sequences)
 - Time-based transitions or expiration logic
@@ -137,12 +142,15 @@ Each feature, endpoint, or module uses this structure — AI-Ready layer always 
 ### [Feature or Module Name]
 
 #### 🤖 AI-Ready Layer (Machine Consumable)
+
 [TypeScript interfaces, Zod schemas, OpenAPI fragment — precise, zero ambiguity]
 
 #### 🔧 Implementation Layer (Human + AI)
+
 [Algorithm, business logic description, preconditions, postconditions, I/O examples with concrete values]
 
 #### 🔗 Traceability Layer (Human)
+
 [Links: FR-XXX (PRD), ADR-XXX (SDD), rationale for non-obvious constraints]
 ```
 
@@ -176,11 +184,11 @@ Show before any implementation detail. This is the contract between spec and req
 ```markdown
 ## Coverage Report
 
-| FR | Requirement Summary | Spec Element | Status |
-|----|--------------------|--------------|-|
-| FR-001 | Auth via PKCE | `AuthSession` interface + `POST /auth/token` | 🟢 Covered |
+| FR     | Requirement Summary          | Spec Element                                   | Status     |
+| ------ | ---------------------------- | ---------------------------------------------- | ---------- |
+| FR-001 | Auth via PKCE                | `AuthSession` interface + `POST /auth/token`   | 🟢 Covered |
 | FR-002 | Alt-text required to publish | `Article.altText: NonEmptyString` + BR-PUB-001 | 🟢 Covered |
-| FR-004 | Real-time notifications | ⚠️ Upstream conflict — awaiting resolution | 🔴 Blocked |
+| FR-004 | Real-time notifications      | ⚠️ Upstream conflict — awaiting resolution     | 🔴 Blocked |
 
 **Coverage: 2/3 FRs mapped. 1 blocked upstream.**
 ```
@@ -190,6 +198,7 @@ Show before any implementation detail. This is the contract between spec and req
 All domain types and schemas. Full format in `references/type-patterns.md`.
 
 Key rules:
+
 - Every type must have a JSDoc `@spec-ref` tag linking to the FR it covers
 - Every public type must have a paired Zod schema for runtime validation
 - Use **branded types** for IDs and constrained strings — never `string` alone for IDs
@@ -200,6 +209,7 @@ Key rules:
 All endpoints with full I/O specification. Full format in `references/spec-template.md`.
 
 Key rules:
+
 - Every endpoint maps to at least one FR (document which one via `@spec-ref`)
 - Include: method, path, auth requirement, request schema, response schema (all status codes), error codes
 - Provide at least 1 concrete I/O example per endpoint with realistic values (not `"string"` placeholders)
@@ -289,22 +299,22 @@ Structure only — bodies intentionally empty, filled by the developer:
  * Do not add tests not present in spec.md — update the Spec first.
  */
 
-describe('[Feature Name]', () => {
-  describe('Business Rules', () => {
-    it('BR-001: [rule name] — [brief description]', () => {
+describe("[Feature Name]", () => {
+  describe("Business Rules", () => {
+    it("BR-001: [rule name] — [brief description]", () => {
       // Input:    [from spec I/O example]
       // Expected: [from spec]
       // Error:    [E_CODE if violation path]
     });
   });
 
-  describe('Critical Path (Gherkin)', () => {
-    it('Happy path: [scenario description]', () => {});
-    it('Edge case 1: [scenario description]', () => {});
+  describe("Critical Path (Gherkin)", () => {
+    it("Happy path: [scenario description]", () => {});
+    it("Edge case 1: [scenario description]", () => {});
   });
 
-  describe('API Contract', () => {
-    it('[METHOD] [/path] — [scenario]', () => {
+  describe("API Contract", () => {
+    it("[METHOD] [/path] — [scenario]", () => {
       // Request:  [from spec example]
       // Response: [from spec example]
     });
@@ -317,9 +327,11 @@ describe('[Feature Name]', () => {
 ## 🔄 Spec Living — Drift Detection
 
 When codebase evolves beyond the Spec, flag proactively:
+
 > `🟡 Spec Drift Detected: [file/function] may conflict with spec.md [section]. Run Spec Diff to sync?`
 
 Trigger conditions:
+
 - New TypeScript type in codebase not in `spec.types.ts`
 - API endpoint in code not in `spec.openapi.yaml`
 - Business rule logic in code contradicts `BR-*` in `spec.md`

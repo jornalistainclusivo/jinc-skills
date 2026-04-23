@@ -25,7 +25,7 @@ Always use custom type guards or strict `if` narrowing instead of casting.
 ```typescript
 // Good
 function isString(val: unknown): val is string {
-  return typeof val === 'string';
+  return typeof val === "string";
 }
 ```
 
@@ -34,9 +34,9 @@ function isString(val: unknown): val is string {
 Instead of having a single monolithic interface with lots of optional properties, use discriminated unions (Sum Types) to represent distinct states.
 
 ```typescript
-type Result<T> = 
-  | { status: 'success'; data: T }
-  | { status: 'error'; error: Error };
+type Result<T> =
+  | { status: "success"; data: T }
+  | { status: "error"; error: Error };
 ```
 
 ### Generics
@@ -45,7 +45,7 @@ Maintain flexibility by using generics instead of hardcoded types when developin
 
 ```typescript
 function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
-    return obj[key];
+  return obj[key];
 }
 ```
 
@@ -59,6 +59,6 @@ function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
 
 When solving a TypeScript error for the user:
 
-1. Briefly state *why* the compiler is complaining.
+1. Briefly state _why_ the compiler is complaining.
 2. Explain the delta between the actual type and the expected type.
 3. Provide a strict, robust solution that enhances type safety, rather than suppressing the error.

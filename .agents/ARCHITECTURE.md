@@ -72,17 +72,17 @@ Modular knowledge domains that agents can load on-demand, based on task context.
 
 ### Backend & API (3)
 
-| Skill                   | Description                    |
-| ----------------------- | ------------------------------ |
-| `api-patterns`          | REST, GraphQL, tRPC            |
-| `nodejs-best-practices` | Node.js async, modules         |
-| `python-patterns`       | Python standards, FastAPI      |
+| Skill                   | Description               |
+| ----------------------- | ------------------------- |
+| `api-patterns`          | REST, GraphQL, tRPC       |
+| `nodejs-best-practices` | Node.js async, modules    |
+| `python-patterns`       | Python standards, FastAPI |
 
 ### CMS & Editorial (1)
 
-| Skill                            | Description                                                    |
-| -------------------------------- | -------------------------------------------------------------- |
-| `strapi-editorial-orchestrator`  | Strapi 5 editorial AI pipeline — A11y, SEO, AST Blocks, WCAG  |
+| Skill                           | Description                                                  |
+| ------------------------------- | ------------------------------------------------------------ |
+| `strapi-editorial-orchestrator` | Strapi 5 editorial AI pipeline — A11y, SEO, AST Blocks, WCAG |
 
 ### Database (1)
 
@@ -92,15 +92,15 @@ Modular knowledge domains that agents can load on-demand, based on task context.
 
 ### TypeScript/JavaScript (1)
 
-| Skill               | Description                                       |
-| ------------------- | ------------------------------------------------- |
-| `typescript-expert`  | Type-level programming, strict typing, Zod, perf  |
+| Skill               | Description                                      |
+| ------------------- | ------------------------------------------------ |
+| `typescript-expert` | Type-level programming, strict typing, Zod, perf |
 
 ### Systems Programming (1)
 
-| Skill       | Description                                               |
-| ----------- | --------------------------------------------------------- |
-| `rust-pro`  | Rust 1.75+, async, ownership, systems programming         |
+| Skill      | Description                                       |
+| ---------- | ------------------------------------------------- |
+| `rust-pro` | Rust 1.75+, async, ownership, systems programming |
 
 ### Cloud & Infrastructure (3)
 
@@ -138,18 +138,18 @@ Modular knowledge domains that agents can load on-demand, based on task context.
 
 ### Spec-Driven Documentation Pipeline (3)
 
-| Skill           | Description                                                  |
-| --------------- | ------------------------------------------------------------ |
-| `prd-creator`   | Product Requirements Documents — WHAT to build and WHY       |
-| `sdd-creator`   | Software Design Documents — architecture, C4, tech decisions |
-| `spec-creator`  | Technical Specifications — types, contracts, state machines   |
+| Skill          | Description                                                  |
+| -------------- | ------------------------------------------------------------ |
+| `prd-creator`  | Product Requirements Documents — WHAT to build and WHY       |
+| `sdd-creator`  | Software Design Documents — architecture, C4, tech decisions |
+| `spec-creator` | Technical Specifications — types, contracts, state machines  |
 
 ### JINC Governance & DevOps (2)
 
-| Skill                        | Description                                                   |
-| ---------------------------- | ------------------------------------------------------------- |
-| `jinc-governance-standards`  | Accessibility (WCAG 2.2 AAA), ethics, inclusive engineering    |
-| `devops-jinc-protocol`       | Vibe-Coding governance, PR templates, quality gates           |
+| Skill                       | Description                                                 |
+| --------------------------- | ----------------------------------------------------------- |
+| `jinc-governance-standards` | Accessibility (WCAG 2.2 AAA), ethics, inclusive engineering |
+| `devops-jinc-protocol`      | Vibe-Coding governance, PR templates, quality gates         |
 
 ### Mobile (1)
 
@@ -165,10 +165,10 @@ Modular knowledge domains that agents can load on-demand, based on task context.
 
 ### SEO & Growth (2)
 
-| Skill              | Description                    |
-| ------------------ | ------------------------------ |
+| Skill              | Description                   |
+| ------------------ | ----------------------------- |
 | `seo-fundamentals` | SEO, E-E-A-T, Core Web Vitals |
-| `geo-fundamentals` | GenAI optimization             |
+| `geo-fundamentals` | GenAI optimization            |
 
 ### Shell/CLI (2)
 
@@ -179,24 +179,24 @@ Modular knowledge domains that agents can load on-demand, based on task context.
 
 ### AI/Agent Tooling (4)
 
-| Skill                | Description                                          |
-| -------------------- | ---------------------------------------------------- |
-| `prompt-engineer`    | Advanced prompt engineering, Vibe-Coding workflows   |
-| `skill-creator`      | Create, evaluate, and iterate on agent skills        |
-| `intelligent-routing`| Auto-select agents based on request domain analysis  |
-| `mcp-builder`        | Model Context Protocol server development            |
+| Skill                 | Description                                         |
+| --------------------- | --------------------------------------------------- |
+| `prompt-engineer`     | Advanced prompt engineering, Vibe-Coding workflows  |
+| `skill-creator`       | Create, evaluate, and iterate on agent skills       |
+| `intelligent-routing` | Auto-select agents based on request domain analysis |
+| `mcp-builder`         | Model Context Protocol server development           |
 
 ### Cross-Cutting Utilities (7)
 
-| Skill                     | Description                 |
-| ------------------------- | --------------------------- |
-| `clean-code`              | Coding standards (Global)   |
-| `behavioral-modes`        | Agent personas              |
-| `parallel-agents`         | Multi-agent patterns        |
-| `documentation-templates` | Doc formats                 |
-| `i18n-localization`       | Internationalization        |
-| `performance-profiling`   | Web Vitals, optimization    |
-| `systematic-debugging`    | Troubleshooting             |
+| Skill                     | Description               |
+| ------------------------- | ------------------------- |
+| `clean-code`              | Coding standards (Global) |
+| `behavioral-modes`        | Agent personas            |
+| `parallel-agents`         | Multi-agent patterns      |
+| `documentation-templates` | Doc formats               |
+| `i18n-localization`       | Internationalization      |
+| `performance-profiling`   | Web Vitals, optimization  |
+| `systematic-debugging`    | Troubleshooting           |
 
 ---
 
@@ -242,9 +242,9 @@ skill-name/
 
 ### Enhanced Skills (with scripts/references)
 
-| Skill               | Files | Coverage                            |
-| ------------------- | ----- | ----------------------------------- |
-| `app-builder`       | 20    | Full-stack scaffolding              |
+| Skill         | Files | Coverage               |
+| ------------- | ----- | ---------------------- |
+| `app-builder` | 20    | Full-stack scaffolding |
 
 ---
 
@@ -295,14 +295,14 @@ For details, see [scripts/README.md](scripts/README.md)
 
 ## 📊 Statistics
 
-| Metric              | Value                         |
-| ------------------- | ----------------------------- |
-| **Total Agents**    | 20                            |
-| **Total Skills**    | 47                            |
-| **Total Workflows** | 11                            |
-| **Total Scripts**   | 2 (master) + 18 (skill-level) |
-| **Skill Categories**| 18                            |
-| **Coverage**        | ~90% web/mobile development   |
+| Metric               | Value                         |
+| -------------------- | ----------------------------- |
+| **Total Agents**     | 20                            |
+| **Total Skills**     | 47                            |
+| **Total Workflows**  | 11                            |
+| **Total Scripts**    | 2 (master) + 18 (skill-level) |
+| **Skill Categories** | 18                            |
+| **Coverage**         | ~90% web/mobile development   |
 
 ### Skill Distribution by Category
 
