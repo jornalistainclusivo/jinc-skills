@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write \"**/*.{md,yml,json}\"",
-    "lint:md": "markdownlint \"**/*.md\"",
     "validate:sdd": "python .agents/scripts/checklist.py",
     "prepare": "husky"
   },
@@ -16,7 +15,6 @@
   "devDependencies": {
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
-    "markdownlint-cli": "^0.48.0",
     "prettier": "^3.8.3"
   },
   "lint-staged": {
