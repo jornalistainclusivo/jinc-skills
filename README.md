@@ -1,6 +1,6 @@
 # Antigravity JINC Skills 🪐
 
-Uma infraestrutura soberana e orientada a IA (_AI-native_) para orquestração de múltiplos agentes e desenvolvimento contínuo de _skills_. Construída sob o paradigma do **Vibe-Coding**, esta arquitetura utiliza um motor agnóstico de modelos (otimizado para Gemini 2.5/3.1 Pro via Antigravity IDE) para automatizar, gerar e auditar fluxos de trabalho de engenharia de software e jornalismo inclusivo.
+Uma infraestrutura orientada a IA (_AI-native_) para orquestração de múltiplos agentes e desenvolvimento contínuo de _skills_. Construída sob o paradigma do **Vibe-Coding**, esta arquitetura utiliza um motor agnóstico de modelos (otimizado para Gemini 3 Flash/3.1 Pro via Antigravity IDE) para automatizar, gerar e auditar fluxos de trabalho de engenharia de software em jornalismo inclusivo.
 
 Este repositório é fundamentado e baseado no framework [Antigravity Kit](https://github.com/vudovn/antigravit-kit).
 
