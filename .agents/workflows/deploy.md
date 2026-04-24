@@ -9,11 +9,17 @@ description: "Standard protocol for committing, validating, and deploying reposi
 
 ---
 
-# Deploy & Git Flow Protocol
+# /deploy - Workflow Deployment
+
+$ARGUMENTS
+
+---
+
+## Deploy & Git Flow Protocol
 
 This workflow defines the "exit" rules for code and manifests. As an Orchestrator, you must follow this protocol to ensure that changes do not break the validation infrastructure.
 
-## 1. Pre-flight Verification (Integrity Checklist)
+### 1. Pre-flight Verification (Integrity Checklist)
 
 Before performing any commit, verify if the changes meet the governance requirements:
 
@@ -22,14 +28,14 @@ Before performing any commit, verify if the changes meet the governance requirem
 - [ ] **Accessibility:** For any UI changes, have WCAG 2.2 AAA standards been respected?
 - [ ] **Formatting:** Has the `npm run format` command been executed to align style via Prettier?
 
-## 2. Branching Protocol
+### 2. Branching Protocol
 
 Never commit directly to the `main` branch for complex tasks.
 
 1. **Feature Branch Creation:** `git checkout -b feature/[task-name]`
 2. **Isolation:** Ensure the branch contains only files related to the specific task.
 
-## 3. Commit Execution (The Gating Mechanism)
+### 3. Commit Execution (The Gating Mechanism)
 
 The repository uses **Husky** and **lint-staged**. When you trigger a commit, the local gating mechanism will be activated automatically.
 
@@ -48,7 +54,7 @@ git commit -m "[type]: clear description of what was changed"
 - `chore`: Update of dependencies or CI/CD.
 - `refactor`: Logic improvement without changing functionality.
 
-## 4. Commit Error Management
+### 4. Commit Error Management
 
 If the commit fails (❌ icon in terminal):
 
@@ -56,7 +62,7 @@ If the commit fails (❌ icon in terminal):
 2. **Fix and Re-stage:** Apply the fix, run `git add .`, and attempt the commit again.
 3. **Do Not Ignore the Gatekeeper:** If Husky blocks the commit, the code is structurally incorrect.
 
-## 5. Synchronization and Remote Verification
+### 5. Synchronization and Remote Verification
 
 After a successful local commit:
 
