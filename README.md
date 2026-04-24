@@ -29,13 +29,16 @@ A comunicação entre modelos não é feita por inferência aleatória, mas por 
 ```text
 antigravity-jinc-skills/
 ├── .agents/
+│   ├── .shared/         # Recursos, templates ou metadados compartilhados entre agentes
 │   ├── agents/          # Manifestos de personas autônomas e especialistas de domínio
 │   ├── rules/           # Governança global e protocolos do ecossistema JINC
-│   ├── scripts/         # Ferramentas determinísticas Python (Validador Pydantic, etc)
+│   ├── scripts/         # Ferramentas determinísticas Python (Gatekeepers, Validadores)
 │   ├── skills/          # Diretório modular de habilidades acionáveis
-│   └── workflows/       # Cadeias de execução multi-agente
-├── .github/workflows/   # Pipeline de Integração Contínua (SDD Validation)
-├── package.json         # Roteamento de automação local (Husky, Prettier)
+│   ├── workflows/       # Cadeias de execução e roteamento multi-agente
+│   └── ARCHITECTURE.md  # Mapa do ecossistema de agentes (Auto-gerado)
+├── .github/workflows/   # Pipeline de Integração Contínua (Validação SDD Remota)
+├── .husky/              # Gatilhos locais de pré-commit (A Catraca)
+├── package.json         # Roteamento de automação local (lint-staged, npm scripts)
 └── README.md
 ```
 

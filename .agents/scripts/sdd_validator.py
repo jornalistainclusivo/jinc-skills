@@ -4,12 +4,6 @@ SDD Validator - Antigravity Kit
 ================================
 Valida estritamente o contrato YAML (Frontmatter) em arquivos Markdown.
 Desenhado para ser executado via lint-staged em pre-commit hooks.
-
-Regras de Aceitação:
-1. Deve existir um bloco YAML demarcado por '---'.
-2. As chaves 'name' e 'description' são obrigatórias.
-3. Os valores devem ser válidos (preferencialmente com aspas duplas, 
-   o PyYAML garantirá o parsing correto).
 """
 
 import sys
@@ -23,10 +17,19 @@ class Colors:
     ENDC = '\033[0m'
     BOLD = '\033[1m'
 
+# Ficheiros de documentação global que são isentos do contrato SDD
+EXEMPT_FILES = ['readme.md', 'architecture.md', 'changelog.md']
+
 def validate_sdd_contract(filepath: str) -> bool:
     if not os.path.exists(filepath):
         print(f"{Colors.RED}❌ Ficheiro não encontrado: {filepath}{Colors.ENDC}")
         return False
+
+    # Verifica se é um ficheiro isento
+    filename = os.path.basename(filepath).lower()
+    if filename in EXEMPT_FILES:
+        print(f"{Colors.HEADER}⏭️ Documentação isenta de SDD: {filepath}{Colors.ENDC}")
+        return True
 
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
@@ -45,7 +48,7 @@ def validate_sdd_contract(filepath: str) -> bool:
     yaml_block = parts[1]
 
     try:
-        # O safe_load já valida se existem erros de parsing estrutural
+        # O safe_load já valida erros de parsing estrutural
         meta = yaml.safe_load(yaml_block)
         
         if not isinstance(meta, dict):

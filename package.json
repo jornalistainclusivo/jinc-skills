@@ -9,15 +9,12 @@
     "preview:stop": "python .agents/scripts/auto_preview.py stop",
     "session": "python .agents/scripts/session_manager.py status ."
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "**/*.md": [
-      "prettier --write",
-      "python .agents/scripts/sdd_validator.py"
+      "python .agents/scripts/sdd_validator.py",
+      "python .agents/scripts/sync_architecture.py",
+      "git add .agents/ARCHITECTURE.md",
+      "prettier --write"
     ],
     "**/*.json": [
       "prettier --write"
