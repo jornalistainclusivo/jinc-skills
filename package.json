@@ -1,26 +1,26 @@
 {
   "name": "antigravity-jinc-skills",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --write \"**/*.{md,yml,json}\"",
-    "validate:sdd": "python .agents/scripts/checklist.py",
-    "prepare": "husky"
+    "format": "prettier --write \"**/*.{json,md}\"",
+    "check:all": "python .agents/scripts/verify_all.py .",
+    "check:core": "python .agents/scripts/checklist.py .",
+    "preview:start": "python .agents/scripts/auto_preview.py start",
+    "preview:stop": "python .agents/scripts/auto_preview.py stop",
+    "session": "python .agents/scripts/session_manager.py status ."
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "husky": "^9.1.7",
-    "lint-staged": "^16.4.0",
-    "prettier": "^3.8.3"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
-    "*.md": [
+    "**/*.md": [
       "prettier --write",
-      "python .agents/scripts/checklist.py"
+      "python .agents/scripts/sdd_validator.py"
+    ],
+    "**/*.json": [
+      "prettier --write"
     ]
   }
 }
