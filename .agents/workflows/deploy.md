@@ -1,187 +1,69 @@
 ---
-description: Deployment command for production releases. Pre-flight checks and deployment execution.
+description: Protocol for committing, validating, and deploying repository changes, ensuring compliance with WCAG 2.2, SDD Pydantic, and CI/CD integrity.
 ---
-
-# /deploy - Production Deployment
-
-$ARGUMENTS
 
 ---
 
-## Purpose
-
-This command handles production deployment with pre-flight checks, deployment execution, and verification.
-
----
-
-## Sub-commands
-
-```
-/deploy            - Interactive deployment wizard
-/deploy check      - Run pre-deployment checks only
-/deploy preview    - Deploy to preview/staging
-/deploy production - Deploy to production
-/deploy rollback   - Rollback to previous version
-```
+name: "deploy-workflow"
+description: "Standard protocol for committing, validating, and deploying repository changes. Ensures compliance with WCAG 2.2, SDD Pydantic, and CI/CD integrity."
 
 ---
 
-## Pre-Deployment Checklist
+# Deploy & Git Flow Protocol
 
-Before any deployment:
+This workflow defines the "exit" rules for code and manifests. As an Orchestrator, you must follow this protocol to ensure that changes do not break the validation infrastructure.
 
-```markdown
-## 🚀 Pre-Deploy Checklist
+## 1. Pre-flight Verification (Integrity Checklist)
 
-### Code Quality
+Before performing any commit, verify if the changes meet the governance requirements:
 
-- [ ] No TypeScript errors (`npx tsc --noEmit`)
-- [ ] ESLint passing (`npx eslint .`)
-- [ ] All tests passing (`npm test`)
+- [ ] **YAML Sanitization:** Are all `description` keys in the frontmatter of `.md` files enclosed in double quotes `"..."`?
+- [ ] **Pydantic Validation:** Has the `.agents/scripts/checklist.py` script been executed locally without errors?
+- [ ] **Accessibility:** For any UI changes, have WCAG 2.2 AAA standards been respected?
+- [ ] **Formatting:** Has the `npm run format` command been executed to align style via Prettier?
 
-### Security
+## 2. Branching Protocol
 
-- [ ] No hardcoded secrets
-- [ ] Environment variables documented
-- [ ] Dependencies audited (`npm audit`)
+Never commit directly to the `main` branch for complex tasks.
 
-### Performance
+1. **Feature Branch Creation:** `git checkout -b feature/[task-name]`
+2. **Isolation:** Ensure the branch contains only files related to the specific task.
 
-- [ ] Bundle size acceptable
-- [ ] No console.log statements
-- [ ] Images optimized
+## 3. Commit Execution (The Gating Mechanism)
 
-### Documentation
+The repository uses **Husky** and **lint-staged**. When you trigger a commit, the local gating mechanism will be activated automatically.
 
-- [ ] README updated
-- [ ] CHANGELOG updated
-- [ ] API docs current
+**Command:**
 
-### Ready to deploy? (y/n)
+```bash
+git add .
+git commit -m "[type]: clear description of what was changed"
 ```
+
+**Acceptable Commit Types:**
+
+- `feat`: New skill or agent.
+- `fix`: Error correction in script or manifest.
+- `docs`: Changes in README or ARCHITECTURE.
+- `chore`: Update of dependencies or CI/CD.
+- `refactor`: Logic improvement without changing functionality.
+
+## 4. Commit Error Management
+
+If the commit fails (❌ icon in terminal):
+
+1. **Read Pydantic Error:** Identify which file and which key broke the contract.
+2. **Fix and Re-stage:** Apply the fix, run `git add .`, and attempt the commit again.
+3. **Do Not Ignore the Gatekeeper:** If Husky blocks the commit, the code is structurally incorrect.
+
+## 5. Synchronization and Remote Verification
+
+After a successful local commit:
+
+1. **Push:** `git push origin [branch-name]`
+2. **GitHub Actions:** Monitor the 'Actions' tab on GitHub.
+3. **Merge:** Only perform the merge to `main` if the `validate-architecture` job returns success (✅).
 
 ---
 
-## Deployment Flow
-
-```
-┌─────────────────┐
-│  /deploy        │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  Pre-flight     │
-│  checks         │
-└────────┬────────┘
-         │
-    Pass? ──No──► Fix issues
-         │
-        Yes
-         │
-         ▼
-┌─────────────────┐
-│  Build          │
-│  application    │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  Deploy to      │
-│  platform       │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  Health check   │
-│  & verify       │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  ✅ Complete    │
-└─────────────────┘
-```
-
----
-
-## Output Format
-
-### Successful Deploy
-
-```markdown
-## 🚀 Deployment Complete
-
-### Summary
-
-- **Version:** v1.2.3
-- **Environment:** production
-- **Duration:** 47 seconds
-- **Platform:** Vercel
-
-### URLs
-
-- 🌐 Production: https://app.example.com
-- 📊 Dashboard: https://vercel.com/project
-
-### What Changed
-
-- Added user profile feature
-- Fixed login bug
-- Updated dependencies
-
-### Health Check
-
-✅ API responding (200 OK)
-✅ Database connected
-✅ All services healthy
-```
-
-### Failed Deploy
-
-```markdown
-## ❌ Deployment Failed
-
-### Error
-
-Build failed at step: TypeScript compilation
-
-### Details
-```
-
-error TS2345: Argument of type 'string' is not assignable...
-
-```
-
-### Resolution
-1. Fix TypeScript error in `src/services/user.ts:45`
-2. Run `npm run build` locally to verify
-3. Try `/deploy` again
-
-### Rollback Available
-Previous version (v1.2.2) is still active.
-Run `/deploy rollback` if needed.
-```
-
----
-
-## Platform Support
-
-| Platform | Command                | Notes                     |
-| -------- | ---------------------- | ------------------------- |
-| Vercel   | `vercel --prod`        | Auto-detected for Next.js |
-| Railway  | `railway up`           | Needs Railway CLI         |
-| Fly.io   | `fly deploy`           | Needs flyctl              |
-| Docker   | `docker compose up -d` | For self-hosted           |
-
----
-
-## Examples
-
-```
-/deploy
-/deploy check
-/deploy preview
-/deploy production --skip-tests
-/deploy rollback
-```
+**Note for the Orchestrator:** If the user asks to "save everything" or "deploy," assume this workflow as your standard execution guide.
