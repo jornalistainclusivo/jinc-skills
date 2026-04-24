@@ -59,13 +59,23 @@ Proactively ask questions about edge cases, input/output formats, example files,
 
 Check available MCPs - if useful for research (searching docs, finding similar skills, looking up best practices), research in parallel via subagents if available, otherwise inline. Come prepared with context to reduce burden on the user.
 
-### Write the SKILL.md
+### Write the SKILL.md (Strict SDD Contract)
 
-Based on the user interview, fill in these components:
+Based on the user interview, fill in these components. **CRITICAL:** This repository is governed by a strict Pydantic SDD Validator. Every new or updated skill MUST start with a YAML frontmatter block, and it MUST obey strict syntax rules to pass the CI/CD pipeline.
 
-- **name**: Skill identifier
-- **description**: When to trigger, what it does. This is the primary triggering mechanism - include both what the skill does AND specific contexts for when to use it. All "when to use" info goes here, not in the body. Note: currently Claude has a tendency to "undertrigger" skills -- to not use them when they'd be useful. To combat this, please make the skill descriptions a little bit "pushy". So for instance, instead of "How to build a simple fast dashboard to display internal Anthropic data.", you might write "How to build a simple fast dashboard to display internal Anthropic data. Make sure to use this skill whenever the user mentions dashboards, data visualization, internal metrics, or wants to display any kind of company data, even if they don't explicitly ask for a 'dashboard.'"
-- **compatibility**: Required tools, dependencies (optional, rarely needed)
+⚠️ **YAML SYNTAX RULE:** The `description` string MUST ALWAYS be wrapped in double quotes `"..."`. If you leave it unquoted, any colon (`:`) inside the text will crash the YAML parser with a `mapping values are not allowed here` error.
+
+**Mandatory Format:**
+
+```yaml
+---
+name: "skill-identifier"
+description: "When to trigger, what it does. Include contexts for when to use it. Make sure to use double quotes around this entire block."
+---
+```
+
+- **name**: Skill identifier (lowercase, hyphenated).
+- **description**: This is the primary triggering mechanism - include both what the skill does AND specific contexts for when to use it. All "when to use" info goes here, not in the body. Note: models have a tendency to "undertrigger" skills. To combat this, make the descriptions a little bit "pushy". Instead of "How to build a dashboard", write "How to build a dashboard. Make sure to use this skill whenever the user mentions data visualization, even if they don't explicitly ask for a dashboard."
 - **the rest of the skill :)**
 
 ### Skill Writing Guide
