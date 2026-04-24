@@ -7,24 +7,26 @@ on:
     branches: [ "main" ]
 
 jobs:
-  validate-architecture:
-    name: Core & SDD Validation
+  validate-sdd:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: 📥 Checkout Repository
         uses: actions/checkout@v4
 
-      - name: 🐍 Setup Python 3.12
+      - name: 🐍 Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-          cache: 'pip'
 
-      - name: 📦 Install Python Dependencies
+      - name: 📦 Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r .agents/scripts/requirements.txt
+          pip install pyyaml
 
-      - name: 🔍 Run Master Checklist (Pydantic SDD)
-        run: python .agents/scripts/checklist.py
+      - name: 🛡️ Run SDD Gatekeeper
+        run: |
+          # Procura todos os .md no repositório e passa como argumentos para o script
+          # O sdd_validator já ignora README/ARCHITECTURE internamente.
+          FILES=$(find . -name "*.md" -not -path "./node_modules/*" -not -path "./.venv/*")
+          python .agents/scripts/sdd_validator.py $FILES
