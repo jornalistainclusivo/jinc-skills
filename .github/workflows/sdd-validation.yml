@@ -26,7 +26,8 @@ jobs:
 
       - name: 🛡️ Run SDD Gatekeeper
         run: |
-          # Procura todos os .md no repositório e passa como argumentos para o script
-          # O sdd_validator já ignora README/ARCHITECTURE internamente.
-          FILES=$(find . -name "*.md" -not -path "./node_modules/*" -not -path "./.venv/*")
-          python .agents/scripts/sdd_validator.py $FILES
+          find . -name "*.md" \
+            -not -path "./node_modules/*" \
+            -not -path "./.venv/*" \
+            -not -path "./.git/*" \
+            -print0 | xargs -0 python .agents/scripts/sdd_validator.py
