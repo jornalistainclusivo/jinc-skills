@@ -1,70 +1,47 @@
-#!/usr/bin/env python3
-"""
-Architecture Auto-Sync - Antigravity Kit
-========================================
-Lê os manifestos YAML (SDD) de todas as skills, agentes e workflows,
-compilando um mapa atualizado em .agents/ARCHITECTURE.md.
-"""
-
 import os
-import yaml
 
-# O script identifica a raiz do projeto independentemente de onde é chamado
-ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-AGENTS_DIR = os.path.join(ROOT_DIR, '.agents')
+AGENTS_DIR = '.agents'
 OUTPUT_FILE = os.path.join(AGENTS_DIR, 'ARCHITECTURE.md')
 
-def extract_sdd_metadata(filepath):
+def get_metadata(filepath):
     try:
-        with open(filepath, 'r', encoding='utf-8') as f:
+        with open(filepath, 'r', encoding='utf-8-sig') as f:
             content = f.read()
-            if content.startswith('---'):
-                parts = content.split('---', 2)
-                if len(parts) >= 3:
-                    meta = yaml.safe_load(parts[1])
-                    if isinstance(meta, dict):
-                        return meta.get('name'), meta.get('description')
-    except Exception:
-        pass
-    return None, None
+        # Busca simples por linha que começa com name: ou description:
+        name = None
+        description = None
+        for line in content.split('\n'):
+            line = line.strip().lower()
+            if line.startswith('name:'):
+                name = line.replace('name:', '').strip().strip('"').strip("'")
+            if line.startswith('description:'):
+                description = line.replace('description:', '').strip().strip('"').strip("'")
+            if name and description:
+                break
+        return name, description
+    except:
+        return None, None
 
-def generate_markdown():
+def update_arch():
     md = "# 🗺️ Mapa Arquitetural JINC Skills\n\n"
-    md += "> **Nota:** Este documento é compilado automaticamente a cada commit. Modificações manuais serão sobrescritas.\n\n"
-
-    # Define a ordem de importância para a leitura
-    target_folders = ['agents', 'skills', 'workflows', 'rules']
-
-    for folder in target_folders:
-        folder_path = os.path.join(AGENTS_DIR, folder)
-        if not os.path.exists(folder_path):
-            continue
-
+    for folder in ['agents', 'skills', 'workflows', 'rules']:
         md += f"## 📂 `{folder}/`\n\n"
+        path = os.path.join(AGENTS_DIR, folder)
+        if not os.path.exists(path): continue
         
-        has_files = False
-        for file in sorted(os.listdir(folder_path)):
-            if file.endswith('.md'):
-                has_files = True
-                filepath = os.path.join(folder_path, file)
-                name, desc = extract_sdd_metadata(filepath)
-                
-                if name and desc:
-                    md += f"- **`{name}`** (`{file}`): {desc}\n"
-                else:
-                    md += f"- `{file}`: *(Aguardando conformidade SDD)*\n"
-        
-        if not has_files:
-            md += "*Nenhum manifesto registrado nesta camada.*\n"
+        for root, _, files in os.walk(path):
+            for file in sorted(files):
+                if file.endswith('.md'):
+                    n, d = get_metadata(os.path.join(root, file))
+                    if n and d:
+                        md += f"- **`{n}`** (`{file}`): {d}\n"
+                    else:
+                        md += f"- `{file}`: _(Aguardando conformidade SDD)_\n"
         md += "\n"
-
-    return md
-
-if __name__ == "__main__":
-    print("🔄 Sincronizando arquitetura...")
-    new_content = generate_markdown()
     
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
-        f.write(new_content)
-        
-    print(f"✅ ARCHITECTURE.md gerado com sucesso em .agents/ARCHITECTURE.md")
+        f.write(md)
+
+if __name__ == "__main__":
+    update_arch()
+    print("✅ ARCHITECTURE.md atualizado.")
