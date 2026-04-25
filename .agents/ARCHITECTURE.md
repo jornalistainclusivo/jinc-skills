@@ -162,7 +162,7 @@
 - **`testing-patterns`** (`SKILL.md`): testing patterns and principles. unit, integration, mocking strategies.
 - **`typescript-expert`** (`SKILL.md`): typescript specialist for modern development. use this skill when the user wants help with complex types, fixing ts errors, implementing strict typing without 'any', generics, or optimizing typescript configurations.
 - **`vulnerability-scanner`** (`SKILL.md`): advanced vulnerability analysis principles. owasp 2025, supply chain security, attack surface mapping, risk prioritization.
-- `checklists.md`: _(Aguardando conformidade SDD)_
+- **`vulnerability-checklists`** (`checklists.md`): security auditing checklists for common web and server vulnerabilities.
 - **`web-design-guidelines`** (`SKILL.md`): review ui code for web interface guidelines compliance. use when asked to "review my ui", "check accessibility", "audit design", "review ux", or "check my site against best practices".
 - **`webapp-testing`** (`SKILL.md`): web application testing principles. e2e, playwright, deep audit strategies.
 
@@ -186,3 +186,4 @@
 - **`agents-governance`** (`AGENTS.md`): global behavioral guidelines and persona definitions for jinc agents.
 - **`gemini`** (`GEMINI.md`): core ai governance for orchestration, agent routing, and socratic decision gates in the jinc ecosystem.
 - **`devops-jinc-protocol`** (`devops-jinc-protocol.md`): protocolos padronizados de ci/cd, gerenciamento de infraestrutura e automação para a iniciativa jornalista inclusivo.
+
