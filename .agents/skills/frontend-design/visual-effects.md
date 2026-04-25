@@ -1,3 +1,8 @@
+---
+name: "visual-effects"
+description: "Advanced visual effects and animation techniques for modern interfaces"
+---
+
 # Visual Effects Reference
 
 > Modern CSS effect principles and techniques - learn the concepts, create variations.

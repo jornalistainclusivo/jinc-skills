@@ -1,3 +1,8 @@
+---
+name: "mobile-decision-trees"
+description: "Logic-based flows for determining mobile UX interactions and conditional state changes."
+---
+
 # Mobile Decision Trees
 
 > Framework selection, state management, storage strategy, and context-based decisions.

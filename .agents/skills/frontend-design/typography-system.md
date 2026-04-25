@@ -1,3 +1,8 @@
+---
+name: "typography-system"
+description: "Advanced typography and layout system"
+---
+
 # Typography System Reference
 
 > Typography principles and decision-making - learn to think, not memorize.

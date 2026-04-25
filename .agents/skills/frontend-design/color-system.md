@@ -1,3 +1,8 @@
+---
+name: "color-system"
+description: "Color system for Next.js and React."
+---
+
 # Color System Reference
 
 > Color theory principles, selection process, and decision-making guidelines.
@@ -42,7 +47,7 @@
 | **Split-Complementary** | Base + 2 colors adjacent to complement       | Dynamic but balanced              |
 | **Triadic**             | 3 hues EQUIDISTANT on wheel                  | Vibrant, playful, creative        |
 
-### How to Choose a Scheme:
+### How to Choose a Scheme
 
 1. **What's the project mood?** Calm → Analogous. Bold → Complementary.
 2. **How many colors needed?** Minimal → Monochromatic. Complex → Triadic.
@@ -112,7 +117,7 @@
 | **Black**  | Elegance, power, modern           | Can feel heavy                       |
 | **White**  | Clean, minimal, open              | Can feel sterile                     |
 
-### Selection Process:
+### Selection Process
 
 1. **What industry?** → Narrow to 2-3 hue families
 2. **What emotion?** → Pick primary hue
@@ -179,7 +184,7 @@ Lightness Scale:
 
 ## 5. Context-Based Selection Guide
 
-### Instead of Copying Palettes, Follow This Process:
+### Instead of Copying Palettes, Follow This Process
 
 **Step 1: Identify the Context**
 
@@ -295,7 +300,7 @@ Before finalizing any color choice, verify:
 
 ## 9. Anti-Patterns to Avoid
 
-### ❌ DON'T:
+### ❌ DON'T
 
 - Copy the same hex codes every project
 - Default to purple/violet (AI tendency)
@@ -305,7 +310,7 @@ Before finalizing any color choice, verify:
 - Ignore user's industry context
 - Skip asking user preference
 
-### ✅ DO:
+### ✅ DO
 
 - Generate fresh palette per project
 - Ask user about color preferences

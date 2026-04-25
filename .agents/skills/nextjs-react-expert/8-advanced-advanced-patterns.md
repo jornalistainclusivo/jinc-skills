@@ -1,3 +1,8 @@
+---
+name: "8-advanced-advanced-patterns"
+description: "Advanced patterns for Next.js and React."
+---
+
 # 8. Advanced Patterns
 
 > **Impact:** VARIABLE

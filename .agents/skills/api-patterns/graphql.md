@@ -1,3 +1,8 @@
+---
+name: "graphql"
+description: "GraphQL patterns for API documentation."
+---
+
 # GraphQL Principles
 
 > Flexible queries for complex, interconnected data.

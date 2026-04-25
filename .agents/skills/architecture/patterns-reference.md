@@ -1,3 +1,8 @@
+---
+name: "architecture-patterns-reference"
+description: "Comprehensive catalog of common software architecture patterns and their implementation blueprints."
+---
+
 # Architecture Patterns Reference
 
 > Quick reference for common patterns with usage guidance.

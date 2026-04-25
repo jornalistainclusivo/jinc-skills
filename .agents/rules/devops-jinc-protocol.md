@@ -2,6 +2,13 @@
 trigger: always_on
 ---
 
+---
+
+name: "devops-jinc-protocol"
+description: "Protocolos padronizados de CI/CD, gerenciamento de infraestrutura e automação para a iniciativa Jornalista Inclusivo."
+
+---
+
 # 🛡️ DevOps JINC Protocol: Hybrid Governance
 
 Este protocolo estabelece as diretrizes mandatórias para a colaboração entre o Arquiteto Humano e os Agentes de IA na organização **Jornalista Inclusivo (JINC Apps)**. Seu objetivo é garantir que toda automação resulte em código acessível, seguro e arquiteturalmente coerente.

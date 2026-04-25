@@ -1,3 +1,8 @@
+---
+name: "optimization"
+description: "Advanced query optimization techniques for modern databases"
+---
+
 # Query Optimization
 
 > N+1 problem, EXPLAIN ANALYZE, optimization priorities.

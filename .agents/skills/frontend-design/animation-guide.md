@@ -1,3 +1,8 @@
+---
+name: "animation-guide"
+description: "Animation guidelines for Next.js and React."
+---
+
 # Animation Guidelines Reference
 
 > Animation principles and timing psychology - learn to decide, not copy.

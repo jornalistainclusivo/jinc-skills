@@ -1,3 +1,8 @@
+---
+name: "1-async-eliminating-waterfalls"
+description: "Eliminating waterfalls in async functions."
+---
+
 # 1. Eliminating Waterfalls
 
 > **Impact:** CRITICAL

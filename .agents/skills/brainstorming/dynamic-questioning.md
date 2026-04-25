@@ -1,3 +1,8 @@
+---
+name: "dynamic-questioning"
+description: "Advanced techniques for interactive Socratic questioning and iterative ideation."
+---
+
 # Dynamic Question Generation
 
 > **PRINCIPLE:** Questions are not about gathering data—they are about **revealing architectural consequences**.

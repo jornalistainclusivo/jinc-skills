@@ -1,3 +1,8 @@
+---
+name: "tech-stack"
+description: "Advanced tech stack selection techniques for modern applications"
+---
+
 # Tech Stack Selection (2026)
 
 > Default and alternative technology choices for web applications.

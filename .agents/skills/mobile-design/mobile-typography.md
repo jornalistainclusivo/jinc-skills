@@ -1,3 +1,8 @@
+---
+name: "mobile-typography"
+description: "Scalable font systems and readability guidelines for small-screen device architectures."
+---
+
 # Mobile Typography Reference
 
 > Type scale, system fonts, Dynamic Type, accessibility, and dark mode typography.

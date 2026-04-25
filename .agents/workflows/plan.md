@@ -2,6 +2,13 @@
 description: Create project plan using project-planner agent. No code writing - only plan file generation.
 ---
 
+---
+
+name: "plan-workflow"
+description: "Project planning and Socratic discovery mode. Focuses on architecture and task breakdown without writing code."
+
+---
+
 # /plan - Project Planning Mode
 
 $ARGUMENTS

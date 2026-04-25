@@ -1,3 +1,8 @@
+---
+name: "indexing"
+description: "Indexing principles for modern databases"
+---
+
 # Indexing Principles
 
 > When and how to create indexes effectively.

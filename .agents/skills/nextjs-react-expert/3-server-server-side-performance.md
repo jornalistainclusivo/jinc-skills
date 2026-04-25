@@ -1,3 +1,8 @@
+---
+name: "3-server-server-side-performance"
+description: "Server-side performance optimization for Next.js and React."
+---
+
 # 3. Server-Side Performance
 
 > **Impact:** HIGH

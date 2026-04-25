@@ -1,3 +1,8 @@
+---
+name: "7-js-javascript-performance"
+description: "JavaScript performance optimization for Next.js and React."
+---
+
 # 7. JavaScript Performance
 
 > **Impact:** LOW-MEDIUM

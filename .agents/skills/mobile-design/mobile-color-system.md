@@ -1,3 +1,8 @@
+---
+name: "mobile-color-system"
+description: "High-contrast palettes and adaptive dark mode strategies for mobile OLED displays."
+---
+
 # Mobile Color System Reference
 
 > OLED optimization, dark mode, battery-aware colors, and outdoor visibility.

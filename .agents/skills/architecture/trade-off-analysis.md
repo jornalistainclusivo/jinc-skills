@@ -1,3 +1,8 @@
+---
+name: "trade-off-analysis"
+description: "Evaluation framework for balancing competing priorities like performance, cost, and maintainability."
+---
+
 # Trade-off Analysis & ADR
 
 > Document every architectural decision with trade-offs.

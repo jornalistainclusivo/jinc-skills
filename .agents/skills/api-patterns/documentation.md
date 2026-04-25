@@ -1,3 +1,8 @@
+---
+name: "documentation"
+description: "Documentation patterns for API documentation."
+---
+
 # API Documentation Principles
 
 > Good docs = happy developers = API adoption.

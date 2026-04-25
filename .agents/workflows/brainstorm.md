@@ -2,6 +2,13 @@
 description: Structured brainstorming for projects and features. Explores multiple options before implementation.
 ---
 
+---
+
+name: "brainstorm-workflow"
+description: "Divergent thinking and ideation protocol for feature discovery and problem-solving."
+
+---
+
 # /brainstorm - Structured Idea Exploration
 
 $ARGUMENTS

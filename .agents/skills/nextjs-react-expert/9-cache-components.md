@@ -1,3 +1,8 @@
+---
+name: "9-cache-components"
+description: "Cache components for Next.js and React."
+---
+
 # Cache Components: `use cache` & `cacheLife`
 
 > [!IMPORTANT]

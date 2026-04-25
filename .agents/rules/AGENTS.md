@@ -2,6 +2,13 @@
 trigger: always_on
 ---
 
+---
+
+name: "agents-governance"
+description: "Global behavioral guidelines and persona definitions for JINC agents."
+
+---
+
 # Antigravity Agent Configurations
 
 ## Permissions

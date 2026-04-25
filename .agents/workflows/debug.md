@@ -2,6 +2,13 @@
 description: Debugging command. Activates DEBUG mode for systematic problem investigation.
 ---
 
+---
+
+name: "debug-workflow"
+description: "Systemic debugging protocol for identifying root causes and implementing verified fixes."
+
+---
+
 # /debug - Systematic Problem Investigation
 
 $ARGUMENTS

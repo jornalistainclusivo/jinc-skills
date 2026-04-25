@@ -1,3 +1,8 @@
+---
+name: "5-rerender-re-render-optimization"
+description: "Re-render optimization for Next.js and React."
+---
+
 # 5. Re-render Optimization
 
 > **Impact:** MEDIUM

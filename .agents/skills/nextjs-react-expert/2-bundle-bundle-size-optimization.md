@@ -1,3 +1,8 @@
+---
+name: "2-bundle-bundle-size-optimization"
+description: "Bundle size optimization for Next.js and React."
+---
+
 # 2. Bundle Size Optimization
 
 > **Impact:** CRITICAL

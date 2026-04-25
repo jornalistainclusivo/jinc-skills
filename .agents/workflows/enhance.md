@@ -2,6 +2,13 @@
 description: Add or update features in existing application. Used for iterative development.
 ---
 
+---
+
+name: "enhance-workflow"
+description: "Code refactoring and optimization protocol focusing on clean code and performance gains."
+
+---
+
 # /enhance - Update Application
 
 $ARGUMENTS
@@ -12,7 +19,7 @@ $ARGUMENTS
 
 This command adds features or makes updates to existing application.
 
-### Steps:
+### Steps
 
 1. **Understand Current State**
    - Load project state with `python .agent/scripts/session_manager.py info`

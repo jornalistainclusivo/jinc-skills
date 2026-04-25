@@ -1,3 +1,8 @@
+---
+name: "prd-template"
+description: "Reference for the PRD template."
+---
+
 # PRD Template — Full 10-Section Structure
 
 Reference for `prd-creator`. Load when drafting the full PRD after Phase 2 (Frame) is complete.

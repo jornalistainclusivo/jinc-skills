@@ -1,3 +1,8 @@
+---
+name: "decision-trees"
+description: "Decision trees for Next.js and React."
+---
+
 # Decision Trees & Context Templates
 
 > Context-based design THINKING, not fixed solutions.
@@ -89,7 +94,7 @@ TARGET AUDIENCE
 
 ## 3. Color Selection Decision Tree
 
-### Instead of fixed hex codes, use this process:
+### Instead of fixed hex codes, use this process
 
 ```
 WHAT EMOTION/ACTION DO YOU WANT?
@@ -119,7 +124,7 @@ WHAT EMOTION/ACTION DO YOU WANT?
                     → ASK what accent color fits brand
 ```
 
-### The Process:
+### The Process
 
 1. Identify the emotion needed
 2. Narrow to color FAMILY
@@ -159,7 +164,7 @@ WHAT'S THE CONTENT TYPE?
               └── Priority: Fun, approachable, readable
 ```
 
-### Selection Process:
+### Selection Process
 
 1. Identify content type
 2. Choose style DIRECTION
@@ -176,7 +181,7 @@ WHAT'S THE CONTENT TYPE?
 - **Action-oriented:** Where are the CTAs?
 - **Scannable:** Can users compare quickly?
 
-### Color Thinking:
+### Color Thinking
 
 ```
 E-commerce typically needs:
@@ -187,7 +192,7 @@ E-commerce typically needs:
 └── Brand integration → ASK about existing colors
 ```
 
-### Layout Principles:
+### Layout Principles
 
 ```
 ┌────────────────────────────────────────────────────┐
@@ -214,7 +219,7 @@ E-commerce typically needs:
 └────────────────────────────────────────────────────┘
 ```
 
-### Psychology to Apply:
+### Psychology to Apply
 
 - Hick's Law: Limit navigation choices
 - Fitts' Law: Size CTAs appropriately
@@ -231,7 +236,7 @@ E-commerce typically needs:
 - **Calm UI:** Reduce cognitive load
 - **Consistent:** Predictable patterns
 
-### Color Thinking:
+### Color Thinking
 
 ```
 Dashboard typically needs:
@@ -242,7 +247,7 @@ Dashboard typically needs:
 └── Muted: For secondary information
 ```
 
-### Layout Principles:
+### Layout Principles
 
 ```
 Consider these patterns (not mandated):
@@ -262,7 +267,7 @@ OPTION C: Collapsed + Expandable
 → ASK user about their navigation preference
 ```
 
-### Psychology to Apply:
+### Psychology to Apply
 
 - Hick's Law: Group navigation items
 - Miller's Law: Chunk information
@@ -278,7 +283,7 @@ OPTION C: Collapsed + Expandable
 - **Single focus:** One primary CTA
 - **Emotional:** Connect before selling
 
-### Color Thinking:
+### Color Thinking
 
 ```
 Landing page typically needs:
@@ -289,7 +294,7 @@ Landing page typically needs:
 └── ASK about brand colors first!
 ```
 
-### Structure Principles:
+### Structure Principles
 
 ```
 ┌────────────────────────────────────────────────────┐
@@ -315,7 +320,7 @@ Landing page typically needs:
 └────────────────────────────────────────────────────┘
 ```
 
-### Psychology to Apply:
+### Psychology to Apply
 
 - Visceral: Beautiful hero impression
 - Serial Position: Key info top/bottom
@@ -331,7 +336,7 @@ Landing page typically needs:
 - **Work-focused:** Let projects speak
 - **Memorable:** Stand out from templates
 
-### Color Thinking:
+### Color Thinking
 
 ```
 Portfolio is personal - many options:
@@ -342,7 +347,7 @@ Portfolio is personal - many options:
 └── ASK about personal brand identity!
 ```
 
-### Structure Principles:
+### Structure Principles
 
 ```
 ┌────────────────────────────────────────────────────┐
@@ -362,7 +367,7 @@ Portfolio is personal - many options:
 └────────────────────────────────────────────────────┘
 ```
 
-### Psychology to Apply:
+### Psychology to Apply
 
 - Von Restorff: Be uniquely memorable
 - Reflective: Personal story creates connection

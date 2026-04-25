@@ -2,6 +2,13 @@
 description: Deployment command for production releases. Pre-flight checks and deployment execution.
 ---
 
+---
+
+name: "web-deploy-template"
+description: "Standard production deployment template for web applications (Vercel, Railway, Fly.io)."
+
+---
+
 # /web-deploy - Production Deployment
 
 $ARGUMENTS

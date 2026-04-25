@@ -5,7 +5,7 @@ description: Protocol for committing, validating, and deploying repository chang
 ---
 
 name: "deploy-workflow"
-description: "Standard protocol for committing, validating, and deploying repository changes. Ensures compliance with WCAG 2.2, SDD Pydantic, and CI/CD integrity."
+description: "Standard protocol for committing, validating, and deploying repository changes via SDD Gatekeeper."
 
 ---
 

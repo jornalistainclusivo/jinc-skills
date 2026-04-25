@@ -1,3 +1,8 @@
+---
+name: "touch-psychology"
+description: "Ergonomic principles and tactile feedback standards for mobile user interfaces."
+---
+
 # Touch Psychology Reference
 
 > Deep dive into mobile touch interaction, Fitts' Law for touch, thumb zone anatomy, gesture psychology, and haptic feedback.

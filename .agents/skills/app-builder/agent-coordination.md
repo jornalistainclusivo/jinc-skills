@@ -1,3 +1,8 @@
+---
+name: "agent-coordination"
+description: "Advanced agent coordination for modern applications"
+---
+
 # Agent Coordination
 
 > How App Builder orchestrates specialist agents.

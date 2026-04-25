@@ -1,3 +1,8 @@
+---
+name: "ACCESSIBILITY"
+description: "Accessibility guidelines for Next.js and React."
+---
+
 # ♿ Manifesto de Acessibilidade: Jornalista Inclusivo
 
 Este documento define os padrões rigorosos de acessibilidade (A11y) que o projeto **Jornalista Inclusivo** deve seguir. O objetivo não é apenas "passar nos validadores", mas oferecer uma experiência de navegação superior para todos os usuários.

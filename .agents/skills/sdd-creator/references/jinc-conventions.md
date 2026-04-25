@@ -1,3 +1,8 @@
+---
+name: "jinc-conventions"
+description: "JINC Apps — Conventions & Standards Reference"
+---
+
 # JINC Apps — Conventions & Standards Reference
 
 This file guides the SDD Architect skill when making JINC-specific recommendations. Always apply these when generating stack alternatives, ADRs, or code patterns for JINC Apps repositories.

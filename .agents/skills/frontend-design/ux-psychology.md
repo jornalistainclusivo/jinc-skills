@@ -1,3 +1,8 @@
+---
+name: "ux-psychology"
+description: "Advanced UX psychology and behavioral design patterns"
+---
+
 # UX Psychology Reference
 
 > Deep dive into UX laws, emotional design, trust building, and behavioral psychology.

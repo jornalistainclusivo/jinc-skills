@@ -1,3 +1,8 @@
+---
+name: "context-discovery"
+description: "Techniques for mapping business requirements to technical constraints and identifying architectural drivers."
+---
+
 # Context Discovery
 
 > Before suggesting any architecture, gather context.

@@ -27,26 +27,25 @@
 
 ## 📂 `skills/`
 
-- `doc.md`: *(Aguardando conformidade SDD)*
+- **`doc`** (`doc.md`): Documentation for Antigravity Skills
 
 ## 📂 `workflows/`
 
-- `brainstorm.md`: *(Aguardando conformidade SDD)*
-- `create.md`: *(Aguardando conformidade SDD)*
-- `debug.md`: *(Aguardando conformidade SDD)*
-- `deploy.md`: *(Aguardando conformidade SDD)*
-- `enhance.md`: *(Aguardando conformidade SDD)*
-- `orchestrate.md`: *(Aguardando conformidade SDD)*
-- `plan.md`: *(Aguardando conformidade SDD)*
-- `preview.md`: *(Aguardando conformidade SDD)*
-- `status.md`: *(Aguardando conformidade SDD)*
-- `test.md`: *(Aguardando conformidade SDD)*
-- `ui-ux-pro-max.md`: *(Aguardando conformidade SDD)*
-- `web-deploy-template.md`: *(Aguardando conformidade SDD)*
+- `brainstorm.md`: _(Aguardando conformidade SDD)_
+- `create.md`: _(Aguardando conformidade SDD)_
+- `debug.md`: _(Aguardando conformidade SDD)_
+- `deploy.md`: _(Aguardando conformidade SDD)_
+- `enhance.md`: _(Aguardando conformidade SDD)_
+- `orchestrate.md`: _(Aguardando conformidade SDD)_
+- `plan.md`: _(Aguardando conformidade SDD)_
+- `preview.md`: _(Aguardando conformidade SDD)_
+- `status.md`: _(Aguardando conformidade SDD)_
+- `test.md`: _(Aguardando conformidade SDD)_
+- `ui-ux-pro-max.md`: _(Aguardando conformidade SDD)_
+- `web-deploy-template.md`: _(Aguardando conformidade SDD)_
 
 ## 📂 `rules/`
 
-- `AGENTS.md`: *(Aguardando conformidade SDD)*
-- `GEMINI.md`: *(Aguardando conformidade SDD)*
-- `devops-jinc-protocol.md`: *(Aguardando conformidade SDD)*
-
+- `AGENTS.md`: _(Aguardando conformidade SDD)_
+- `GEMINI.md`: _(Aguardando conformidade SDD)_
+- `devops-jinc-protocol.md`: _(Aguardando conformidade SDD)_

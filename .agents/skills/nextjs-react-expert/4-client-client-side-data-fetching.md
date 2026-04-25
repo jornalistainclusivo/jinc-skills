@@ -1,3 +1,8 @@
+---
+name: "4-client-client-side-data-fetching"
+description: "Client-side data fetching for Next.js and React."
+---
+
 # 4. Client-Side Data Fetching
 
 > **Impact:** MEDIUM-HIGH

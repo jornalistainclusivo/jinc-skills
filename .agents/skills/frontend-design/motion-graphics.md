@@ -1,3 +1,8 @@
+---
+name: "motion-graphics"
+description: "Advanced animation techniques for premium web experiences"
+---
+
 # Motion Graphics Reference
 
 > Advanced animation techniques for premium web experiences - Lottie, GSAP, SVG, 3D, Particles.

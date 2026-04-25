@@ -1,3 +1,8 @@
+---
+name: "core-template"
+description: "Reference for the SDD core template."
+---
+
 # SDD Core Template — 8 Sections
 
 This is the canonical structure for a JINC Apps SDD. Each section has guidance on what to include, what signals good quality, and what to skip based on context.

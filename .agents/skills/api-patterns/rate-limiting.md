@@ -1,3 +1,8 @@
+---
+name: "rate-limiting"
+description: "Rate limiting patterns for API security and usage control."
+---
+
 # Rate Limiting Principles
 
 > Protect your API from abuse and overload.

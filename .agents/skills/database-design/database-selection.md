@@ -1,3 +1,8 @@
+---
+name: "database-selection"
+description: "Advanced database selection for modern applications"
+---
+
 # Database Selection (2025)
 
 > Choose database based on context, not default.

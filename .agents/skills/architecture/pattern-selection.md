@@ -1,3 +1,8 @@
+---
+name: "pattern-selection"
+description: "Logic for choosing between Monolithic, Microservices, Serverless, and Event-Driven architectural patterns."
+---
+
 # Pattern Selection Guidelines
 
 > Decision trees for choosing architectural patterns.

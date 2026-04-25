@@ -1,3 +1,8 @@
+---
+name: "doc"
+description: "Documentation for Antigravity Skills"
+---
+
 # Antigravity Skills
 
 > **Guide to creating and using Skills in the Antigravity Kit**
@@ -16,9 +21,9 @@ While Antigravity's base models (like Gemini) are powerful generalists, they don
 
 Skills are folder-based packages. You can define these scopes based on your needs:
 
-| Scope         | Path                              | Description                          |
-| ------------- | --------------------------------- | ------------------------------------ |
-| **Workspace** | `<workspace-root>/.agent/skills/` | Available only in a specific project |
+| Scope         | Path                               | Description                          |
+| ------------- | ---------------------------------- | ------------------------------------ |
+| **Workspace** | `<workspace-root>/.agents/skills/` | Available only in a specific project |
 
 ### Skill Directory Structure
 
@@ -39,7 +44,7 @@ This is an instruction-only skill; you only need to create the `SKILL.md` file.
 ### Step 1: Create the directory
 
 ```bash
-mkdir -p .agent/skills/code-review
+mkdir -p .agents/skills/code-review
 ```
 
 ### Step 2: Create SKILL.md
@@ -119,14 +124,14 @@ This skill uses a reference file in the `resources/` (or `references/`) director
 ### Step 1: Create the directory
 
 ```bash
-mkdir -p .agent/skills/license-header-adder/resources
+mkdir -p .agents/skills/license-header-adder/resources
 ```
 
 ### Step 2: Create the template file
 
-**`.agent/skills/license-header-adder/resources/HEADER.txt`**:
+**`.agents/skills/license-header-adder/resources/HEADER.txt`**:
 
-```
+```text
 /*
  * Copyright (c) 2026 YOUR_COMPANY_NAME LLC.
  * All rights reserved.
@@ -136,7 +141,7 @@ mkdir -p .agent/skills/license-header-adder/resources
 
 ### Step 3: Create SKILL.md
 
-**`.agent/skills/license-header-adder/SKILL.md`**:
+**`.agents/skills/license-header-adder/SKILL.md`**:
 
 ```markdown
 ---

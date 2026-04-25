@@ -2,6 +2,13 @@
 description: Test generation and test running command. Creates and executes tests for code.
 ---
 
+---
+
+name: "test-workflow"
+description: "Automated testing suite execution (Unit, Integration, E2E) with result reporting."
+
+---
+
 # /test - Test Generation and Execution
 
 $ARGUMENTS

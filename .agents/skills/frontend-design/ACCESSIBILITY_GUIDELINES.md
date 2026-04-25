@@ -1,3 +1,8 @@
+---
+name: "ACCESSIBILITY_GUIDELINES"
+description: "Accessibility guidelines for Next.js and React."
+---
+
 # Accessibility Guidelines (WCAG 2.2 AAA Focus)
 
 A acessibilidade não é um plugin; é a fundação do nosso código. O Jornalista Inclusivo foi projetado para ser uma referência em design universal.

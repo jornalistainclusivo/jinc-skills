@@ -1,3 +1,8 @@
+---
+name: "type-patterns"
+description: "Reusable structural patterns for TypeScript and Pydantic data model definitions."
+---
+
 # Type Patterns — TypeScript / Zod / OpenAPI 3.1
 
 Reference for the `spec-creator` skill. Contains battle-tested patterns for the Type-first approach. Load only the patterns relevant to the current spec.

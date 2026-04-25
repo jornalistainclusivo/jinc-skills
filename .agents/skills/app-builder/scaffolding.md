@@ -1,3 +1,8 @@
+---
+name: "scaffolding"
+description: "Advanced project scaffolding techniques for modern applications"
+---
+
 # Project Scaffolding
 
 > Directory structure and core files for new projects.

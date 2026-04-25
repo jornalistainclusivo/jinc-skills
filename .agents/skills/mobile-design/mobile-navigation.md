@@ -1,3 +1,8 @@
+---
+name: "mobile-navigation"
+description: "Gestural and structural navigation patterns for iOS and Android platforms."
+---
+
 # Mobile Navigation Reference
 
 > Navigation patterns, deep linking, back handling, and tab/stack/drawer decisions.

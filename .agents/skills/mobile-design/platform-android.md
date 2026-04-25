@@ -1,3 +1,8 @@
+---
+name: "platform-android"
+description: "Android-specific Material Design 3 guidelines and native OS integration protocols."
+---
+
 # Android Platform Guidelines
 
 > Material Design 3 essentials, Android design conventions, Roboto typography, and native patterns.

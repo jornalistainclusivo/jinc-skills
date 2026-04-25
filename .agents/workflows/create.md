@@ -2,6 +2,13 @@
 description: Create new application command. Triggers App Builder skill and starts interactive dialogue with user.
 ---
 
+---
+
+name: "create-workflow"
+description: "Implementation mode for executing previously defined project plans and feature specifications."
+
+---
+
 # /create - Create Application
 
 $ARGUMENTS
@@ -12,7 +19,7 @@ $ARGUMENTS
 
 This command starts a new application creation process.
 
-### Steps:
+### Steps
 
 1. **Request Analysis**
    - Understand what the user wants

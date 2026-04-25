@@ -1,3 +1,8 @@
+---
+name: "recipes"
+description: "Curated Dockerfiles and Compose configs for common dev environments."
+---
+
 # Docker Recipes
 
 Use these as starting patterns. Match the repo's current runtime and commands instead of forcing these examples verbatim.

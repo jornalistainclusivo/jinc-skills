@@ -1,3 +1,8 @@
+---
+name: "security-testing"
+description: "Security testing patterns for API security."
+---
+
 # API Security Testing
 
 > Principles for testing API security. OWASP API Top 10, authentication, authorization testing.

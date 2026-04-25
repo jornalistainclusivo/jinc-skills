@@ -1,3 +1,8 @@
+---
+name: "spec-template"
+description: "Standardized blueprint for creating high-fidelity SDD technical specifications."
+---
+
 # Spec Template — Full Section Examples
 
 Reference file for the `spec-creator` skill. Load only the sections you need.

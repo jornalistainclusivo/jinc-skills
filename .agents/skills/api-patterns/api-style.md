@@ -1,3 +1,8 @@
+---
+name: "api-style"
+description: "API style selection for different use cases."
+---
+
 # API Style Selection (2025)
 
 > REST vs GraphQL vs tRPC - Hangi durumda hangisi?

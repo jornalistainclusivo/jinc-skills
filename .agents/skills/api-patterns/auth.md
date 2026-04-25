@@ -1,3 +1,8 @@
+---
+name: "auth"
+description: "Authentication patterns for API security and user management."
+---
+
 # Authentication Patterns
 
 > Choose auth pattern based on use case.

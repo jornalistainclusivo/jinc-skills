@@ -1,3 +1,8 @@
+---
+name: "versioning"
+description: "Versioning patterns for API versioning."
+---
+
 # Versioning Strategies
 
 > Plan for API evolution from day one.

@@ -1,3 +1,8 @@
+---
+name: "6-rendering-rendering-performance"
+description: "Rendering performance for Next.js and React."
+---
+
 # 6. Rendering Performance
 
 > **Impact:** MEDIUM

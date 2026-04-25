@@ -1,6 +1,9 @@
-# Product Requirements Document (PRD) Guide
-
 ---
+name: "prd-guide"
+description: "Principles of writing unambiguous Product Requirement Documents."
+---
+
+# Product Requirements Document (PRD) Guide
 
 ## Overview
 

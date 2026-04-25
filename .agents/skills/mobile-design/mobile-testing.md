@@ -1,3 +1,8 @@
+---
+name: "mobile-testing"
+description: "Automated and manual testing strategies for cross-device mobile hardware validation."
+---
+
 # Mobile Testing Patterns
 
 > **Mobile testing is NOT web testing. Different constraints, different strategies.**

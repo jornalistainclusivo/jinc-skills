@@ -2,6 +2,13 @@
 description: Display agent and project status. Progress tracking and status board.
 ---
 
+---
+
+name: "status-workflow"
+description: "Analyzes project state, tech stack, and session statistics to provide an operational overview."
+
+---
+
 # /status - Show Status
 
 $ARGUMENTS

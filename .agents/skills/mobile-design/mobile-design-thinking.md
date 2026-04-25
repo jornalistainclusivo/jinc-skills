@@ -1,3 +1,8 @@
+---
+name: "mobile-design-thinking"
+description: "Ideation framework and user-centric mapping for mobile-first product development."
+---
+
 # Mobile Design Thinking
 
 > **This file prevents AI from using memorized patterns and forces genuine thinking.**
@@ -42,7 +47,7 @@
 
 ## 🚫 AI MOBILE DEFAULTS (FORBIDDEN LIST)
 
-### Using These Patterns Automatically is FORBIDDEN!
+### Using These Patterns Automatically is FORBIDDEN
 
 The following patterns are "defaults" that AIs learned from training data.
 Before using any of these, **QUESTION them and CONSIDER ALTERNATIVES!**
@@ -287,7 +292,7 @@ GESTURE: [Gesture Type]
 
 ## 🎭 SPIRIT OVER CHECKLIST (Mobile Edition)
 
-### Passing the Checklist is Not Enough!
+### Passing the Checklist is Not Enough
 
 | ❌ Self-Deception                                       | ✅ Honest Assessment                            |
 | ------------------------------------------------------- | ----------------------------------------------- |

@@ -1,3 +1,8 @@
+---
+name: "trpc"
+description: "tRPC patterns for API design."
+---
+
 # tRPC Principles
 
 > End-to-end type safety for TypeScript monorepos.

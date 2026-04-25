@@ -1,3 +1,8 @@
+---
+name: "troubleshooting"
+description: "Common fixes for container networking, volumes, and build errors."
+---
+
 # Docker Troubleshooting
 
 Use this checklist when a container build or startup is failing.

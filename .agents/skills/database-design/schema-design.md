@@ -1,3 +1,8 @@
+---
+name: "schema-design"
+description: "Advanced schema design for modern relational databases"
+---
+
 # Schema Design Principles
 
 > Normalization, primary keys, timestamps, relationships.

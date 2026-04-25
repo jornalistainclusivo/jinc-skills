@@ -1,3 +1,8 @@
+---
+name: "strapi5-ast-blocks"
+description: "Reference guide for Strapi 5 AST block structures and data transformation protocols."
+---
+
 # Strapi 5 Abstract Syntax Tree (AST) Reference
 
 **Status:** Obrigatório para `Contextual_Layer` e `Dynamic Zones`.

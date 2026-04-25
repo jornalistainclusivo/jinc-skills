@@ -2,6 +2,13 @@
 description: Preview server start, stop, and status check. Local development server management.
 ---
 
+---
+
+name: "preview-workflow"
+description: "Manages local development server lifecycle (start/stop/status) for application previewing."
+
+---
+
 # /preview - Preview Management
 
 $ARGUMENTS

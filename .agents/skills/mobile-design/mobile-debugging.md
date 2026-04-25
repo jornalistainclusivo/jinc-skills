@@ -1,3 +1,8 @@
+---
+name: "mobile-debugging"
+description: "Protocols for remote debugging and troubleshooting across diverse mobile environments."
+---
+
 # Mobile Debugging Guide
 
 > **Stop console.log() debugging!**
@@ -20,10 +25,10 @@ Web Debugging:      Mobile Debugging:
 
 **Key Differences:**
 
-1.  **Native Layer:** JS code works, but app crashes? It's likely native (Java/Obj-C).
-2.  **Deployment:** You can't just "refresh". State gets lost or stuck.
-3.  **Network:** SSL Pinning, proxy settings are harder.
-4.  **Device Logs:** `adb logcat` and `Console.app` are your truth.
+1. **Native Layer:** JS code works, but app crashes? It's likely native (Java/Obj-C).
+2. **Deployment:** You can't just "refresh". State gets lost or stuck.
+3. **Network:** SSL Pinning, proxy settings are harder.
+4. **Device Logs:** `adb logcat` and `Console.app` are your truth.
 
 ---
 

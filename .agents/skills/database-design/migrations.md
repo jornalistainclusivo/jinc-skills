@@ -1,3 +1,8 @@
+---
+name: "migrations"
+description: "Advanced migration patterns for relational databases"
+---
+
 # Migration Principles
 
 > Safe migration strategy for zero-downtime changes.

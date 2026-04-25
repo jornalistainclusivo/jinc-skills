@@ -2,6 +2,13 @@
 description: Coordinate multiple agents for complex tasks. Use for multi-perspective analysis, comprehensive reviews, or tasks requiring different domain expertise.
 ---
 
+---
+
+name: "orchestrate-workflow"
+description: "Multi-agent coordination protocol for complex, multi-domain software engineering tasks."
+
+---
+
 # Multi-Agent Orchestration
 
 You are now in **ORCHESTRATION MODE**. Your task: coordinate specialized agents to solve this complex problem.

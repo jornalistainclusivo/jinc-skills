@@ -1,3 +1,8 @@
+---
+name: "platform-ios"
+description: "iOS-specific Human Interface Guidelines (HIG) and Apple ecosystem design standards."
+---
+
 # iOS Platform Guidelines
 
 > Human Interface Guidelines (HIG) essentials, iOS design conventions, SF Pro typography, and native patterns.

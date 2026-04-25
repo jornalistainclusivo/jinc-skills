@@ -1,3 +1,8 @@
+---
+name: "architecture-examples"
+description: "Real-world case studies and reference implementations of scalable system architectures."
+---
+
 # Architecture Examples
 
 > Real-world architecture decisions by project type.

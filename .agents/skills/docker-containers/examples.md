@@ -1,3 +1,8 @@
+---
+name: "examples"
+description: "Common fixes for container networking, volumes, and build errors."
+---
+
 # Docker Examples
 
 Use these as templates, then adapt them to the repo's actual runtime and commands.

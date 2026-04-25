@@ -1,3 +1,8 @@
+---
+name: "feature-building"
+description: "Advanced feature building techniques for modern applications"
+---
+
 # Feature Building
 
 > How to analyze and implement new features.

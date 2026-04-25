@@ -1,3 +1,8 @@
+---
+name: "mobile-performance"
+description: "Techniques for frame rate stability, battery life preservation, and memory optimization."
+---
+
 # Mobile Performance Reference
 
 > Deep dive into React Native and Flutter performance optimization, 60fps animations, memory management, and battery considerations.

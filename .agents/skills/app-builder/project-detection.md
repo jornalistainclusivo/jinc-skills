@@ -1,3 +1,8 @@
+---
+name: "project-detection"
+description: "Advanced project detection techniques for modern applications"
+---
+
 # Project Type Detection
 
 > Analyze user requests to determine project type and template.

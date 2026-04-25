@@ -1,3 +1,8 @@
+---
+name: "response"
+description: "Response format patterns for API responses."
+---
+
 # Response Format Principles
 
 > Consistency is key - choose a format and stick to it.
