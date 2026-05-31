@@ -77,7 +77,7 @@
 - **`orm-selection`** (`orm-selection.md`): advanced orm selection for modern applications
 - **`schema-design`** (`schema-design.md`): advanced schema design for modern relational databases
 - **`deployment-procedures`** (`SKILL.md`): production deployment principles and decision-making. safe deployment workflows, rollback strategies, and verification. teaches thinking, not scripts.
-- **`devops-jinc-protocol`** (`SKILL.md`): framework de governança para vibe-coding e engenharia híbrida.
+- **`devops-jinc-protocol`** (`SKILL.md`): framework de governança de elite para vibe-coding, devops e full-stack engineering.
 - **`docker-containers`** (`SKILL.md`): build, repair, and harden docker-based development and deployment setups for applications and services. use when any agent needs to create or update `dockerfile`, `.dockerignore`, `compose.yaml` or `docker-compose.yml`, container entrypoints, multi-stage builds, local service orchestration, or container debugging workflows. trigger for requests such as containerizing a node/python/go app, adding postgres or redis with compose, shrinking images, fixing container startup failures, debugging port or volume issues, improving docker caching, or making a container setup safer for production.
 - **`examples`** (`examples.md`): common fixes for container networking, volumes, and build errors.
 - **`recipes`** (`recipes.md`): curated dockerfiles and compose configs for common dev environments.
