@@ -17,6 +17,15 @@ Para evitar alucinações de LLMs e a degradação do contexto, o repositório c
 1. **Local (Husky + lint-staged):** Intercepta operações de `git commit`, aplicando formatação forçada via Prettier e rodando o validador Pydantic. Arquivos fora do padrão estrutural são sumariamente rejeitados antes de tocarem a _staging area_.
 2. **Remota (GitHub Actions):** Pipeline cirúrgico e otimizado que executa a validação Python em instâncias efêmeras para garantir a imutabilidade do contrato SDD na _branch_ principal.
 
+### 🛡️ Protocolo DevOps & Zero-Trust
+
+A infraestrutura segue estritamente as diretrizes do **DevOps JINC Protocol** (`.agents/rules/devops-jinc-protocol.md`), exigindo:
+
+- **Zero-Hallucination Policy** na geração de dependências e infraestrutura.
+- **Ambiente Zero-Trust** com sanitização de _inputs_ e proteção de _secrets_.
+- **Higiene de Ambiente e Versionamento Perpétuo** através de _Git Tags_ semânticas e scripts locais (ex: `sanitize-local.sh`).
+- **Validação de Pull Requests** com _templates_ mandatórios abrangendo Core Web Vitals e conformidade WCAG 2.2 AAA.
+
 ## 🤖 Ecossistema de Agentes
 
 A comunicação entre modelos não é feita por inferência aleatória, mas por um "Handshake" algorítmico baseado em regras de domínio.
