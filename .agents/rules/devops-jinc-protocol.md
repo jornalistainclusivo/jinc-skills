@@ -2,108 +2,94 @@
 trigger: always_on
 ---
 
----
+# 🛡️ DevOps JINC Protocol: AI-Native Hybrid Governance
 
-name: "devops-jinc-protocol"
-description: "Protocolos padronizados de CI/CD, gerenciamento de infraestrutura e automação para a iniciativa Jornalista Inclusivo."
+Este protocolo estabelece as diretrizes mandatórias de engenharia para a colaboração entre o Arquiteto Humano e os Agentes de IA na organização **Jornalista Inclusivo (JINC Apps)**.
 
----
+## 1. O Motor Agêntico (Rules of Engagement)
 
-# 🛡️ DevOps JINC Protocol: Hybrid Governance
+O agente de IA operando neste repositório **deve** internalizar este comportamento estrutural:
 
-Este protocolo estabelece as diretrizes mandatórias para a colaboração entre o Arquiteto Humano e os Agentes de IA na organização **Jornalista Inclusivo (JINC Apps)**. Seu objetivo é garantir que toda automação resulte em código acessível, seguro e arquiteturalmente coerente.
+- **Zero-Hallucination Policy:** Se uma biblioteca, dependência ou versão do Next.js/React não possuir uma funcionalidade nativa, o agente DEVE alertar o humano. Proibido inventar APIs ou _polyfills_ inseguros.
+- **Security by Default:** Arquivos de ambiente (`.env*`), chaves de API, tokens e senhas NUNCA devem ser adicionados ao _stage_ do Git. O agente deve sugerir a inclusão em `.gitignore` pró-ativamente.
+- **Agnosticismo de Estado Lógico:** Questione ambiguidades de arquitetura antes de escrever a primeira linha de código. Use o comando `/plan` compulsoriamente para _features_ complexas.
 
----
+## 2. Padrões de Engenharia Full-Stack & DevOps
 
-name: devops-jinc-protocol
-version: 1.3
-status: Core-Governance
-location: .agents\rules\devops-jinc-protocol.md
-description: Framework de governança para Vibe-Coding, Engenharia Híbrida e Versionamento Perpétuo.
-Principles:
+### 2.1 Arquitetura Next.js / React
 
-- Accessibility-First (WCAG 2.2 AAA)
-- Zero-Trust Security (No exposed secrets)
-- Atomic Commits (Clean history)
-- Documentation-as-Code (ADRs and Logs)
-- Immutable Versioning (Git Tags State Saving)
-- Environment Hygiene (No local contamination)
+- **Server-First:** Priorizar React Server Components (RSC) para redução de bundle JavaScript. Usar a diretiva `"use client"` estritamente nas bordas da árvore de componentes (interatividade ou estado).
+- **Data Fetching:** Implementar ISR (Incremental Static Regeneration) ou cache revalidado por _tags_ para otimização de performance no Edge.
+- **Observabilidade:** Todo bloco `try/catch` de funções críticas deve gerar logs estruturados e telemetria, não apenas `console.error`.
 
----
+### 2.2 Segurança de Infraestrutura (Zero-Trust)
 
-## 1. Fluxo de Trabalho (The JINC Way)
+- **Sanitização de Inputs:** Nunca confiar no input do cliente ou do servidor. Validar dados com esquemas robustos (ex: Zod) no nível da API e de _Server Actions_.
+- **Docker Multi-Stage:** Imagens de contêineres devem ser _multi-stage_, utilizando distroless ou Alpine mínimas para produção, reduzindo a superfície de ataque.
+- **Supply Chain:** Sugerir rodar `npm audit` ou ferramentas de escaneamento de vulnerabilidade (SAST/DAST) após adições significativas de dependências.
 
-### 1.1 O Ciclo Vibe-Coding
+## 3. Preservação de Estado e Higiene de Ambiente
 
-1. **Intenção (Humano):** Define o "quê" e o "porquê" (ex: "Criar o ContextualLayer para acessibilidade cognitiva").
-2. **Prototipagem & Crítica (IA):** Sugere a implementação, mas **deve** questionar ambiguidades antes de escrever o código.
-3. **Refinamento (H+IA):** Iteração focada em performance e refinamento do Design System Neutro.
-4. **Validação de Saída (IA):** Antes de entregar, o agente deve rodar os scripts de validação `checklist.py`) e gerar o PR Template preenchido.
-5. **Preservação de Estado (H+IA):** Congelamento da versão validada utilizando Git Tags antes de mesclar ou encerrar o ciclo.
+A autonomia do agente exige limites estritos de contenção para evitar degradação de repositório e vazamento de dados.
 
-### 1.2 Regras de Ouro para o Agente
+### 3.1 Versionamento Perpétuo (Git Tags)
 
-- **Proibição de Alucinação:** Se uma biblioteca não existir ou uma versão do Next.js não suportar uma feature, o agente deve avisar, nunca inventar.
-- **Limpeza de Rastro:** Arquivos `.env` nunca devem ser sugeridos para `git add`.
-- **Higiene de Branch:** Todo trabalho novo deve nascer em uma branch `feat/` ou `fix/`.
-- **Higiene Local:** O agente deve sugerir limpeza de artefatos sensíveis/cache antes de finalizar sessões (ver seção 1.4).
+Para garantir a recuperação perpétua de estados funcionais durante o Vibe-Coding, é **obrigatório** o uso de Git Tags a cada ciclo de desenvolvimento.
 
-### 1.3 Metodologia de Salvamento de Estado (Git Tags)
+- **Nomenclatura Híbrida:** O padrão combina Versionamento Semântico com o escopo da branch: `v[Major].[Minor].[Patch]-[nome-da-branch]`.
+- **Execução Mandatória:** Antes da fusão, o agente ou desenvolvedor deve gerar:
 
-Para garantir a rastreabilidade e a recuperação perpétua de estados funcionais do código no GitHub, é **obrigatório** o uso de Etiquetas de Versão (Git Tags) a cada ciclo de desenvolvimento em uma branch.
+1. `git tag -a vX.X.X-branch-name -m "feat: implementação concluída e validada"`
+2. `git push origin vX.X.X-branch-name`
 
-- **Quando Taguear:** Sempre que uma branch atingir um marco funcional, passar nos testes de acessibilidade (WCAG AAA) ou antes de um PR (Pull Request) ser finalizado.
-- **Nomenclatura Híbrida:** O padrão deve combinar Versionamento Semântico com o escopo da branch: `v[Major].[Minor].[Patch]-[nome-da-branch]` (Exemplo: `v1.2.4-contextual-layer`).
-- **Comandos Mandatórios:** O Agente ou Desenvolvedor deve gerar e executar tags anotadas, detalhando o que foi salvo:
-  1. `git tag -a vX.X.X-branch-name -m "feat: implementação concluída e validada"`
-  2. `git push origin vX.X.X-branch-name` (A tag deve ser enviada explicitamente ao remote).
+### 3.2 Higiene de Ambiente Local (Sanitização)
 
-### 1.4 Higiene de Ambiente Local (Sanitização)
+Antes de encerrar uma sessão de desenvolvimento, o ambiente deve ser higienizado.
 
-Antes de encerrar uma sessão de desenvolvimento ou alternar entre branches, o agente **deve** garantir que o ambiente local esteja higienizado segundo os princípios Zero-Trust:
+- **Limpeza de Artefatos:** Remover diretórios de build temporários e logs contaminados, preservando estritamente ambientes virtuais configurados (`.venv` em diretórios de serviços Python não devem ser corrompidos).
+- **Comando de Higienização (Checklist Local):**
 
-- **Sanitização de Secrets:**
-  - Remover arquivos `.env.local`, `.env.development` ou logs que contenham tokens, chaves de API ou credenciais de teste
-  - Verificar que nenhum arquivo em `/tmp`, `/logs` ou `.cache` contenha dados PII (Personally Identifiable Information) de testes
-  - Executar `git clean -fd` apenas após confirmação explícita do Humano, ou preferencialmente usar `git stash` para experimentos locais
-- **Limpeza de Artefatos Temporários:**
-  - Remover diretórios de build local: `.next/`, `dist/`, `build/`, `coverage/` (exceto quando explicitamente necessário para debug)
-  - Limpar cache de pacotes: `npm cache clean --force` ou `rm -rf node_modules/.cache` quando houver suspeita de contaminação entre branches
-  - Excluir arquivos de dump, screenshots de debug e dados de mock gerados durante o desenvolvimento
-- **Isolamento de Dados de Teste:**
-  - Garantir que databases SQLite, arquivos JSON de mock ou fixtures temporárias não sejam commitados acidentalmente
-  - Verificar `.gitignore` antes de finalizar: deve incluir `*.local`, `*.log`, `.turbo`, `.vercel`
-- **Verificação Pré-Push:**
-  - Rodar `git status` e validar que apenas arquivos intencionais estão staged
-  - Executar scan rápido por secrets: `git grep -i "password\|secret\|token" -- :^package.json :^README.md` ou usar ferramenta como `git-secrets`
-  - Confirmar que não há alterações não salvas (uncommitted changes) críticas antes de criar tags
-- **Comando de Higienização Recomendado (Checklist Local):**
+```bash
+# Script mandatório: sanitize-local.sh
+echo "🧹 Higienizando ambiente sob protocolo Zero-Trust..."
+# Limpeza de builds e logs; .venv e dotfiles sensíveis são preservados
+rm -rf .next/ coverage/ dist/ build/ *.log
+git stash push -m "wip: backup automático pre-higienização" --include-untracked
+npm cache verify
+echo "✅ Ambiente sanitizado. Valide o git status antes de commitar."
 
-  ```bash
-  # Script sugerido: sanitize-local.sh
-  echo "🧹 Higienizando ambiente..."
-  rm -rf .next/ coverage/ *.log
-  git stash push -m "wip: backup automático pre-higienização" --include-untracked
-  npm cache verify
-  echo "✅ Ambiente sanitizado. Lembre-se: nunca commitar arquivos .env*"
-  ```
+```
+
+## 4. Fluxo de Trabalho Híbrido (The JINC SDLC)
+
+1. **Intenção (Humano):** Define o "quê" e o "porquê".
+2. **Mapeamento & Segurança (IA):** Avaliação de dependências e riscos (Shift-Left).
+3. **Prototipagem de Acessibilidade (IA):** Construção do esqueleto HTML semântico e marcações WAI-ARIA **antes** do CSS e lógica JS.
+4. **Execução (H+IA):** Implementação lógica focada no Design System Neutro e performance (Core Web Vitals).
+5. **Validação & Higienização (IA):** Execução do `sanitize-local.sh`, scripts de linting e geração da Git Tag de segurança.
+6. **Geração do Contrato (IA):** Preenchimento final do PR Template estruturado.
 
 ---
 
-## 🏗️ 2. Template de Pull Request (Saída Mandatória)
+## 🏗️ 5. Pull Request Contract (Saída Mandatória)
 
-_Sempre que o Agente finalizar uma tarefa, ele deve gerar o conteúdo abaixo preenchido com base no que foi realmente feito._
+_Ao finalizar uma branch, o agente DEVE compilar o resultado neste template exato:_
 
 ```markdown
-# 🤖 [TIPO]: Descrição Concisa (Ex: feat: infra-docker-isr)
+# 🤖 [TIPO]: Descrição Concisa (Ex: feat: implementa camada de cache ISR)
 
-## 📝 Descrição
+## 📝 Resumo do Contexto
 
-## 🔗 Issue / Sprint
+[Explicação técnica e links para ADRs, se aplicável].
 
-## 🏷️ Tipo de Mudança
+## 🔗 Issue / Ticket
 
-- [ ] `ethics` / `a11y`: Acessibilidade e Inclusão.
+Ref: #000
+
+## 🏷️ Escopo de Mudança (Selecione)
+
+- [ ] `a11y`: Acessibilidade (Sensorial ou Cognitiva).
+- [ ] `sec`: Correção/Aprimoramento de Segurança.
 - [ ] `infra`: Docker, CI/CD, ISR, Deploy.
 - [ ] `feat`: Nova funcionalidade.
 - [ ] `fix`: Correção de bug.
@@ -111,35 +97,43 @@ _Sempre que o Agente finalizar uma tarefa, ele deve gerar o conteúdo abaixo pre
 
 ---
 
-## ♿ Checklist de Acessibilidade (WCAG 2.2 AAA)
+## ♿ Auditoria de Inclusão (WCAG 2.2 AAA & Cognitive)
 
-- [ ] **Navegação:** Teclado (Tab/Shift+Tab) funcional e lógico.
-- [ ] **Foco:** Visível `focus-visible:ring-2`) em todos os elementos.
-- [ ] **Semântica:** Uso de tags nativas (HTML5) em vez de divs clicáveis.
-- [ ] **Leitores de Tela:** `aria-labels` e `aria-hidden` aplicados onde necessário.
-- [ ] **Contraste:** Proporção 7:1 (AAA) validada.
-- [ ] **Imagens:** Componente `<AutoAltImage>` com IA-fallback implementado.
+- [ ] **Navegação:** Teclado funcional mapeado, sem _keyboard traps_.
+- [ ] **Foco:** Visível (`focus-visible:ring-2`) em elementos interativos.
+- [ ] **Semântica ARIA:** Aplicada conforme diretrizes do W3C.
+- [ ] **Contraste & Cor:** Proporção 7:1 (AAA). Zero dependência exclusiva de cor.
+- [ ] **Imagens & Fallbacks:** `<AutoAltImage>` implementado.
+- [ ] **Cognição:** Respeito a `prefers-reduced-motion`.
 
-## 🏛️ Design System & Arquitetura
+## 🏛️ Design System Neutro & CWV
 
-- [ ] **Paleta:** Uso exclusivo de `neutral-50` a `neutral-900`. Zero cores de categoria.
-- [ ] **Grid:** Leitura travada em `max-w-[70ch]`.
-- [ ] **Tipografia:** `font-serif` para conteúdo, `font-sans` para interface.
+- [ ] **Paleta:** Uso exclusivo do espectro `neutral-50` a `neutral-900`.
+- [ ] **Métricas CWV:** LCP otimizado, sem CLS indesejado.
+- [ ] **Tipografia:** `font-serif` para conteúdo; `font-sans` para UI. Limite de `max-w-[70ch]`.
 
-## 🛠️ Qualidade e GitOps
+## 🛠️ DevOps, Higiene & Zero-Trust
 
-- [ ] **Secrets:** `.env` validado e seguro.
-- [ ] **Higiene Local:** Cache removido, logs limpos, nenhum arquivo sensível no working tree.
-- [ ] **Scripts:** `checklist.py` executado com sucesso.
+- [ ] **Secrets:** Ausência absoluta de credenciais. `.env` não versionado.
+- [ ] **Higiene Local:** Script `sanitize-local.sh` executado. Nenhuma contaminação cruzada.
 - [ ] **Docker:** Build multi-stage testado (se aplicável).
-- [ ] **Logs:** Registro de decisão adicionado ao `DECISION_LOG.md`.
-- [ ] **Versionamento:** Git Tag Semântica gerada e subida para o GitHub `git push origin vX.X.X`).
+- [ ] **Versionamento:** Git Tag Semântica gerada e em remote (`git push origin vX.X.X`).
 
-## 🧪 Como Testar (Passo a Passo)
+## 🧪 Plano de Teste e Rollback
 
-1. `git checkout <branch>`
-2. `npm install` (ou `docker-compose up`)
-3. Testar comportamento em: `http://localhost:3000/...`
+1. Comandos para teste: `git fetch && git checkout <branch> && npm run dev`
+2. URL esperada: `http://localhost:3000/...`
+3. **Plano de Rollback:** Reverter tag/commit `XXXXX` se as métricas falharem.
+```
 
 ---
-```
+
+## 6. Comandos de Operação Especiais (Agent Slash Commands)
+
+O agente reconhece e prioriza as seguintes diretivas no chat:
+
+- `/plan <objetivo>`: Interrompe execução. Lista etapas técnicas, dependências e riscos antes de codificar.
+- `/audit`: Dispara revisão silenciosa buscando vulnerabilidades OWASP, vazamento de memória e quebras WCAG.
+- `/refactor`: Reescreve o bloco focado em modularização, extração de Server Components e simplificação ciclomática.
+- `/status`: Avalia o git diff contra a intenção original, identificando pendências da sprint.
+- `/sanitize`: Executa imediatamente os protocolos de higiene de ambiente descritos na seção 3.2.
