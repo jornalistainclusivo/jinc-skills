@@ -1,0 +1,19 @@
+{
+  "name": "jinc_sdd_validator",
+  "description": "Audita o código fonte contra as regras restritas do SDD (Lean Database e Zero Regex para DOM). Deve ser invocado antes de aprovar qualquer geração de código PHP.",
+  "command": "python",
+  "args": [
+    "{workspace_root}/.agents/scripts/sdd_validator.py",
+    "{target_file}"
+  ],
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "target_file": {
+        "type": "string",
+        "description": "Caminho relativo do arquivo PHP gerado a ser validado (ex: src/Core/Gatekeeper.php)."
+      }
+    },
+    "required": ["target_file"]
+  }
+}
