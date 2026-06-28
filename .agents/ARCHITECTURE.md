@@ -26,6 +26,13 @@
 ## 📂 `skills/`
 
 - **`doc`** (`doc.md`): documentation for antigravity skills
+- **`accessibility-compliance-accessibility-audit`** (`SKILL.md`): you are an accessibility expert specializing in wcag compliance, inclusive design, and assistive technology compatibility. conduct audits, identify barriers, and provide remediation guidance.
+- **`accessibility tests`** (`implementation-playbook.md`): v.description,
+- **`api-design-principles`** (`SKILL.md`): master rest and graphql api design principles to build intuitive, scalable, and maintainable apis that delight developers and stand the test of time.
+- `api-design-checklist.md`: _(Aguardando conformidade SDD)_
+- `graphql-schema-design.md`: _(Aguardando conformidade SDD)_
+- `rest-best-practices.md`: _(Aguardando conformidade SDD)_
+- `implementation-playbook.md`: _(Aguardando conformidade SDD)_
 - **`api-patterns`** (`SKILL.md`): api design principles and decision-making. rest vs graphql vs trpc selection, response formats, versioning, pagination.
 - **`api-style`** (`api-style.md`): api style selection for different use cases.
 - **`auth`** (`auth.md`): authentication patterns for api security and user management.
@@ -37,6 +44,7 @@
 - **`security-testing`** (`security-testing.md`): security testing patterns for api security.
 - **`trpc`** (`trpc.md`): trpc patterns for api design.
 - **`versioning`** (`versioning.md`): versioning patterns for api versioning.
+- **`api-security-best-practices`** (`SKILL.md`): implement secure api design patterns including authentication, authorization, input validation, rate limiting, and protection against common api vulnerabilities
 - **`app-builder`** (`SKILL.md`): main application building orchestrator. creates full-stack applications from natural language requests. determines project type, selects tech stack, coordinates agents.
 - **`agent-coordination`** (`agent-coordination.md`): advanced agent coordination for modern applications
 - **`feature-building`** (`feature-building.md`): advanced feature building techniques for modern applications
@@ -68,7 +76,14 @@
 - **`brainstorming`** (`SKILL.md`): socratic questioning protocol + user communication. mandatory for complex requests, new features, or unclear requirements. includes progress reporting and error handling.
 - **`dynamic-questioning`** (`dynamic-questioning.md`): advanced techniques for interactive socratic questioning and iterative ideation.
 - **`clean-code`** (`SKILL.md`): pragmatic coding standards - concise, direct, no over-engineering, no unnecessary comments
+- **`code-documentation-doc-generate`** (`SKILL.md`): you are a documentation expert specializing in creating comprehensive, maintainable documentation from code. generate api docs, architecture diagrams, user guides, and technical references using ai-powered analysis and industry best practices.
+- **`users_db`** (`implementation-playbook.md`): successful response
 - **`code-review-checklist`** (`SKILL.md`): code review guidelines covering code quality, security, and best practices.
+- **`codebase-to-wordpress-converter`** (`SKILL.md`): expert skill for converting any codebase (react/html/next.js) into a pixel-perfect, seo-optimized, and dynamic wordpress theme.
+- **`conductor-setup`** (`SKILL.md`): configure a rails project to work with conductor (parallel coding agents)
+- **`conductor-status`** (`SKILL.md`): display project status, active tracks, and next actions
+- **`conductor-validator`** (`SKILL.md`): validates conductor project artifacts for completeness,
+- **`context7-auto-research`** (`SKILL.md`): automatically fetch latest library/framework documentation for claude code via context7 api. use when you need up-to-date documentation for libraries and frameworks or asking about react, next.js, prisma, or any other popular library.
 - **`database-design`** (`SKILL.md`): database design principles and decision-making. schema design, indexing strategy, orm selection, serverless databases.
 - **`database-selection`** (`database-selection.md`): advanced database selection for modern applications
 - **`indexing`** (`indexing.md`): indexing principles for modern databases
@@ -105,11 +120,18 @@
 - **`vr-ar`** (`SKILL.md`): vr/ar development principles. comfort, interaction, performance requirements.
 - **`web-games`** (`SKILL.md`): web browser game development principles. framework selection, webgpu, optimization, pwa.
 - **`geo-fundamentals`** (`SKILL.md`): generative engine optimization for ai search engines (chatgpt, claude, perplexity).
+- **`github`** (`SKILL.md`): use the `gh` cli for issues, pull requests, actions runs, and github api queries.
+- **`github-workflow-automation`** (`SKILL.md`): patterns for automating github workflows with ai assistance, inspired by [gemini cli](https://github.com/google-gemini/gemini-cli) and modern devops practices.
 - **`i18n-localization`** (`SKILL.md`): internationalization and localization patterns. detecting hardcoded strings, managing translations, locale files, rtl support.
 - **`intelligent-routing`** (`SKILL.md`): automatic agent selection and intelligent task routing. analyzes user requests and automatically selects the best specialist agent(s) without requiring explicit user mentions.
 - **`jinc-governance-standards`** (`SKILL.md`): 🛡️ jinc governance standards — devops & vibe-coding edition. mandatory guidelines for accessibility, inclusion, and ethics for the jornalista inclusivo project.
 - **`lint-and-validate`** (`SKILL.md`): automatic quality control, linting, and static analysis procedures. use after every code modification to ensure syntax correctness and project standards. triggers onkeywords: lint, format, check, validate, types, static analysis.
-- **`mcp-builder`** (`SKILL.md`): mcp (model context protocol) server building principles. tool design, resource patterns, best practices.
+- **`mcp-builder`** (`SKILL.md`): create mcp (model context protocol) servers that enable llms to interact with external services through well-designed tools. the quality of an mcp server is measured by how well it enables llms to accomplish real-world tasks.
+- `evaluation.md`: _(Aguardando conformidade SDD)_
+- `mcp_best_practices.md`: _(Aguardando conformidade SDD)_
+- **`service-mcp-server",`** (`node_mcp_server.md`): what the tool does",
+- `python_mcp_server.md`: _(Aguardando conformidade SDD)_
+- **`mlops-engineer`** (`SKILL.md`): build comprehensive ml pipelines, experiment tracking, and model registries with mlflow, kubeflow, and modern mlops tools.
 - **`mobile-design`** (`SKILL.md`): mobile-first design thinking and decision-making for ios and android apps. touch interaction, performance patterns, platform conventions. teaches principles, not fixed values. use when building react native, flutter, or native mobile apps.
 - **`mobile-decision-trees`** (`decision-trees.md`): logic-based flows for determining mobile ux interactions and conditional state changes.
 - **`mobile-backend`** (`mobile-backend.md`): bff (backend for frontend) patterns and api optimization for low-latency mobile data.
@@ -137,20 +159,71 @@
 - **`parallel-agents`** (`SKILL.md`): multi-agent orchestration patterns. use when multiple independent tasks can run with different domain expertise or when comprehensive analysis requires multiple perspectives.
 - **`performance-profiling`** (`SKILL.md`): performance profiling principles. measurement, analysis, and optimization techniques.
 - **`plan-writing`** (`SKILL.md`): structured task planning with clear breakdowns, dependencies, and verification criteria. use when implementing features, refactoring, or any multi-step work.
+- `AGENTS.md`: _(Aguardando conformidade SDD)_
+- `README.md`: _(Aguardando conformidade SDD)_
+- **`postgres-best-practices`** (`SKILL.md`): postgres performance optimization and best practices from supabase. use this skill when writing, reviewing, or optimizing postgres queries, schema designs, or database configurations.
+- `_contributing.md`: _(Aguardando conformidade SDD)_
+- `_sections.md`: _(Aguardando conformidade SDD)_
+- `_template.md`: _(Aguardando conformidade SDD)_
+- `advanced-full-text-search.md`: _(Aguardando conformidade SDD)_
+- `advanced-jsonb-indexing.md`: _(Aguardando conformidade SDD)_
+- `conn-idle-timeout.md`: _(Aguardando conformidade SDD)_
+- `conn-limits.md`: _(Aguardando conformidade SDD)_
+- `conn-pooling.md`: _(Aguardando conformidade SDD)_
+- `conn-prepared-statements.md`: _(Aguardando conformidade SDD)_
+- `data-batch-inserts.md`: _(Aguardando conformidade SDD)_
+- `data-n-plus-one.md`: _(Aguardando conformidade SDD)_
+- `data-pagination.md`: _(Aguardando conformidade SDD)_
+- `data-upsert.md`: _(Aguardando conformidade SDD)_
+- `lock-advisory.md`: _(Aguardando conformidade SDD)_
+- `lock-deadlock-prevention.md`: _(Aguardando conformidade SDD)_
+- `lock-short-transactions.md`: _(Aguardando conformidade SDD)_
+- `lock-skip-locked.md`: _(Aguardando conformidade SDD)_
+- `monitor-explain-analyze.md`: _(Aguardando conformidade SDD)_
+- `monitor-pg-stat-statements.md`: _(Aguardando conformidade SDD)_
+- `monitor-vacuum-analyze.md`: _(Aguardando conformidade SDD)_
+- `query-composite-indexes.md`: _(Aguardando conformidade SDD)_
+- `query-covering-indexes.md`: _(Aguardando conformidade SDD)_
+- `query-index-types.md`: _(Aguardando conformidade SDD)_
+- `query-missing-indexes.md`: _(Aguardando conformidade SDD)_
+- `query-partial-indexes.md`: _(Aguardando conformidade SDD)_
+- `schema-data-types.md`: _(Aguardando conformidade SDD)_
+- `schema-foreign-key-indexes.md`: _(Aguardando conformidade SDD)_
+- `schema-lowercase-identifiers.md`: _(Aguardando conformidade SDD)_
+- `schema-partitioning.md`: _(Aguardando conformidade SDD)_
+- `schema-primary-keys.md`: _(Aguardando conformidade SDD)_
+- `security-privileges.md`: _(Aguardando conformidade SDD)_
+- `security-rls-basics.md`: _(Aguardando conformidade SDD)_
+- `security-rls-performance.md`: _(Aguardando conformidade SDD)_
+- **`postgresql`** (`SKILL.md`): design a postgresql-specific schema. covers best-practices, data types, indexing, constraints, performance patterns, and advanced features
+- **`postgresql-optimization`** (`SKILL.md`): postgresql database optimization workflow for query tuning, indexing strategies, performance analysis, and production database management.
 - **`powershell-windows`** (`SKILL.md`): powershell windows patterns. critical pitfalls, operator syntax, error handling.
 - **`prd-creator`** (`SKILL.md`): creates comprehensive product requirements documents (prd) — the foundational document that defines what to build and why, upstream of sdd and spec in the jinc pipeline. use this skill whenever a user wants to: write a prd, capture product requirements, define a feature from a business or user perspective, document user stories and acceptance criteria, build a business case, analyze market opportunity, define success metrics, or translate a raw idea into structured requirements. trigger for: 'escreve o prd', 'define os requisitos', 'preciso documentar esse produto', 'quero as user stories para', 'define essa feature', 'business case para', 'what should this product do', 'capture requirements for', or any request to define product scope before architecture. always the first document in the jinc pipeline — prd precedes sdd and spec. use even if the user doesn't say 'prd' — if they're figuring out what to build, this skill applies.
 - **`prd-guide`** (`prd-guide.md`): principles of writing unambiguous product requirement documents.
 - **`prd-template`** (`prd-template.md`): reference for the prd template.
-- **`prompt-engineer`** (`SKILL.md`): advanced prompt engineering specialist with a focus on vibe-coding. use this skill whenever the user wants to write, review, or improve ai prompts, system instructions, agent profiles, or multi-step workflows. trigger this when discussing prompt structure, llm context optimization, or vibe-coding strategies.
+- `README.md`: _(Aguardando conformidade SDD)_
+- **`prompt-engineer`** (`SKILL.md`): transforms user prompts into optimized prompts using frameworks (rtf, risen, chain of thought, rodes, chain of density, race, rise, star, soap, clear, grow)
+- **`prompt-library`** (`SKILL.md`): a comprehensive collection of battle-tested prompts inspired by [awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts) and community best practices.
+- **`python-fastapi-development`** (`SKILL.md`): python fastapi backend development with async patterns, sqlalchemy, pydantic, authentication, and production api patterns.
 - **`python-patterns`** (`SKILL.md`): python development principles and decision-making. framework selection, async patterns, type hints, project structure. teaches thinking, not copying.
+- **`python-performance-optimization`** (`SKILL.md`): profile and optimize python code using cprofile, memory profilers, and performance best practices. use when debugging slow python code, optimizing bottlenecks, or improving application performance.
+- `implementation-playbook.md`: _(Aguardando conformidade SDD)_
+- **`python-testing-patterns`** (`SKILL.md`): implement comprehensive testing strategies with pytest, fixtures, mocking, and test-driven development. use when writing python tests, setting up test suites, or implementing testing best practices.
+- `implementation-playbook.md`: _(Aguardando conformidade SDD)_
 - **`red-team-tactics`** (`SKILL.md`): red team tactics principles based on mitre att&ck. attack phases, detection evasion, reporting.
 - **`rust-pro`** (`SKILL.md`): master rust 1.75+ with modern async patterns, advanced type system
 - **`sdd-creator`** (`SKILL.md`): creates software design documents (sdd) following spec-driven development principles for all types of software. use this skill whenever a user wants to design software before coding, document an architecture, write a technical spec, convert a prd into an sdd, plan system design, or run a 'vibe architecture' session. trigger also for phrases like 'let\\'s spec this out', 'design the system', 'document this feature', 'lock the architecture', 'bora codar' (after an idea description), 'quero criar um sistema', 'vamos arquitetar isso', or any request to plan a feature at the system level before implementation. this skill acts as a senior cto + staff engineer using a pair architecture (vibe coding) flow: seed → mirror → jam → lock. always use it — even for simple features — when the user\\'s intent is 'design first, code second.
 - **`core-template`** (`core-template.md`): reference for the sdd core template.
 - **`jinc-conventions`** (`jinc-conventions.md`): jinc apps — conventions & standards reference
+- **`security-audit`** (`SKILL.md`): comprehensive security auditing workflow covering web application testing, api security, penetration testing, vulnerability scanning, and security hardening.
+- **`senior-fullstack`** (`SKILL.md`): complete toolkit for senior fullstack with modern tools and best practices.
+- `architecture_patterns.md`: _(Aguardando conformidade SDD)_
+- `development_workflows.md`: _(Aguardando conformidade SDD)_
+- `tech_stack_guide.md`: _(Aguardando conformidade SDD)_
 - **`seo-fundamentals`** (`SKILL.md`): seo fundamentals, e-e-a-t, core web vitals, and google algorithm principles.
 - **`server-management`** (`SKILL.md`): server management principles and decision-making. process management, monitoring strategy, and scaling decisions. teaches thinking, not commands.
 - **`skill-creator`** (`SKILL.md`): create new skills, modify and improve existing skills, and measure skill performance. use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.
+- **`skill-creator-ms`** (`SKILL.md`): guide for creating effective skills for ai coding agents working with azure sdks and microsoft foundry services. use when creating new skills or updating existing skills.
 - **`spec-creator`** (`SKILL.md`): creates technical specifications (spec) — the precise, unambiguous definition of software behavior used as the source of truth for ai code generation agents. use this skill when a user wants to: write a technical spec, convert prd requirements into typed contracts, define typescript interfaces/zod schemas from user stories, generate openapi 3.1 contracts, specify state machines, scaffold tests from requirements, or prepare a document so that cursor/claude code/antigravity can generate production code without further clarification. trigger for phrases like 'escreve a spec', 'detalha a implementação', 'quero os tipos typescript', 'define os contratos de api', 'especifica esse componente/feature', 'quero que o cursor implemente isso', 'preciso da spec técnica', or any request to make prd/sdd decisions precise enough for ai-driven code generation. always positioned downstream of prd + sdd.
 - **`spec-template`** (`spec-template.md`): standardized blueprint for creating high-fidelity sdd technical specifications.
 - **`type-patterns`** (`type-patterns.md`): reusable structural patterns for typescript and pydantic data model definitions.
@@ -165,6 +238,9 @@
 - **`vulnerability-checklists`** (`checklists.md`): security auditing checklists for common web and server vulnerabilities.
 - **`web-design-guidelines`** (`SKILL.md`): review ui code for web interface guidelines compliance. use when asked to "review my ui", "check accessibility", "audit design", "review ux", or "check my site against best practices".
 - **`webapp-testing`** (`SKILL.md`): web application testing principles. e2e, playwright, deep audit strategies.
+- **`wordpress`** (`SKILL.md`): complete wordpress development workflow covering theme development, plugin creation, woocommerce integration, performance optimization, and security hardening. includes wordpress 7.0 features: real-time collaboration, ai connectors, abilities api, dataviews, and php-only blocks.
+- **`wordpress-penetration-testing`** (`SKILL.md`): assess wordpress installations for common vulnerabilities and wordpress 7.0 attack surfaces.
+- **`wordpress-plugin-development`** (`SKILL.md`): wordpress plugin development workflow covering plugin architecture, hooks, admin interfaces, rest api, security best practices, and wordpress 7.0 features: real-time collaboration, ai connectors, abilities api, dataviews, and php-only blocks.
 
 ## 📂 `workflows/`
 
@@ -186,4 +262,3 @@
 - **`agents-governance`** (`AGENTS.md`): global behavioral guidelines and persona definitions for jinc agents.
 - **`gemini`** (`GEMINI.md`): core ai governance for orchestration, agent routing, and socratic decision gates in the jinc ecosystem.
 - `devops-jinc-protocol.md`: _(Aguardando conformidade SDD)_
-

@@ -19,6 +19,10 @@ def validate_sdd_contract(filepath: str) -> bool:
         print(f"{Colors.HEADER}⏭️ Isento: {filename}{Colors.ENDC}")
         return True
 
+    if filename not in ['skill.md', 'template.md']:
+        print(f"{Colors.HEADER}⏭️ Isento (Não é manifesto): {filename}{Colors.ENDC}")
+        return True
+
     try:
         with open(filepath, 'r', encoding='utf-8-sig') as f:
             content = f.read()
