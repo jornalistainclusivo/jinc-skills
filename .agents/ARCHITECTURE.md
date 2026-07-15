@@ -25,222 +25,79 @@
 
 ## 📂 `skills/`
 
+- **`accessibility-compliance-accessibility-audit`** (`accessibility-compliance-accessibility-audit`): you are an accessibility expert specializing in wcag compliance, inclusive design, and assistive technology compatibility. conduct audits, identify barriers, and provide remediation guidance.
+- **`api-design-principles`** (`api-design-principles`): master rest and graphql api design principles to build intuitive, scalable, and maintainable apis that delight developers and stand the test of time.
+- **`api-patterns`** (`api-patterns`): api design principles and decision-making. rest vs graphql vs trpc selection, response formats, versioning, pagination.
+- **`api-security-best-practices`** (`api-security-best-practices`): implement secure api design patterns including authentication, authorization, input validation, rate limiting, and protection against common api vulnerabilities
+- **`app-builder`** (`app-builder`): main application building orchestrator. creates full-stack applications from natural language requests. determines project type, selects tech stack, coordinates agents.
+- **`architecture`** (`architecture`): architectural decision-making framework. requirements analysis, trade-off evaluation, adr documentation. use when making architecture decisions or analyzing system design.
+- **`bash-linux`** (`bash-linux`): bash/linux terminal patterns. critical commands, piping, error handling, scripting. use when working on macos or linux systems.
+- **`behavioral-modes`** (`behavioral-modes`): ai operational modes (brainstorm, implement, debug, review, teach, ship, orchestrate). use to adapt behavior based on task type.
+- **`brainstorming`** (`brainstorming`): socratic questioning protocol + user communication. mandatory for complex requests, new features, or unclear requirements. includes progress reporting and error handling.
+- **`clean-code`** (`clean-code`): pragmatic coding standards - concise, direct, no over-engineering, no unnecessary comments
+- **`code-documentation-doc-generate`** (`code-documentation-doc-generate`): you are a documentation expert specializing in creating comprehensive, maintainable documentation from code. generate api docs, architecture diagrams, user guides, and technical references using ai-powered analysis and industry best practices.
+- **`code-review-checklist`** (`code-review-checklist`): code review guidelines covering code quality, security, and best practices.
+- **`codebase-to-wordpress-converter`** (`codebase-to-wordpress-converter`): expert skill for converting any codebase (react/html/next.js) into a pixel-perfect, seo-optimized, and dynamic wordpress theme.
+- **`conductor-setup`** (`conductor-setup`): configure a rails project to work with conductor (parallel coding agents)
+- **`conductor-status`** (`conductor-status`): display project status, active tracks, and next actions
+- **`conductor-validator`** (`conductor-validator`): validates conductor project artifacts for completeness,
+- **`context7-auto-research`** (`context7-auto-research`): automatically fetch latest library/framework documentation for claude code via context7 api. use when you need up-to-date documentation for libraries and frameworks or asking about react, next.js, prisma, or any other popular library.
+- **`database-design`** (`database-design`): database design principles and decision-making. schema design, indexing strategy, orm selection, serverless databases.
+- **`deployment-procedures`** (`deployment-procedures`): production deployment principles and decision-making. safe deployment workflows, rollback strategies, and verification. teaches thinking, not scripts.
+- **`devops-jinc-protocol`** (`devops-jinc-protocol`): devops jinc protocol for ai-native hybrid governance and engineering guidelines.
 - **`doc`** (`doc.md`): documentation for antigravity skills
-- **`accessibility-compliance-accessibility-audit`** (`SKILL.md`): you are an accessibility expert specializing in wcag compliance, inclusive design, and assistive technology compatibility. conduct audits, identify barriers, and provide remediation guidance.
-- **`accessibility tests`** (`implementation-playbook.md`): v.description,
-- **`api-design-principles`** (`SKILL.md`): master rest and graphql api design principles to build intuitive, scalable, and maintainable apis that delight developers and stand the test of time.
-- `api-design-checklist.md`: _(Aguardando conformidade SDD)_
-- `graphql-schema-design.md`: _(Aguardando conformidade SDD)_
-- `rest-best-practices.md`: _(Aguardando conformidade SDD)_
-- `implementation-playbook.md`: _(Aguardando conformidade SDD)_
-- **`api-patterns`** (`SKILL.md`): api design principles and decision-making. rest vs graphql vs trpc selection, response formats, versioning, pagination.
-- **`api-style`** (`api-style.md`): api style selection for different use cases.
-- **`auth`** (`auth.md`): authentication patterns for api security and user management.
-- **`documentation`** (`documentation.md`): documentation patterns for api documentation.
-- **`graphql`** (`graphql.md`): graphql patterns for api documentation.
-- **`rate-limiting`** (`rate-limiting.md`): rate limiting patterns for api security and usage control.
-- **`response`** (`response.md`): response format patterns for api responses.
-- **`rest`** (`rest.md`): rest principles for api design.
-- **`security-testing`** (`security-testing.md`): security testing patterns for api security.
-- **`trpc`** (`trpc.md`): trpc patterns for api design.
-- **`versioning`** (`versioning.md`): versioning patterns for api versioning.
-- **`api-security-best-practices`** (`SKILL.md`): implement secure api design patterns including authentication, authorization, input validation, rate limiting, and protection against common api vulnerabilities
-- **`app-builder`** (`SKILL.md`): main application building orchestrator. creates full-stack applications from natural language requests. determines project type, selects tech stack, coordinates agents.
-- **`agent-coordination`** (`agent-coordination.md`): advanced agent coordination for modern applications
-- **`feature-building`** (`feature-building.md`): advanced feature building techniques for modern applications
-- **`project-detection`** (`project-detection.md`): advanced project detection techniques for modern applications
-- **`scaffolding`** (`scaffolding.md`): advanced project scaffolding techniques for modern applications
-- **`tech-stack`** (`tech-stack.md`): advanced tech stack selection techniques for modern applications
-- **`templates`** (`SKILL.md`): project scaffolding templates for new applications. use when creating new projects from scratch. contains 12 templates for various tech stacks.
-- **`astro-static`** (`TEMPLATE.md`): astro static site template principles. content-focused websites, blogs, documentation.
-- **`chrome-extension`** (`TEMPLATE.md`): chrome extension template principles. manifest v3, react, typescript.
-- **`cli-tool`** (`TEMPLATE.md`): node.js cli tool template principles. commander.js, interactive prompts.
-- **`electron-desktop`** (`TEMPLATE.md`): electron desktop app template principles. cross-platform, react, typescript.
-- **`express-api`** (`TEMPLATE.md`): express.js rest api template principles. typescript, prisma, jwt.
-- **`flutter-app`** (`TEMPLATE.md`): flutter mobile app template principles. riverpod, go router, clean architecture.
-- **`monorepo-turborepo`** (`TEMPLATE.md`): turborepo monorepo template principles. pnpm workspaces, shared packages.
-- **`nextjs-fullstack`** (`TEMPLATE.md`): next.js full-stack template principles. app router, prisma, tailwind v4.
-- **`nextjs-saas`** (`TEMPLATE.md`): next.js saas template principles (2026 standards). react 19, server actions, auth.js v6.
-- **`nextjs-static`** (`TEMPLATE.md`): modern template for next.js 16, react 19 & tailwind v4. optimized for landing pages and portfolios.
-- **`nuxt-app`** (`TEMPLATE.md`): nuxt 4 full-stack template. vue 3 (vapor), pinia, tailwind v4, prisma.
-- **`python-fastapi`** (`TEMPLATE.md`): fastapi rest api template principles. sqlalchemy, pydantic, alembic.
-- **`react-native-app`** (`TEMPLATE.md`): react native mobile app template principles. expo, typescript, navigation.
-- **`architecture`** (`SKILL.md`): architectural decision-making framework. requirements analysis, trade-off evaluation, adr documentation. use when making architecture decisions or analyzing system design.
-- **`context-discovery`** (`context-discovery.md`): techniques for mapping business requirements to technical constraints and identifying architectural drivers.
-- **`architecture-examples`** (`examples.md`): real-world case studies and reference implementations of scalable system architectures.
-- **`pattern-selection`** (`pattern-selection.md`): logic for choosing between monolithic, microservices, serverless, and event-driven architectural patterns.
-- **`architecture-patterns-reference`** (`patterns-reference.md`): comprehensive catalog of common software architecture patterns and their implementation blueprints.
-- **`trade-off-analysis`** (`trade-off-analysis.md`): evaluation framework for balancing competing priorities like performance, cost, and maintainability.
-- **`bash-linux`** (`SKILL.md`): bash/linux terminal patterns. critical commands, piping, error handling, scripting. use when working on macos or linux systems.
-- **`behavioral-modes`** (`SKILL.md`): ai operational modes (brainstorm, implement, debug, review, teach, ship, orchestrate). use to adapt behavior based on task type.
-- **`brainstorming`** (`SKILL.md`): socratic questioning protocol + user communication. mandatory for complex requests, new features, or unclear requirements. includes progress reporting and error handling.
-- **`dynamic-questioning`** (`dynamic-questioning.md`): advanced techniques for interactive socratic questioning and iterative ideation.
-- **`clean-code`** (`SKILL.md`): pragmatic coding standards - concise, direct, no over-engineering, no unnecessary comments
-- **`code-documentation-doc-generate`** (`SKILL.md`): you are a documentation expert specializing in creating comprehensive, maintainable documentation from code. generate api docs, architecture diagrams, user guides, and technical references using ai-powered analysis and industry best practices.
-- **`users_db`** (`implementation-playbook.md`): successful response
-- **`code-review-checklist`** (`SKILL.md`): code review guidelines covering code quality, security, and best practices.
-- **`codebase-to-wordpress-converter`** (`SKILL.md`): expert skill for converting any codebase (react/html/next.js) into a pixel-perfect, seo-optimized, and dynamic wordpress theme.
-- **`conductor-setup`** (`SKILL.md`): configure a rails project to work with conductor (parallel coding agents)
-- **`conductor-status`** (`SKILL.md`): display project status, active tracks, and next actions
-- **`conductor-validator`** (`SKILL.md`): validates conductor project artifacts for completeness,
-- **`context7-auto-research`** (`SKILL.md`): automatically fetch latest library/framework documentation for claude code via context7 api. use when you need up-to-date documentation for libraries and frameworks or asking about react, next.js, prisma, or any other popular library.
-- **`database-design`** (`SKILL.md`): database design principles and decision-making. schema design, indexing strategy, orm selection, serverless databases.
-- **`database-selection`** (`database-selection.md`): advanced database selection for modern applications
-- **`indexing`** (`indexing.md`): indexing principles for modern databases
-- **`migrations`** (`migrations.md`): advanced migration patterns for relational databases
-- **`optimization`** (`optimization.md`): advanced query optimization techniques for modern databases
-- **`orm-selection`** (`orm-selection.md`): advanced orm selection for modern applications
-- **`schema-design`** (`schema-design.md`): advanced schema design for modern relational databases
-- **`deployment-procedures`** (`SKILL.md`): production deployment principles and decision-making. safe deployment workflows, rollback strategies, and verification. teaches thinking, not scripts.
-- **`devops-jinc-protocol`** (`SKILL.md`): devops jinc protocol for ai-native hybrid governance and engineering guidelines.
-- **`docker-containers`** (`SKILL.md`): build, repair, and harden docker-based development and deployment setups for applications and services. use when any agent needs to create or update `dockerfile`, `.dockerignore`, `compose.yaml` or `docker-compose.yml`, container entrypoints, multi-stage builds, local service orchestration, or container debugging workflows. trigger for requests such as containerizing a node/python/go app, adding postgres or redis with compose, shrinking images, fixing container startup failures, debugging port or volume issues, improving docker caching, or making a container setup safer for production.
-- **`examples`** (`examples.md`): common fixes for container networking, volumes, and build errors.
-- **`recipes`** (`recipes.md`): curated dockerfiles and compose configs for common dev environments.
-- **`troubleshooting`** (`troubleshooting.md`): common fixes for container networking, volumes, and build errors.
-- **`documentation-templates`** (`SKILL.md`): documentation templates and structure guidelines. readme, api docs, code comments, and ai-friendly documentation.
-- **`accessibility`** (`ACCESSIBILITY.md`): accessibility guidelines for next.js and react.
-- **`accessibility_guidelines`** (`ACCESSIBILITY_GUIDELINES.md`): accessibility guidelines for next.js and react.
-- **`frontend-design`** (`SKILL.md`): design thinking and decision-making for web ui. use when designing components, layouts, color schemes, typography, or creating aesthetic interfaces. teaches principles, not fixed values.
-- **`animation-guide`** (`animation-guide.md`): animation guidelines for next.js and react.
-- **`color-system`** (`color-system.md`): color system for next.js and react.
-- **`decision-trees`** (`decision-trees.md`): decision trees for next.js and react.
-- **`motion-graphics`** (`motion-graphics.md`): advanced animation techniques for premium web experiences
-- **`typography-system`** (`typography-system.md`): advanced typography and layout system
-- **`ux-psychology`** (`ux-psychology.md`): advanced ux psychology and behavioral design patterns
-- **`visual-effects`** (`visual-effects.md`): advanced visual effects and animation techniques for modern interfaces
-- **`game-development`** (`SKILL.md`): game development orchestrator. routes to platform-specific skills based on project needs.
-- **`2d-games`** (`SKILL.md`): 2d game development principles. sprites, tilemaps, physics, camera.
-- **`3d-games`** (`SKILL.md`): 3d game development principles. rendering, shaders, physics, cameras.
-- **`game-art`** (`SKILL.md`): game art principles. visual style selection, asset pipeline, animation workflow.
-- **`game-audio`** (`SKILL.md`): game audio principles. sound design, music integration, adaptive audio systems.
-- **`game-design`** (`SKILL.md`): game design principles. gdd structure, balancing, player psychology, progression.
-- **`mobile-games`** (`SKILL.md`): mobile game development principles. touch input, battery, performance, app stores.
-- **`multiplayer`** (`SKILL.md`): multiplayer game development principles. architecture, networking, synchronization.
-- **`pc-games`** (`SKILL.md`): pc and console game development principles. engine selection, platform features, optimization strategies.
-- **`vr-ar`** (`SKILL.md`): vr/ar development principles. comfort, interaction, performance requirements.
-- **`web-games`** (`SKILL.md`): web browser game development principles. framework selection, webgpu, optimization, pwa.
-- **`geo-fundamentals`** (`SKILL.md`): generative engine optimization for ai search engines (chatgpt, claude, perplexity).
-- **`github`** (`SKILL.md`): use the `gh` cli for issues, pull requests, actions runs, and github api queries.
-- **`github-workflow-automation`** (`SKILL.md`): patterns for automating github workflows with ai assistance, inspired by [gemini cli](https://github.com/google-gemini/gemini-cli) and modern devops practices.
-- **`i18n-localization`** (`SKILL.md`): internationalization and localization patterns. detecting hardcoded strings, managing translations, locale files, rtl support.
-- **`intelligent-routing`** (`SKILL.md`): automatic agent selection and intelligent task routing. analyzes user requests and automatically selects the best specialist agent(s) without requiring explicit user mentions.
-- **`jinc-governance-standards`** (`SKILL.md`): 🛡️ jinc governance standards — devops & vibe-coding edition. mandatory guidelines for accessibility, inclusion, and ethics for the jornalista inclusivo project.
-- **`lint-and-validate`** (`SKILL.md`): automatic quality control, linting, and static analysis procedures. use after every code modification to ensure syntax correctness and project standards. triggers onkeywords: lint, format, check, validate, types, static analysis.
-- **`mcp-builder`** (`SKILL.md`): create mcp (model context protocol) servers that enable llms to interact with external services through well-designed tools. the quality of an mcp server is measured by how well it enables llms to accomplish real-world tasks.
-- `evaluation.md`: _(Aguardando conformidade SDD)_
-- `mcp_best_practices.md`: _(Aguardando conformidade SDD)_
-- **`service-mcp-server",`** (`node_mcp_server.md`): what the tool does",
-- `python_mcp_server.md`: _(Aguardando conformidade SDD)_
-- **`mlops-engineer`** (`SKILL.md`): build comprehensive ml pipelines, experiment tracking, and model registries with mlflow, kubeflow, and modern mlops tools.
-- **`mobile-design`** (`SKILL.md`): mobile-first design thinking and decision-making for ios and android apps. touch interaction, performance patterns, platform conventions. teaches principles, not fixed values. use when building react native, flutter, or native mobile apps.
-- **`mobile-decision-trees`** (`decision-trees.md`): logic-based flows for determining mobile ux interactions and conditional state changes.
-- **`mobile-backend`** (`mobile-backend.md`): bff (backend for frontend) patterns and api optimization for low-latency mobile data.
-- **`mobile-color-system`** (`mobile-color-system.md`): high-contrast palettes and adaptive dark mode strategies for mobile oled displays.
-- **`mobile-debugging`** (`mobile-debugging.md`): protocols for remote debugging and troubleshooting across diverse mobile environments.
-- **`mobile-design-thinking`** (`mobile-design-thinking.md`): ideation framework and user-centric mapping for mobile-first product development.
-- **`mobile-navigation`** (`mobile-navigation.md`): gestural and structural navigation patterns for ios and android platforms.
-- **`mobile-performance`** (`mobile-performance.md`): techniques for frame rate stability, battery life preservation, and memory optimization.
-- **`mobile-testing`** (`mobile-testing.md`): automated and manual testing strategies for cross-device mobile hardware validation.
-- **`mobile-typography`** (`mobile-typography.md`): scalable font systems and readability guidelines for small-screen device architectures.
-- **`platform-android`** (`platform-android.md`): android-specific material design 3 guidelines and native os integration protocols.
-- **`platform-ios`** (`platform-ios.md`): ios-specific human interface guidelines (hig) and apple ecosystem design standards.
-- **`touch-psychology`** (`touch-psychology.md`): ergonomic principles and tactile feedback standards for mobile user interfaces.
-- **`1-async-eliminating-waterfalls`** (`1-async-eliminating-waterfalls.md`): eliminating waterfalls in async functions.
-- **`2-bundle-bundle-size-optimization`** (`2-bundle-bundle-size-optimization.md`): bundle size optimization for next.js and react.
-- **`3-server-server-side-performance`** (`3-server-server-side-performance.md`): server-side performance optimization for next.js and react.
-- **`4-client-client-side-data-fetching`** (`4-client-client-side-data-fetching.md`): client-side data fetching for next.js and react.
-- **`5-rerender-re-render-optimization`** (`5-rerender-re-render-optimization.md`): re-render optimization for next.js and react.
-- **`6-rendering-rendering-performance`** (`6-rendering-rendering-performance.md`): rendering performance for next.js and react.
-- **`7-js-javascript-performance`** (`7-js-javascript-performance.md`): javascript performance optimization for next.js and react.
-- **`8-advanced-advanced-patterns`** (`8-advanced-advanced-patterns.md`): advanced patterns for next.js and react.
-- **`9-cache-components`** (`9-cache-components.md`): cache components for next.js and react.
-- **`react-best-practices`** (`SKILL.md`): react and next.js performance optimization from vercel engineering. use when building react components, optimizing performance, eliminating waterfalls, reducing bundle size, reviewing code for performance issues, or implementing server/client-side optimizations.
-- **`nodejs-best-practices`** (`SKILL.md`): node.js development principles and decision-making. framework selection, async patterns, security, and architecture. teaches thinking, not copying.
-- **`parallel-agents`** (`SKILL.md`): multi-agent orchestration patterns. use when multiple independent tasks can run with different domain expertise or when comprehensive analysis requires multiple perspectives.
-- **`performance-profiling`** (`SKILL.md`): performance profiling principles. measurement, analysis, and optimization techniques.
-- **`plan-writing`** (`SKILL.md`): structured task planning with clear breakdowns, dependencies, and verification criteria. use when implementing features, refactoring, or any multi-step work.
-- `AGENTS.md`: _(Aguardando conformidade SDD)_
-- `README.md`: _(Aguardando conformidade SDD)_
-- **`postgres-best-practices`** (`SKILL.md`): postgres performance optimization and best practices from supabase. use this skill when writing, reviewing, or optimizing postgres queries, schema designs, or database configurations.
-- `_contributing.md`: _(Aguardando conformidade SDD)_
-- `_sections.md`: _(Aguardando conformidade SDD)_
-- `_template.md`: _(Aguardando conformidade SDD)_
-- `advanced-full-text-search.md`: _(Aguardando conformidade SDD)_
-- `advanced-jsonb-indexing.md`: _(Aguardando conformidade SDD)_
-- `conn-idle-timeout.md`: _(Aguardando conformidade SDD)_
-- `conn-limits.md`: _(Aguardando conformidade SDD)_
-- `conn-pooling.md`: _(Aguardando conformidade SDD)_
-- `conn-prepared-statements.md`: _(Aguardando conformidade SDD)_
-- `data-batch-inserts.md`: _(Aguardando conformidade SDD)_
-- `data-n-plus-one.md`: _(Aguardando conformidade SDD)_
-- `data-pagination.md`: _(Aguardando conformidade SDD)_
-- `data-upsert.md`: _(Aguardando conformidade SDD)_
-- `lock-advisory.md`: _(Aguardando conformidade SDD)_
-- `lock-deadlock-prevention.md`: _(Aguardando conformidade SDD)_
-- `lock-short-transactions.md`: _(Aguardando conformidade SDD)_
-- `lock-skip-locked.md`: _(Aguardando conformidade SDD)_
-- `monitor-explain-analyze.md`: _(Aguardando conformidade SDD)_
-- `monitor-pg-stat-statements.md`: _(Aguardando conformidade SDD)_
-- `monitor-vacuum-analyze.md`: _(Aguardando conformidade SDD)_
-- `query-composite-indexes.md`: _(Aguardando conformidade SDD)_
-- `query-covering-indexes.md`: _(Aguardando conformidade SDD)_
-- `query-index-types.md`: _(Aguardando conformidade SDD)_
-- `query-missing-indexes.md`: _(Aguardando conformidade SDD)_
-- `query-partial-indexes.md`: _(Aguardando conformidade SDD)_
-- `schema-data-types.md`: _(Aguardando conformidade SDD)_
-- `schema-foreign-key-indexes.md`: _(Aguardando conformidade SDD)_
-- `schema-lowercase-identifiers.md`: _(Aguardando conformidade SDD)_
-- `schema-partitioning.md`: _(Aguardando conformidade SDD)_
-- `schema-primary-keys.md`: _(Aguardando conformidade SDD)_
-- `security-privileges.md`: _(Aguardando conformidade SDD)_
-- `security-rls-basics.md`: _(Aguardando conformidade SDD)_
-- `security-rls-performance.md`: _(Aguardando conformidade SDD)_
-- **`postgresql`** (`SKILL.md`): design a postgresql-specific schema. covers best-practices, data types, indexing, constraints, performance patterns, and advanced features
-- **`postgresql-optimization`** (`SKILL.md`): postgresql database optimization workflow for query tuning, indexing strategies, performance analysis, and production database management.
-- **`powershell-windows`** (`SKILL.md`): powershell windows patterns. critical pitfalls, operator syntax, error handling.
-- **`prd-creator`** (`SKILL.md`): creates comprehensive product requirements documents (prd) — the foundational document that defines what to build and why, upstream of sdd and spec in the jinc pipeline. use this skill whenever a user wants to: write a prd, capture product requirements, define a feature from a business or user perspective, document user stories and acceptance criteria, build a business case, analyze market opportunity, define success metrics, or translate a raw idea into structured requirements. trigger for: 'escreve o prd', 'define os requisitos', 'preciso documentar esse produto', 'quero as user stories para', 'define essa feature', 'business case para', 'what should this product do', 'capture requirements for', or any request to define product scope before architecture. always the first document in the jinc pipeline — prd precedes sdd and spec. use even if the user doesn't say 'prd' — if they're figuring out what to build, this skill applies.
-- **`prd-guide`** (`prd-guide.md`): principles of writing unambiguous product requirement documents.
-- **`prd-template`** (`prd-template.md`): reference for the prd template.
-- `README.md`: _(Aguardando conformidade SDD)_
-- **`prompt-engineer`** (`SKILL.md`): transforms user prompts into optimized prompts using frameworks (rtf, risen, chain of thought, rodes, chain of density, race, rise, star, soap, clear, grow)
-- **`prompt-library`** (`SKILL.md`): a comprehensive collection of battle-tested prompts inspired by [awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts) and community best practices.
-- **`python-fastapi-development`** (`SKILL.md`): python fastapi backend development with async patterns, sqlalchemy, pydantic, authentication, and production api patterns.
-- **`python-patterns`** (`SKILL.md`): python development principles and decision-making. framework selection, async patterns, type hints, project structure. teaches thinking, not copying.
-- **`python-performance-optimization`** (`SKILL.md`): profile and optimize python code using cprofile, memory profilers, and performance best practices. use when debugging slow python code, optimizing bottlenecks, or improving application performance.
-- `implementation-playbook.md`: _(Aguardando conformidade SDD)_
-- **`python-testing-patterns`** (`SKILL.md`): implement comprehensive testing strategies with pytest, fixtures, mocking, and test-driven development. use when writing python tests, setting up test suites, or implementing testing best practices.
-- `implementation-playbook.md`: _(Aguardando conformidade SDD)_
-- **`red-team-tactics`** (`SKILL.md`): red team tactics principles based on mitre att&ck. attack phases, detection evasion, reporting.
-- **`rust-pro`** (`SKILL.md`): master rust 1.75+ with modern async patterns, advanced type system
-- **`sdd-creator`** (`SKILL.md`): creates software design documents (sdd) following spec-driven development principles for all types of software. use this skill whenever a user wants to design software before coding, document an architecture, write a technical spec, convert a prd into an sdd, plan system design, or run a 'vibe architecture' session. trigger also for phrases like 'let\\'s spec this out', 'design the system', 'document this feature', 'lock the architecture', 'bora codar' (after an idea description), 'quero criar um sistema', 'vamos arquitetar isso', or any request to plan a feature at the system level before implementation. this skill acts as a senior cto + staff engineer using a pair architecture (vibe coding) flow: seed → mirror → jam → lock. always use it — even for simple features — when the user\\'s intent is 'design first, code second.
-- **`core-template`** (`core-template.md`): reference for the sdd core template.
-- **`jinc-conventions`** (`jinc-conventions.md`): jinc apps — conventions & standards reference
-- **`security-audit`** (`SKILL.md`): comprehensive security auditing workflow covering web application testing, api security, penetration testing, vulnerability scanning, and security hardening.
-- **`senior-fullstack`** (`SKILL.md`): complete toolkit for senior fullstack with modern tools and best practices.
-- `architecture_patterns.md`: _(Aguardando conformidade SDD)_
-- `development_workflows.md`: _(Aguardando conformidade SDD)_
-- `tech_stack_guide.md`: _(Aguardando conformidade SDD)_
-- **`seo-fundamentals`** (`SKILL.md`): seo fundamentals, e-e-a-t, core web vitals, and google algorithm principles.
-- **`server-management`** (`SKILL.md`): server management principles and decision-making. process management, monitoring strategy, and scaling decisions. teaches thinking, not commands.
-- **`skill-creator`** (`SKILL.md`): create new skills, modify and improve existing skills, and measure skill performance. use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.
-- **`skill-creator-ms`** (`SKILL.md`): guide for creating effective skills for ai coding agents working with azure sdks and microsoft foundry services. use when creating new skills or updating existing skills.
-- **`spec-creator`** (`SKILL.md`): creates technical specifications (spec) — the precise, unambiguous definition of software behavior used as the source of truth for ai code generation agents. use this skill when a user wants to: write a technical spec, convert prd requirements into typed contracts, define typescript interfaces/zod schemas from user stories, generate openapi 3.1 contracts, specify state machines, scaffold tests from requirements, or prepare a document so that cursor/claude code/antigravity can generate production code without further clarification. trigger for phrases like 'escreve a spec', 'detalha a implementação', 'quero os tipos typescript', 'define os contratos de api', 'especifica esse componente/feature', 'quero que o cursor implemente isso', 'preciso da spec técnica', or any request to make prd/sdd decisions precise enough for ai-driven code generation. always positioned downstream of prd + sdd.
-- **`spec-template`** (`spec-template.md`): standardized blueprint for creating high-fidelity sdd technical specifications.
-- **`type-patterns`** (`type-patterns.md`): reusable structural patterns for typescript and pydantic data model definitions.
-- **`strapi-editorial-orchestrator`** (`SKILL.md`): how to process journalistic drafts in strapi 5 and generate ai metadata, plain language summaries, and contextual layers. make sure to use this skill whenever the user mentions `/automacao-jinc`, `/revisar-acessibilidade`, `/gerar-contexto`, "strapi 5 lifecycles", "ast blocks", "plain language wcag", "gerar seo", or is editing files like `lifecycles.ts` or `ai-prompts.ts` in the cms. even if they don't explicitly name this skill, trigger it when dealing with strapi 5 ai metadata generation or accessible journalistic content processing.
-- **`strapi5-ast-blocks`** (`strapi5-ast-blocks.md`): reference guide for strapi 5 ast block structures and data transformation protocols.
-- **`systematic-debugging`** (`SKILL.md`): 4-phase systematic debugging methodology with root cause analysis and evidence-based verification. use when debugging complex issues.
-- **`tailwind-patterns`** (`SKILL.md`): tailwind css v4 principles. css-first configuration, container queries, modern patterns, design token architecture.
-- **`tdd-workflow`** (`SKILL.md`): test-driven development workflow principles. red-green-refactor cycle.
-- **`testing-patterns`** (`SKILL.md`): testing patterns and principles. unit, integration, mocking strategies.
-- **`typescript-expert`** (`SKILL.md`): typescript specialist for modern development. use this skill when the user wants help with complex types, fixing ts errors, implementing strict typing without 'any', generics, or optimizing typescript configurations.
-- **`vulnerability-scanner`** (`SKILL.md`): advanced vulnerability analysis principles. owasp 2025, supply chain security, attack surface mapping, risk prioritization.
-- **`vulnerability-checklists`** (`checklists.md`): security auditing checklists for common web and server vulnerabilities.
-- **`web-design-guidelines`** (`SKILL.md`): review ui code for web interface guidelines compliance. use when asked to "review my ui", "check accessibility", "audit design", "review ux", or "check my site against best practices".
-- **`webapp-testing`** (`SKILL.md`): web application testing principles. e2e, playwright, deep audit strategies.
-- **`wordpress`** (`SKILL.md`): complete wordpress development workflow covering theme development, plugin creation, woocommerce integration, performance optimization, and security hardening. includes wordpress 7.0 features: real-time collaboration, ai connectors, abilities api, dataviews, and php-only blocks.
-- **`wordpress-penetration-testing`** (`SKILL.md`): assess wordpress installations for common vulnerabilities and wordpress 7.0 attack surfaces.
-- **`wordpress-plugin-development`** (`SKILL.md`): wordpress plugin development workflow covering plugin architecture, hooks, admin interfaces, rest api, security best practices, and wordpress 7.0 features: real-time collaboration, ai connectors, abilities api, dataviews, and php-only blocks.
+- **`docker-containers`** (`docker-containers`): build, repair, and harden docker-based development and deployment setups for applications and services. use when any agent needs to create or update `dockerfile`, `.dockerignore`, `compose.yaml` or `docker-compose.yml`, container entrypoints, multi-stage builds, local service orchestration, or container debugging workflows. trigger for requests such as containerizing a node/python/go app, adding postgres or redis with compose, shrinking images, fixing container startup failures, debugging port or volume issues, improving docker caching, or making a container setup safer for production.
+- **`documentation-templates`** (`documentation-templates`): documentation templates and structure guidelines. readme, api docs, code comments, and ai-friendly documentation.
+- **`frontend-design`** (`frontend-design`): design thinking and decision-making for web ui. use when designing components, layouts, color schemes, typography, or creating aesthetic interfaces. teaches principles, not fixed values.
+- **`game-development`** (`game-development`): game development orchestrator. routes to platform-specific skills based on project needs.
+- **`geo-fundamentals`** (`geo-fundamentals`): generative engine optimization for ai search engines (chatgpt, claude, perplexity).
+- **`github`** (`github`): use the `gh` cli for issues, pull requests, actions runs, and github api queries.
+- **`github-workflow-automation`** (`github-workflow-automation`): patterns for automating github workflows with ai assistance, inspired by [gemini cli](https://github.com/google-gemini/gemini-cli) and modern devops practices.
+- **`i18n-localization`** (`i18n-localization`): internationalization and localization patterns. detecting hardcoded strings, managing translations, locale files, rtl support.
+- **`intelligent-routing`** (`intelligent-routing`): automatic agent selection and intelligent task routing. analyzes user requests and automatically selects the best specialist agent(s) without requiring explicit user mentions.
+- **`jinc-governance-standards`** (`jinc-governance-standards`): 🛡️ jinc governance standards — devops & vibe-coding edition. mandatory guidelines for accessibility, inclusion, and ethics for the jornalista inclusivo project.
+- **`lint-and-validate`** (`lint-and-validate`): automatic quality control, linting, and static analysis procedures. use after every code modification to ensure syntax correctness and project standards. triggers onkeywords: lint, format, check, validate, types, static analysis.
+- **`mcp-builder`** (`mcp-builder`): create mcp (model context protocol) servers that enable llms to interact with external services through well-designed tools. the quality of an mcp server is measured by how well it enables llms to accomplish real-world tasks.
+- **`mlops-engineer`** (`mlops-engineer`): build comprehensive ml pipelines, experiment tracking, and model registries with mlflow, kubeflow, and modern mlops tools.
+- **`mobile-design`** (`mobile-design`): mobile-first design thinking and decision-making for ios and android apps. touch interaction, performance patterns, platform conventions. teaches principles, not fixed values. use when building react native, flutter, or native mobile apps.
+- **`react-best-practices`** (`nextjs-react-expert`): react and next.js performance optimization from vercel engineering. use when building react components, optimizing performance, eliminating waterfalls, reducing bundle size, reviewing code for performance issues, or implementing server/client-side optimizations.
+- **`nodejs-best-practices`** (`nodejs-best-practices`): node.js development principles and decision-making. framework selection, async patterns, security, and architecture. teaches thinking, not copying.
+- **`parallel-agents`** (`parallel-agents`): multi-agent orchestration patterns. use when multiple independent tasks can run with different domain expertise or when comprehensive analysis requires multiple perspectives.
+- **`performance-profiling`** (`performance-profiling`): performance profiling principles. measurement, analysis, and optimization techniques.
+- **`plan-writing`** (`plan-writing`): structured task planning with clear breakdowns, dependencies, and verification criteria. use when implementing features, refactoring, or any multi-step work.
+- **`postgres-best-practices`** (`postgres-best-practices`): postgres performance optimization and best practices from supabase. use this skill when writing, reviewing, or optimizing postgres queries, schema designs, or database configurations.
+- **`postgresql`** (`postgresql`): design a postgresql-specific schema. covers best-practices, data types, indexing, constraints, performance patterns, and advanced features
+- **`postgresql-optimization`** (`postgresql-optimization`): postgresql database optimization workflow for query tuning, indexing strategies, performance analysis, and production database management.
+- **`powershell-windows`** (`powershell-windows`): powershell windows patterns. critical pitfalls, operator syntax, error handling.
+- **`prd-creator`** (`prd-creator`): creates comprehensive product requirements documents (prd) — the foundational document that defines what to build and why, upstream of sdd and spec in the jinc pipeline. use this skill whenever a user wants to: write a prd, capture product requirements, define a feature from a business or user perspective, document user stories and acceptance criteria, build a business case, analyze market opportunity, define success metrics, or translate a raw idea into structured requirements. trigger for: 'escreve o prd', 'define os requisitos', 'preciso documentar esse produto', 'quero as user stories para', 'define essa feature', 'business case para', 'what should this product do', 'capture requirements for', or any request to define product scope before architecture. always the first document in the jinc pipeline — prd precedes sdd and spec. use even if the user doesn't say 'prd' — if they're figuring out what to build, this skill applies.
+- **`prompt-engineer`** (`prompt-engineer`): transforms user prompts into optimized prompts using frameworks (rtf, risen, chain of thought, rodes, chain of density, race, rise, star, soap, clear, grow)
+- **`prompt-library`** (`prompt-library`): a comprehensive collection of battle-tested prompts inspired by [awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts) and community best practices.
+- **`python-fastapi-development`** (`python-fastapi-development`): python fastapi backend development with async patterns, sqlalchemy, pydantic, authentication, and production api patterns.
+- **`python-patterns`** (`python-patterns`): python development principles and decision-making. framework selection, async patterns, type hints, project structure. teaches thinking, not copying.
+- **`python-performance-optimization`** (`python-performance-optimization`): profile and optimize python code using cprofile, memory profilers, and performance best practices. use when debugging slow python code, optimizing bottlenecks, or improving application performance.
+- **`python-testing-patterns`** (`python-testing-patterns`): implement comprehensive testing strategies with pytest, fixtures, mocking, and test-driven development. use when writing python tests, setting up test suites, or implementing testing best practices.
+- **`red-team-tactics`** (`red-team-tactics`): red team tactics principles based on mitre att&ck. attack phases, detection evasion, reporting.
+- **`rust-pro`** (`rust-pro`): master rust 1.75+ with modern async patterns, advanced type system
+- **`sdd-creator`** (`sdd-creator`): creates software design documents (sdd) following spec-driven development principles for all types of software. use this skill whenever a user wants to design software before coding, document an architecture, write a technical spec, convert a prd into an sdd, plan system design, or run a 'vibe architecture' session. trigger also for phrases like 'let\\'s spec this out', 'design the system', 'document this feature', 'lock the architecture', 'bora codar' (after an idea description), 'quero criar um sistema', 'vamos arquitetar isso', or any request to plan a feature at the system level before implementation. this skill acts as a senior cto + staff engineer using a pair architecture (vibe coding) flow: seed → mirror → jam → lock. always use it — even for simple features — when the user\\'s intent is 'design first, code second.
+- **`security-audit`** (`security-audit`): comprehensive security auditing workflow covering web application testing, api security, penetration testing, vulnerability scanning, and security hardening.
+- **`senior-fullstack`** (`senior-fullstack`): complete toolkit for senior fullstack with modern tools and best practices.
+- **`seo-fundamentals`** (`seo-fundamentals`): seo fundamentals, e-e-a-t, core web vitals, and google algorithm principles.
+- **`server-management`** (`server-management`): server management principles and decision-making. process management, monitoring strategy, and scaling decisions. teaches thinking, not commands.
+- **`skill-creator`** (`skill-creator`): create new skills, modify and improve existing skills, and measure skill performance. use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.
+- **`skill-creator-ms`** (`skill-creator-ms`): guide for creating effective skills for ai coding agents working with azure sdks and microsoft foundry services. use when creating new skills or updating existing skills.
+- **`spec-creator`** (`spec-creator`): creates technical specifications (spec) — the precise, unambiguous definition of software behavior used as the source of truth for ai code generation agents. use this skill when a user wants to: write a technical spec, convert prd requirements into typed contracts, define typescript interfaces/zod schemas from user stories, generate openapi 3.1 contracts, specify state machines, scaffold tests from requirements, or prepare a document so that cursor/claude code/antigravity can generate production code without further clarification. trigger for phrases like 'escreve a spec', 'detalha a implementação', 'quero os tipos typescript', 'define os contratos de api', 'especifica esse componente/feature', 'quero que o cursor implemente isso', 'preciso da spec técnica', or any request to make prd/sdd decisions precise enough for ai-driven code generation. always positioned downstream of prd + sdd.
+- **`strapi-editorial-orchestrator`** (`strapi-editorial-orchestrator`): how to process journalistic drafts in strapi 5 and generate ai metadata, plain language summaries, and contextual layers. make sure to use this skill whenever the user mentions `/automacao-jinc`, `/revisar-acessibilidade`, `/gerar-contexto`, "strapi 5 lifecycles", "ast blocks", "plain language wcag", "gerar seo", or is editing files like `lifecycles.ts` or `ai-prompts.ts` in the cms. even if they don't explicitly name this skill, trigger it when dealing with strapi 5 ai metadata generation or accessible journalistic content processing.
+- **`systematic-debugging`** (`systematic-debugging`): 4-phase systematic debugging methodology with root cause analysis and evidence-based verification. use when debugging complex issues.
+- **`tailwind-patterns`** (`tailwind-patterns`): tailwind css v4 principles. css-first configuration, container queries, modern patterns, design token architecture.
+- **`tdd-workflow`** (`tdd-workflow`): test-driven development workflow principles. red-green-refactor cycle.
+- **`testing-patterns`** (`testing-patterns`): testing patterns and principles. unit, integration, mocking strategies.
+- **`typescript-expert`** (`typescript-expert`): typescript specialist for modern development. use this skill when the user wants help with complex types, fixing ts errors, implementing strict typing without 'any', generics, or optimizing typescript configurations.
+- **`vulnerability-scanner`** (`vulnerability-scanner`): advanced vulnerability analysis principles. owasp 2025, supply chain security, attack surface mapping, risk prioritization.
+- **`web-design-guidelines`** (`web-design-guidelines`): review ui code for web interface guidelines compliance. use when asked to "review my ui", "check accessibility", "audit design", "review ux", or "check my site against best practices".
+- **`webapp-testing`** (`webapp-testing`): web application testing principles. e2e, playwright, deep audit strategies.
+- **`wordpress`** (`wordpress`): complete wordpress development workflow covering theme development, plugin creation, woocommerce integration, performance optimization, and security hardening. includes wordpress 7.0 features: real-time collaboration, ai connectors, abilities api, dataviews, and php-only blocks.
+- **`wordpress-penetration-testing`** (`wordpress-penetration-testing`): assess wordpress installations for common vulnerabilities and wordpress 7.0 attack surfaces.
+- **`wordpress-plugin-development`** (`wordpress-plugin-development`): wordpress plugin development workflow covering plugin architecture, hooks, admin interfaces, rest api, security best practices, and wordpress 7.0 features: real-time collaboration, ai connectors, abilities api, dataviews, and php-only blocks.
 
 ## 📂 `workflows/`
 
