@@ -7,7 +7,6 @@ def get_metadata(filepath):
     try:
         with open(filepath, 'r', encoding='utf-8-sig') as f:
             content = f.read()
-        # Busca simples por linha que começa com name: ou description:
         name = None
         description = None
         for line in content.split('\n'):
@@ -29,14 +28,51 @@ def update_arch():
         path = os.path.join(AGENTS_DIR, folder)
         if not os.path.exists(path): continue
         
-        for root, _, files in os.walk(path):
-            for file in sorted(files):
-                if file.endswith('.md'):
-                    n, d = get_metadata(os.path.join(root, file))
+        # Iteration rule based on folder structure
+        if folder == 'skills':
+            items = sorted(os.listdir(path))
+            for item in items:
+                item_path = os.path.join(path, item)
+                
+                # Single markdown file on root level of skills/
+                if os.path.isfile(item_path) and item.endswith('.md'):
+                    n, d = get_metadata(item_path)
                     if n and d:
-                        md += f"- **`{n}`** (`{file}`): {d}\n"
+                        md += f"- **`{n}`** (`{item}`): {d}\n"
                     else:
-                        md += f"- `{file}`: _(Aguardando conformidade SDD)_\n"
+                        md += f"- `{item}`: _(Aguardando conformidade SDD)_\n"
+                
+                # Subdirectories representing actual skills
+                elif os.path.isdir(item_path):
+                    skill_md = os.path.join(item_path, 'SKILL.md')
+                    template_md = os.path.join(item_path, 'TEMPLATE.md')
+                    
+                    target_file = None
+                    file_name = None
+                    
+                    if os.path.exists(skill_md):
+                        target_file = skill_md
+                        file_name = 'SKILL.md'
+                    elif os.path.exists(template_md):
+                        target_file = template_md
+                        file_name = 'TEMPLATE.md'
+                        
+                    if target_file:
+                        n, d = get_metadata(target_file)
+                        if n and d:
+                            md += f"- **`{n}`** (`{item}`): {d}\n"
+                        else:
+                            md += f"- `{item}/{file_name}`: _(Aguardando conformidade SDD)_\n"
+        else:
+            # Traditional behavior for agents, workflows, rules
+            for root, _, files in os.walk(path):
+                for file in sorted(files):
+                    if file.endswith('.md'):
+                        n, d = get_metadata(os.path.join(root, file))
+                        if n and d:
+                            md += f"- **`{n}`** (`{file}`): {d}\n"
+                        else:
+                            md += f"- `{file}`: _(Aguardando conformidade SDD)_\n"
         md += "\n"
     
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
