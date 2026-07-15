@@ -7,7 +7,8 @@
     "check:core": "python .agents/scripts/checklist.py .",
     "preview:start": "python .agents/scripts/auto_preview.py start",
     "preview:stop": "python .agents/scripts/auto_preview.py stop",
-    "session": "python .agents/scripts/session_manager.py status ."
+    "session": "python .agents/scripts/session_manager.py status .",
+    "prepare": "husky"
   },
   "lint-staged": {
     "**/*.md": [
@@ -19,5 +20,10 @@
     "**/*.json": [
       "prettier --write"
     ]
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.9.5"
   }
 }
