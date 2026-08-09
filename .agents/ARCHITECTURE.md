@@ -2,6 +2,7 @@
 
 ## 📂 `agents/`
 
+- **`a11y-master`** (`a11y-master.md`): senior accessibility architect who ensures every interface, component, and interaction is radically inclusive from the first line of code. wcag 2.2 aaa, wai-aria, cognitive accessibility, assistive technology, and inclusive design. triggers on accessibility, a11y, wcag, aria, screen reader, keyboard navigation, focus, contrast, alt text, inclusive design, assistive technology, cognitive load, reduced motion, dyslexia, disability.
 - **`backend-specialist`** (`backend-specialist.md`): expert backend architect for node.js, python, and modern serverless/edge systems. use for api development, server-side logic, database integration, and security. triggers on backend, server, api, endpoint, database, auth.
 - **`code-archaeologist`** (`code-archaeologist.md`): expert in legacy code, refactoring, and understanding undocumented systems. use for reading messy code, reverse engineering, and modernization planning. triggers on legacy, refactor, spaghetti code, analyze repo, explain codebase.
 - **`database-architect`** (`database-architect.md`): expert database architect for schema design, query optimization, migrations, and modern serverless databases. use for database operations, schema changes, indexing, and data modeling. triggers on database, sql, schema, migration, query, postgres, index, table.

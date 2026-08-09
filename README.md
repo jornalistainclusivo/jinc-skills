@@ -26,12 +26,35 @@ A infraestrutura segue estritamente as diretrizes do **DevOps JINC Protocol** (`
 - **Higiene de Ambiente e Versionamento Perpétuo** através de _Git Tags_ semânticas e scripts locais (ex: `sanitize-local.sh`).
 - **Validação de Pull Requests** com _templates_ mandatórios abrangendo Core Web Vitals e conformidade WCAG 2.2 AAA.
 
-## 🤖 Ecossistema de Agentes
+## 🤖 Ecossistema de Agentes (21 Especialistas)
 
 A comunicação entre modelos não é feita por inferência aleatória, mas por um "Handshake" algorítmico baseado em regras de domínio.
 
-- **`orchestrator` (O Maestro):** Atua como o _API Gateway_ do ecossistema. Analisa o `PLAN.md`, aplica checkpoints de roteamento rigorosos e invoca os agentes de domínio corretos (ex: `frontend-specialist`, `database-architect`, `test-engineer`) de forma sequencial e isolada.
-- **`skill-creator` (A Fábrica):** Agente recursivo especializado em construir, auditar e realizar testes A/B (_evals_) quantitativos em novas _skills_, retroalimentando a capacidade da própria infraestrutura.
+| Agente                       | Foco              | Descrição                                                                   |
+| ---------------------------- | ----------------- | --------------------------------------------------------------------------- |
+| **`orchestrator`**           | Coordenação       | API Gateway do ecossistema. Analisa planos, roteia para agentes de domínio. |
+| **`project-planner`**        | Planejamento      | Quebra requisitos em tarefas, planeja estrutura de arquivos e dependências. |
+| **`product-owner`**          | Produto           | Ponte estratégica entre negócios e engenharia. Priorização de backlog.      |
+| **`product-manager`**        | Requisitos        | User stories, acceptance criteria, specs de produto.                        |
+| **`a11y-master`**            | ♿ Acessibilidade | **Pilar JINC.** WCAG 2.2 AAA, WAI-ARIA, acessibilidade cognitiva, teste AT. |
+| **`frontend-specialist`**    | UI/UX Web         | React/Next.js, design system, performance-first.                            |
+| **`mobile-developer`**       | Mobile            | React Native, Flutter, padrões nativos iOS/Android.                         |
+| **`backend-specialist`**     | APIs/Server       | Node.js, Python, serverless, edge.                                          |
+| **`database-architect`**     | Dados             | Schema design, query optimization, migrações.                               |
+| **`security-auditor`**       | Segurança         | OWASP 2025, supply chain, zero trust.                                       |
+| **`penetration-tester`**     | Ofensiva          | Red team, exploits, simulação de ataques.                                   |
+| **`devops-engineer`**        | Deploy/CI-CD      | Produção, rollback, monitoramento, Docker.                                  |
+| **`performance-optimizer`**  | Performance       | Core Web Vitals, profiling, bundle optimization.                            |
+| **`test-engineer`**          | Testes            | TDD, unit/integration/E2E, cobertura.                                       |
+| **`qa-automation-engineer`** | QA                | Playwright, Cypress, pipelines de regressão.                                |
+| **`debugger`**               | Debug             | Root cause analysis, crash investigation.                                   |
+| **`seo-specialist`**         | SEO/GEO           | SEO, E-E-A-T, Generative Engine Optimization.                               |
+| **`explorer-agent`**         | Descoberta        | Análise profunda de codebase, auditorias iniciais.                          |
+| **`code-archaeologist`**     | Legacy            | Reverse engineering, modernização de código legado.                         |
+| **`documentation-writer`**   | Docs              | README, API docs, changelog técnico.                                        |
+| **`game-developer`**         | Games             | Unity, Godot, Unreal, Phaser, Three.js.                                     |
+
+> **Routing inteligente:** O `intelligent-routing` skill analisa automaticamente cada requisição e seleciona o(s) agente(s) mais adequado(s) sem necessidade de menção explícita.
 
 ## 📂 Topologia do Repositório
 
@@ -39,10 +62,10 @@ A comunicação entre modelos não é feita por inferência aleatória, mas por 
 antigravity-jinc-skills/
 ├── .agents/
 │   ├── .shared/         # Recursos, templates ou metadados compartilhados entre agentes
-│   ├── agents/          # Manifestos de personas autônomas e especialistas de domínio
+│   ├── agents/          # 21 manifestos de personas autônomas e especialistas de domínio
 │   ├── rules/           # Governança global e protocolos do ecossistema JINC
 │   ├── scripts/         # Ferramentas determinísticas Python (Gatekeepers, Validadores)
-│   ├── skills/          # Diretório modular de habilidades acionáveis
+│   ├── skills/          # 73+ habilidades acionáveis modulares
 │   ├── workflows/       # Cadeias de execução e roteamento multi-agente
 │   └── ARCHITECTURE.md  # Mapa do ecossistema de agentes (Auto-gerado)
 ├── .github/workflows/   # Pipeline de Integração Contínua (Validação SDD Remota)
@@ -82,14 +105,4 @@ Ao configurar seu cliente MCP, mapeie diretamente a raiz deste repositório para
     }
   }
 }
-```
-
----
-
-### Sincronização Final
-
-```bash
-git add README.md
-git commit -m "docs: atualizacao do readme com referencia ao framework base antigravit-kit"
-git push origin main
 ```
