@@ -1,8 +1,3 @@
----
-name: "feature-building"
-description: "Advanced feature building techniques for modern applications"
----
-
 # Feature Building
 
 > How to analyze and implement new features.
@@ -23,20 +18,27 @@ Analysis:
 │   ├── stripe package
 │   └── Existing user authentication
 │
-└── Estimated Time: 15-20 minutes
+└── Scope: DB + 2 API routes + 2 components + config
 ```
 
 ## Iterative Enhancement Process
 
 ```
-1. Analyze existing project
-2. Create change plan
-3. Present plan to user
-4. Get approval
-5. Apply changes
-6. Test
-7. Show preview
+1. analyze project and architecture
+2. create scoped change plan
+3. align DESIGN.md when UI changes
+4. obtain any required approval
+5. apply scoped changes
+6. test and validate
+7. verify behavior
+8. preview only when appropriate
+
+*Note: Integrate `verify-changes` semantics. Do not equate 'tests passed' with 'authorized to merge/deploy'.*
 ```
+
+## 🛡️ JINC Governance: Human Gate
+
+Technical planning, successful scaffolding, passing tests, successful preview, or verification evidence do not authorize consequential actions. Actions such as merge, deployment, publication, release, protected-branch push, or infrastructure mutation remain subject to explicit Human Gate requirements.
 
 ## Error Handling
 

@@ -5,16 +5,18 @@ description: Express.js REST API template principles. TypeScript, Prisma, JWT.
 
 # Express.js API Template
 
+> Version examples reflect the documented stable major line at the time this template was reviewed. Before scaffolding, verify the current supported release using authoritative documentation.
+
 ## Tech Stack
 
-| Component  | Technology          |
-| ---------- | ------------------- |
-| Runtime    | Node.js 20+         |
-| Framework  | Express.js          |
-| Language   | TypeScript          |
-| Database   | PostgreSQL + Prisma |
-| Validation | Zod                 |
-| Auth       | JWT + bcrypt        |
+| Component  | Technology                         |
+| ---------- | ---------------------------------- |
+| Runtime    | Node.js 24 (Krypton LTS)           |
+| Framework  | Express 5 (stable, default on npm) |
+| Language   | TypeScript                         |
+| Database   | PostgreSQL + Prisma                |
+| Validation | Zod                                |
+| Auth       | JWT + bcrypt                       |
 
 ---
 
@@ -25,17 +27,19 @@ project-name/
 ├── prisma/
 │   └── schema.prisma
 ├── src/
-│   ├── app.ts           # Express setup
+│   ├── app.ts           # Express app + middleware wiring (no listen)
+│   ├── server.ts        # Bootstrap: listen() — split for testability
 │   ├── config/          # Environment
-│   ├── routes/          # Route handlers
-│   ├── controllers/     # Business logic
-│   ├── services/        # Data access
-│   ├── middleware/
+│   ├── routes/          # Route definitions only
+│   ├── controllers/     # HTTP layer (req/res, calls services)
+│   ├── services/        # Business logic
+│   ├── middlewares/
 │   │   ├── auth.ts      # JWT verify
 │   │   ├── error.ts     # Error handler
 │   │   └── validate.ts  # Zod validation
 │   ├── schemas/         # Zod schemas
 │   └── utils/
+├── tests/
 └── package.json
 ```
 
@@ -43,14 +47,15 @@ project-name/
 
 ## Middleware Stack
 
-| Order | Middleware        |
-| ----- | ----------------- |
-| 1     | helmet (security) |
-| 2     | cors              |
-| 3     | morgan (logging)  |
-| 4     | body parsing      |
-| 5     | routes            |
-| 6     | error handler     |
+| Order | Middleware                            |
+| ----- | ------------------------------------- |
+| 1     | helmet (security)                     |
+| 2     | cors                                  |
+| 3     | compression                           |
+| 4     | body parsing                          |
+| 5     | morgan (logging)                      |
+| 6     | routes                                |
+| 7     | error handler (last, 4-arg signature) |
 
 ---
 
@@ -67,17 +72,19 @@ project-name/
 
 1. Create project directory
 2. `npm init -y`
-3. Install deps: `npm install express prisma zod bcrypt jsonwebtoken`
-4. Configure Prisma
-5. `npm run db:push`
-6. `npm run dev`
+3. Install deps: `npm install express @prisma/client zod bcrypt jsonwebtoken`
+4. Install devDeps: `npm install -D prisma typescript @types/node @types/express @types/bcrypt @types/jsonwebtoken`
+5. Configure Prisma (`npx prisma init`)
+6. `npm run db:push`
+7. `npm run dev`
 
 ---
 
 ## Best Practices
 
+- Split `app.ts` (wiring) from `server.ts` (`listen`) so the app imports cleanly into tests
 - Layer architecture (routes → controllers → services)
-- Validate all inputs with Zod
-- Centralized error handling
+- Validate all inputs with Zod at the route boundary
+- Centralized error handler last (Express 5 auto-forwards rejected promises — no manual catch wrapper needed)
 - Environment-based config
 - Use Prisma for type-safe DB access

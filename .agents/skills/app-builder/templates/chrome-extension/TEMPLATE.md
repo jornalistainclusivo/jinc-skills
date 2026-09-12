@@ -5,36 +5,39 @@ description: Chrome Extension template principles. Manifest V3, React, TypeScrip
 
 # Chrome Extension Template
 
+> Version examples reflect the documented stable major line at the time this template was reviewed. Before scaffolding, verify the current supported release using authoritative documentation.
+
 ## Tech Stack
 
-| Component | Technology         |
-| --------- | ------------------ |
-| Manifest  | V3                 |
-| UI        | React 18           |
-| Language  | TypeScript         |
-| Styling   | Tailwind CSS       |
-| Bundler   | Vite               |
-| Storage   | Chrome Storage API |
+| Component | Technology                           |
+| --------- | ------------------------------------ |
+| Manifest  | V3                                   |
+| UI        | React 19                             |
+| Language  | TypeScript                           |
+| Styling   | Tailwind CSS v4                      |
+| Bundler   | Vite + CRXJS (@crxjs/vite-plugin v2) |
+| Storage   | Chrome Storage API                   |
 
 ---
 
 ## Directory Structure
 
+> CRXJS + Vite: `manifest.config.ts` is the source of truth, Vite resolves entries.
+
 ```
 project-name/
 ├── src/
-│   ├── popup/           # Extension popup
-│   ├── options/         # Options page
-│   ├── background/      # Service worker
-│   ├── content/         # Content scripts
-│   ├── components/
-│   ├── hooks/
+│   ├── popup/           # { index.html, main.tsx, Popup.tsx }
+│   ├── options/         # { index.html, main.tsx, Options.tsx }
+│   ├── background/      # service-worker.ts (MV3 service worker)
+│   ├── content/         # { content-script.ts, content.css }
+│   ├── components/      # Shared React
 │   └── lib/
 │       ├── storage.ts   # Chrome storage helpers
 │       └── messaging.ts # Message passing
-├── public/
-│   ├── icons/
-│   └── manifest.json
+├── public/              # Static assets (icons)
+├── manifest.config.ts   # defineManifest() — typed manifest
+├── vite.config.ts       # crx({ manifest }) + react + tailwind
 └── package.json
 ```
 
@@ -64,12 +67,12 @@ project-name/
 
 ## Setup Steps
 
-1. `npm create vite {{name}} -- --template react-ts`
-2. Add Chrome types: `npm install -D @types/chrome`
-3. Configure Vite for multi-entry
-4. Create manifest.json
-5. `npm run dev` (watch mode)
-6. Load in Chrome: `chrome://extensions` → Load unpacked
+1. `npm create vite@latest {{name}} -- --template react-ts`
+2. Install CRXJS: `npm install -D @crxjs/vite-plugin@latest`
+3. Add Chrome types: `npm install -D @types/chrome`
+4. Create `manifest.config.ts` with `defineManifest`, wire `crx({ manifest })` in `vite.config.ts`
+5. `npm run dev` (HMR for popup/options/content)
+6. Load in Chrome: `chrome://extensions` → Load unpacked → select `dist/`
 
 ---
 
@@ -80,7 +83,7 @@ project-name/
 | Debug Popup      | Right-click icon → Inspect       |
 | Debug Background | Extensions page → Service worker |
 | Debug Content    | DevTools console on page         |
-| Hot Reload       | `npm run dev` with watch         |
+| Hot Reload       | `npm run dev` (CRXJS HMR)        |
 
 ---
 
@@ -88,5 +91,6 @@ project-name/
 
 - Use type-safe messaging
 - Wrap Chrome APIs in promises
+- MV3 background is an ephemeral service worker — persist state in `chrome.storage`, not module globals; use event listeners + alarms, not long-lived timers
 - Minimize permissions
-- Handle offline gracefully
+- Scope content-script styles to avoid host-page bleed

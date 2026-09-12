@@ -1,8 +1,3 @@
----
-name: "agent-coordination"
-description: "Advanced agent coordination for modern applications"
----
-
 # Agent Coordination
 
 > How App Builder orchestrates specialist agents.
@@ -34,13 +29,24 @@ description: "Advanced agent coordination for modern applications"
           ┌───────────────────┼───────────────────┐
           ▼                   ▼                   ▼
 ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
-│ DATABASE        │ │ BACKEND         │ │ FRONTEND        │
-│ ARCHITECT       │ │ SPECIALIST      │ │ SPECIALIST      │
-│                 │ │                 │ │                 │
-│ • Schema design │ │ • API routes    │ │ • Components    │
-│ • Migrations    │ │ • Controllers   │ │ • Pages         │
-│ • Seed data     │ │ • Middleware    │ │ • Styling       │
+│ DATABASE        │ │ BACKEND         │ │ DESIGN SOURCE   │
+│ ARCHITECT       │ │ SPECIALIST      │ │ OF TRUTH        │
+│ (if required)   │ │ (if required)   │ │                 │
+│ • Schema design │ │ • API routes    │ │ • Read design-  │
+│ • Migrations    │ │ • Controllers   │ │   spec & refs   │
+│ • Seed data     │ │ • Middleware    │ │ • Create        │
+│                 │ │                 │ │   DESIGN.md     │
 └─────────────────┘ └─────────────────┘ └─────────────────┘
+          │                   │                   │
+          │                   │                   ▼
+          │                   │         ┌─────────────────┐
+          │                   │         │ UI IMPLEMENTER  │
+          │                   │         │                 │
+          │                   │         │ • Frontend Spec.│
+          │                   │         │   (if web UI)   │
+          │                   │         │ • Mobile Dev    │
+          │                   │         │   (if mobile UI)│
+          │                   │         └─────────────────┘
           │                   │                   │
           └───────────────────┼───────────────────┘
                               ▼
@@ -55,22 +61,28 @@ description: "Advanced agent coordination for modern applications"
 ┌─────────────────────────────────────────────────────────────┐
 │                     DEVOPS ENGINEER                          │
 │  • Environment setup                                         │
-│  • Preview deployment                                        │
-│  • Health check                                              │
+│  • Preview deployment (`python .agents/scripts/auto_preview.py`) │
+│  • Health check & report URL                                 │
 └─────────────────────────────────────────────────────────────┘
 ```
 
 ## Execution Order
 
-| Phase | Agent(s)                        | Parallel? | Prerequisite        | CHECKPOINT                 |
-| ----- | ------------------------------- | --------- | ------------------- | -------------------------- |
-| 0     | Socratic Gate                   | ❌        | -                   | ✅ Ask 3 questions         |
-| 1     | Project Planner                 | ❌        | Questions answered  | ✅ **PLAN.md created**     |
-| 1.5   | **PLAN VERIFICATION**           | ❌        | PLAN.md exists      | ✅ **File exists in root** |
-| 2     | Database Architect              | ❌        | Plan ready          | Schema defined             |
-| 3     | Backend Specialist              | ❌        | Schema ready        | API routes created         |
-| 4     | Frontend Specialist             | ✅        | API ready (partial) | UI components ready        |
-| 5     | Security Auditor, Test Engineer | ✅        | Code ready          | Tests & audit pass         |
-| 6     | DevOps Engineer                 | ❌        | All code ready      | Deployment ready           |
+| Phase | Agent(s) / Step                 | Parallel? | Prerequisite                | CHECKPOINT                                                                                                                                                                                                 |
+| ----- | ------------------------------- | --------- | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0     | Socratic Gate                   | ❌        | -                           | ✅ Ask only decision-critical questions when material information is missing. Do not re-ask information already provided. When clarification is needed, keep it minimal and proportional to the ambiguity. |
+| 1     | Project Planner                 | ❌        | Questions answered          | ✅ **{task-slug}.md created**                                                                                                                                                                              |
+| 1.5   | **PLAN VERIFICATION**           | ❌        | {task-slug}.md exists       | ✅ **File exists in root**                                                                                                                                                                                 |
+| 1.8   | **DESIGN SOURCE-OF-TRUTH**      | ❌        | Plan verified (UI projects) | ✅ **DESIGN.md created at root**                                                                                                                                                                           |
+| 2     | Database Architect              | ❌        | Plan ready                  | Schema defined (if persistence exists)                                                                                                                                                                     |
+| 3     | Backend Specialist              | ❌        | Schema ready                | API routes created (if backend exists)                                                                                                                                                                     |
+| 4     | Frontend Specialist             | ✅        | DESIGN.md + API ready       | UI components match tokens (if web UI exists)                                                                                                                                                              |
+| 4.5   | Mobile Developer                | ✅        | DESIGN.md + API ready       | Mobile UI components (if mobile app)                                                                                                                                                                       |
+| 5     | Security Auditor, Test Engineer | ✅        | Code ready                  | Tests & audit pass                                                                                                                                                                                         |
+| 6     | DevOps Engineer                 | ❌        | All code ready              | Deployment & preview ready                                                                                                                                                                                 |
 
-> 🔴 **CRITICAL:** Phase 1.5 is MANDATORY. No specialist agents proceed without PLAN.md verification.
+> 🔴 **CRITICAL:** Phase 1.5 and Phase 1.8 are MANDATORY gates.
+>
+> - Phase 1.5: No specialist agents proceed without `{task-slug}.md` verification.
+> - Phase 1.8: For any project with a UI (web, mobile, desktop), **`DESIGN.md` MUST exist at the project root** before writing UI components or pages (per `@[skills/design-spec]`). Skip only for headless APIs or CLI tools.
+>   🛡️ **JINC GOVERNANCE:** DESIGN.md does not override JINC governance, PRD, SDD, security, or accessibility requirements.
