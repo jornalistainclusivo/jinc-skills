@@ -8,7 +8,17 @@ version: 1.0.0
 
 # DESIGN.md Specification
 
-> **🛡️ JINC GOVERNANCE:** A DESIGN.md is the **source of truth** for a project's visual language, but **PRD/SDD/Engineering specs ALWAYS OVERRIDE DESIGN.md**.
+> **🛡️ JINC GOVERNANCE:**
+> JINC governance and approved requirements
+> ↓
+> PRD / approved product requirements
+> ↓
+> SDD / approved engineering constraints
+> ↓
+> DESIGN.md — visual and interaction design source of truth
+> ↓
+> implementation
+>
 > Accessibility must be part of the DESIGN.md definition itself, not an afterthought.
 >
 > A DESIGN.md establishes evidence and constraints for UI execution. **Design approval and technical validation establish evidence and constraints, not authorization for consequential actions.** (Human Gate applies).
@@ -26,7 +36,7 @@ version: 1.0.0
 
 This is a **hard gate** for UI work: before writing components, pages, or styles, a `DESIGN.md` must exist at the project root. If absent, create it first from the brief; if present, read it and conform.
 
-**Hierarchy Rule:** If PRD/SDD or Engineering specs exist and conflict with DESIGN.md, the PRD/SDD strictly overrides the visual spec.
+**Hierarchy Rule:** DESIGN.md is subordinate to authoritative JINC governance and approved product/engineering requirements. Within those constraints, DESIGN.md is the source of truth for visual and interaction design. If authoritative upstream requirements conflict: STOP / surface the conflict for resolution.
 
 The token block converts cleanly to/from `tokens.json`, Figma variables, and Tailwind theme config — so it is the bridge between design intent and code.
 
@@ -107,17 +117,17 @@ components:
 
 ## 4. Sections (canonical order)
 
-| #   | Section           | Aliases          | Purpose                                                                                         |
-| --- | ----------------- | ---------------- | ----------------------------------------------------------------------------------------------- |
-| 1   | Overview          | Brand & Style    | Brand personality, audience, emotional tone. Fallback context when a token isn't defined.       |
-| 2   | Colors            |                  | Palettes; at least `primary`. **Must enforce WCAG AAA 7:1 contrast. (The Purple Ban applies).** |
-| 3   | Typography        |                  | 9–15 levels, each a semantic role (headline/body/label) × size.                                 |
-| 4   | Layout            | Layout & Spacing | Grid model, spacing scale, containment.                                                         |
-| 5   | Elevation & Depth | Elevation        | Shadows, OR for flat designs the alternative (borders, tonal layers, contrast).                 |
-| 6   | Shapes            |                  | Corner radii, edge treatment, shape language.                                                   |
-| 7   | Accessibility     |                  | **Mandatory section.** WAI-ARIA states, Cognitive load mitigation, motion safety constraints.   |
-| 8   | Components        |                  | Per-atom guidance: Buttons, Inputs, Cards, Chips, Lists, etc.                                   |
-| 9   | Do's and Don'ts   |                  | Guardrails during generation.                                                                   |
+| #   | Section           | Aliases          | Purpose                                                                                                                                                                                                                                                                                                                                                                                                          |
+| --- | ----------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Overview          | Brand & Style    | Brand personality, audience, emotional tone. Fallback context when a token isn't defined.                                                                                                                                                                                                                                                                                                                        |
+| 2   | Colors            |                  | Palettes; at least `primary`. **JINC targets WCAG 2.2 AAA where applicable. Contrast requirements must be evaluated according to content and component type, including: normal text (≥ 7:1), large text (≥ 4.5:1), and non-text UI elements (≥ 3:1). Never validate a palette by isolated color values alone; validate the actual foreground/background relationships in which tokens are intended to be used.** |
+| 3   | Typography        |                  | 9–15 levels, each a semantic role (headline/body/label) × size.                                                                                                                                                                                                                                                                                                                                                  |
+| 4   | Layout            | Layout & Spacing | Grid model, spacing scale, containment.                                                                                                                                                                                                                                                                                                                                                                          |
+| 5   | Elevation & Depth | Elevation        | Shadows, OR for flat designs the alternative (borders, tonal layers, contrast).                                                                                                                                                                                                                                                                                                                                  |
+| 6   | Shapes            |                  | Corner radii, edge treatment, shape language.                                                                                                                                                                                                                                                                                                                                                                    |
+| 7   | Accessibility     |                  | **Mandatory section.** Prefer native semantic HTML. Document interaction semantics, keyboard behavior, accessible names/states, and assistive-technology intent. Use ARIA only where native semantics are insufficient. Valid design tokens and a valid DESIGN.md are design evidence, not accessibility verification. Actual implementation must still be tested.                                               |
+| 8   | Components        |                  | Per-atom guidance: Buttons, Inputs, Cards, Chips, Lists, etc.                                                                                                                                                                                                                                                                                                                                                    |
+| 9   | Do's and Don'ts   |                  | Guardrails during generation.                                                                                                                                                                                                                                                                                                                                                                                    |
 
 ---
 
@@ -183,21 +193,21 @@ components:
 
 A calm, professional interface for a healthcare scheduling platform.
 
-## Accessibility
-
-Accessibility-first: all text passes WCAG AAA (7:1). Buttons support visible focus rings (2px offset). No auto-advancing carousels.
-
 ## Colors
 
 - **Primary (#1A1C1E):** Deep ink for headlines and core text.
 - **Tertiary (#B8422E):** The sole driver for interaction.
 - **Neutral (#F7F5F2):** Warm limestone foundation.
 
+## Accessibility
+
+Accessibility-first: intended text/background pairs meet the applicable JINC WCAG 2.2 targets — including 7:1 for normal text and 4.5:1 for large text at AAA — and non-text interactive indicators meet their applicable contrast requirements.
+
 ## Do's and Don'ts
 
 - Do use the tertiary color only for the single most important action per screen.
 - Don't mix rounded and sharp corners in the same view.
-- Do maintain WCAG AA contrast (4.5:1 for normal text).
+- Do validate every semantic foreground/background pair against the applicable JINC accessibility target.
 ```
 
 ---
@@ -207,6 +217,8 @@ Accessibility-first: all text passes WCAG AAA (7:1). Buttons support visible foc
 1. Read the brief and infer the design direction. MUST use `a11y-master` to evaluate inclusion requirements, and `frontend-design` / `mobile-design` for UI direction.
 2. **ALWAYS read [collection.md](collection.md) first** — 70+ real-world DESIGN.md files. Find the 1–2 closest in vibe/industry to the brief, open their `DESIGN.md` on GitHub, and study how they structure tokens. Adapt, never blindly copy. **Anti-fabrication applies: Never fabricate or imply execution that did not occur.**
 3. **Write `DESIGN.md` at the project root** — tokens first, then rationale prose. Ensure accessibility is baked into the foundation.
-4. **Stop and present to the user (Human Gate).** Design approval establishes evidence of constraints, not authorization to build out the feature without explicit instructions.
+4. **DESIGN.md creation and validation establish design evidence and constraints, not authorization.**
+   Continue normal design/specification work as appropriate.
+   Before a consequential action that independently requires authorization — such as merge, deployment, publication, release, protected-branch push, or implementation that the user has explicitly reserved for approval — STOP and obtain the required Human Gate approval.
 5. Build UI strictly against the tokens and PRD. Descriptive names in prose must map to token names.
-6. Keep DESIGN.md in sync when the visual language changes — it stays the source of truth, subservient only to the SDD.
+6. Keep DESIGN.md synchronized when the visual or interaction language changes. It remains the design source of truth within the boundaries established by JINC governance and approved product/engineering requirements.
