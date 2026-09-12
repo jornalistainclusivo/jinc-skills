@@ -1,14 +1,18 @@
 # Antigravity JINC Skills 🪐
 
-Uma infraestrutura orientada a IA (_AI-native_) para orquestração de múltiplos agentes e desenvolvimento contínuo de _skills_. Construída sob o paradigma do **Vibe-Coding**, esta arquitetura utiliza um motor agnóstico de modelos (otimizado para Gemini 3 Flash/3.1 Pro via Antigravity IDE) para automatizar, gerar e auditar fluxos de trabalho de engenharia de software em jornalismo inclusivo.
+Uma infraestrutura orientada a IA (_AI-native_) para orquestração de múltiplos agentes e desenvolvimento contínuo de _skills_. Construída sob o paradigma do **Vibe-Coding**, esta arquitetura é agnóstica de modelos e integrada ao **Google Antigravity**, permitindo que os fluxos JINC operem sobre os modelos de raciocínio disponibilizados pelo runtime conforme o plano e o ambiente do usuário. O ecossistema JINC automatiza, gera e audita fluxos de trabalho de engenharia de software em jornalismo inclusivo.
 
-Este repositório é fundamentado e baseado no framework [Antigravity Kit](https://github.com/vudovn/antigravit-kit).
+Na documentação atual do Antigravity, os modelos selecionáveis incluem **Gemini 3.8 Flash, Gemini 3.7 Flash, Gemini 3.6 Flash, Gemini 3.1 Pro, Claude Sonnet 4.6 (thinking), Claude Opus 4.6 (thinking) e GPT-OSS-120b**. A disponibilidade pode variar por plano e evoluir independentemente deste repositório. O Antigravity também utiliza modelos adicionais não selecionáveis pelo usuário em partes específicas do runtime, como o **Nano Banana 2** para tarefas de geração de imagens.
+
+> **Modelos disponíveis:** A lista de modelos é controlada pelo Google Antigravity e pode mudar sem alterações neste repositório. JINC é agnóstico de modelos; a disponibilidade e seleção de modelos pertencem ao ambiente de execução do Antigravity. Consulte a [documentação oficial de modelos do Antigravity](https://antigravity.google/docs/models/) para a disponibilidade atual.
+
+Este repositório é uma infraestrutura independente derivada do [AG Kit](https://github.com/vudovn/ag-kit), fortemente adaptada para impor as diretrizes de acessibilidade (WCAG 2.2 AAA), arquitetura Zero-Trust e Governança algorítmica do Jornalista Inclusivo (JINC).
 
 ## 🏗️ Arquitetura e Governança (SDD)
 
 Este repositório é estritamente governado pelo paradigma **Specification-Driven Development (SDD)**. Nenhuma habilidade, agente ou documento arquitetural existe fora de um contrato de dados rigidamente tipado.
 
-A integridade estrutural é mantida por um motor **Pydantic** (`.agents/scripts/checklist.py`), que atua como o juiz final sobre a validade de qualquer _skill_ injetada no ecossistema.
+A integridade estrutural e semântica é mantida por validadores rigorosos baseados em **Pydantic** (`.agents/scripts/sdd_validator.py` e `.agents/scripts/checklist.py`), que atuam como os juízes finais sobre a validade de qualquer _skill_ injetada no ecossistema e asseguram que o orquestrador mapeie a realidade arquitetural (`.agents/scripts/sync_architecture.py`).
 
 ### A "Catraca" de Integração Contínua (CI/CD)
 
@@ -24,7 +28,8 @@ A infraestrutura segue estritamente as diretrizes do **DevOps JINC Protocol** (`
 - **Zero-Hallucination Policy** na geração de dependências e infraestrutura.
 - **Ambiente Zero-Trust** com sanitização de _inputs_ e proteção de _secrets_.
 - **Higiene de Ambiente e Versionamento Perpétuo** através de _Git Tags_ semânticas e scripts locais (ex: `sanitize-local.sh`).
-- **Validação de Pull Requests** com _templates_ mandatórios abrangendo Core Web Vitals e conformidade WCAG 2.2 AAA.
+- **Validação de Pull Requests e Deployments** com _templates_ mandatórios e execução da Catraca, abrangendo Core Web Vitals, conformidade WCAG 2.2 AAA e revisão algorítmica de código.
+- **Human Gate:** Automações param em limites críticos de execução (ex: _merges_, alterações de infraestrutura ou deploys) exigindo aprovação humana explícita, suportada por evidências geradas pelas ferramentas de validação.
 
 ## 🤖 Ecossistema de Agentes (21 Especialistas)
 
