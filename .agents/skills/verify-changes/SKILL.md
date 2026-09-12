@@ -13,10 +13,12 @@ effort: medium
 
 ## 🛡️ JINC Governance & Authorization (MANDATORY)
 
-> **CRITICAL RULE:** Verification establishes technical evidence, not authorization.
-> A successful build, test, lint, runtime check, accessibility check, security check, or verification report **NEVER** constitutes authorization to merge, deploy, publish, release, push to protected branches, or perform another consequential action.
+> Verification establishes technical evidence, not authorization.
 >
-> You must **STOP** and present the evidence to the user (Human Gate) for final authorization.
+> Continue normal technical verification and reporting as appropriate.
+> Before any consequential action that requires authorization — including merge, deployment, publication, release, or push to a protected branch — STOP and obtain the required Human Gate approval.
+
+Successful verification NEVER implies authorization for that consequential action.
 
 ## Core Principle
 
@@ -25,6 +27,51 @@ effort: medium
 ❌ Verification by assumption:  "The types check out, so it's correct"
 ✅ Verification by execution:   "I ran it, here's the output, it works because [evidence]"
 ```
+
+## Verification States
+
+Every final verification result must use exactly one of:
+
+- `VERIFIED` — required verification was actually executed and evidence supports the expected behavior.
+- `PARTIALLY VERIFIED` — some relevant checks were executed, but material behavior remains unverified.
+- `NOT VERIFIED` — the required verification was not executed or no sufficient evidence exists.
+- `BLOCKED` — verification could not proceed because of an explicit environmental, permission, dependency, or tooling blocker.
+
+Never convert unavailable verification into PASS.
+
+## Evidence Integrity
+
+Never fabricate or imply execution that did not occur.
+
+Do not invent:
+
+- commands executed;
+- test results;
+- logs;
+- browser checks;
+- runtime output;
+- CI status;
+- accessibility results;
+- security results.
+
+If verification cannot be performed, report `NOT VERIFIED` or `PARTIALLY VERIFIED` with the reason.
+
+## Change-Specific Verification
+
+> Verification must match the actual behavior changed.
+
+Examples:
+
+- API behavior change → execute the relevant endpoint/interface
+- UI interaction change → render and exercise the interaction
+- database migration → validate migration and representative database behavior
+- security control → test relevant allowed and denied paths
+- configuration/build change → load or execute the affected configuration/build
+
+> A generic build, lint, typecheck, or unrelated green test suite does not by itself verify feature-specific behavior.
+
+> When meaningful to the changed behavior, verify at least one relevant failure, boundary, or negative path in addition to the happy path.
+> Do not require artificial edge cases where they provide no useful evidence.
 
 ---
 
@@ -72,6 +119,16 @@ python script.py --test
 
 ```markdown
 ## Verification Report
+
+### Result
+
+VERIFIED / PARTIALLY VERIFIED / NOT VERIFIED / BLOCKED
+
+### Authorization Status
+
+Technical verification only.
+
+No merge, deploy, publication, release, protected-branch push, or other consequential action is authorized by this verification result.
 
 ### What was changed
 
