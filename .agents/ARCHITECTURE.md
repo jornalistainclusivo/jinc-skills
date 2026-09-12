@@ -120,3 +120,4 @@
 - **`agents-governance`** (`AGENTS.md`): global behavioral guidelines and persona definitions for jinc agents.
 - **`gemini`** (`GEMINI.md`): core ai governance for orchestration, agent routing, and socratic decision gates in the jinc ecosystem.
 - `devops-jinc-protocol.md`: _(Aguardando conformidade SDD)_
+
