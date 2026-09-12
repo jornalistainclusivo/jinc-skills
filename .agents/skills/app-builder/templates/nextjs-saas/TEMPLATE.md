@@ -9,15 +9,15 @@ description: Next.js SaaS template principles (2026 Standards). React 19, Server
 
 ## Tech Stack
 
-| Component | Technology   | Version / Notes                                                                                                                                   |
-| --------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Framework | Next.js      | v16+ (App Router, React Compiler)                                                                                                                 |
-| Runtime   | Node.js      | v24 (Krypton LTS)                                                                                                                                 |
-| Auth      | Auth.js      | Better Auth — stable self-hosted/default option. Clerk — managed alternative. Auth.js v5 — optional beta alternative when explicitly appropriate. |
-| Payments  | Stripe API   | Latest                                                                                                                                            |
-| Database  | PostgreSQL   | Prisma v7+ (Serverless Driver)                                                                                                                    |
-| Email     | Resend       | React Email                                                                                                                                       |
-| UI        | Tailwind CSS | v4 (Oxide Engine, no config file)                                                                                                                 |
+| Component | Technology   | Version / Notes                                                                 |
+| --------- | ------------ | ------------------------------------------------------------------------------- |
+| Framework | Next.js      | v16+ (App Router, React Compiler)                                               |
+| Runtime   | Node.js      | v24 (Krypton LTS)                                                               |
+| Auth      | Better Auth  | Stable self-hosted/default; Clerk managed alternative; Auth.js v5 optional beta |
+| Payments  | Stripe API   | Latest                                                                          |
+| Database  | PostgreSQL   | Prisma v7+ (Serverless Driver)                                                  |
+| Email     | Resend       | React Email                                                                     |
+| UI        | Tailwind CSS | v4 (Oxide Engine, no config file)                                               |
 
 ---
 
