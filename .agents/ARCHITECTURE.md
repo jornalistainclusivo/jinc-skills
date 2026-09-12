@@ -93,6 +93,7 @@
 - **`tdd-workflow`** (`tdd-workflow`): test-driven development workflow principles. red-green-refactor cycle.
 - **`testing-patterns`** (`testing-patterns`): testing patterns and principles. unit, integration, mocking strategies.
 - **`typescript-expert`** (`typescript-expert`): typescript specialist for modern development. use this skill when the user wants help with complex types, fixing ts errors, implementing strict typing without 'any', generics, or optimizing typescript configurations.
+- **`verify-changes`** (`verify-changes`): prove code works by running it, not just checking it exists. verification through execution rather than inspection. use after writing or modifying code to ensure it actually functions correctly.
 - **`vulnerability-scanner`** (`vulnerability-scanner`): advanced vulnerability analysis principles. owasp 2025, supply chain security, attack surface mapping, risk prioritization.
 - **`web-design-guidelines`** (`web-design-guidelines`): review ui code for web interface guidelines compliance. use when asked to "review my ui", "check accessibility", "audit design", "review ux", or "check my site against best practices".
 - **`webapp-testing`** (`webapp-testing`): web application testing principles. e2e, playwright, deep audit strategies.
