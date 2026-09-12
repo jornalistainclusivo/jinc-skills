@@ -5,6 +5,8 @@ description: Modern template for Next.js 16, React 19 & Tailwind v4. Optimized f
 
 # Next.js Static Site Template (Modern Edition)
 
+> Versions reflect the latest stable line verified 2026-05. Pin to the current stable when scaffolding.
+
 ## Tech Stack
 
 | Component  | Technology      | Notes                                                |
@@ -31,6 +33,9 @@ project-name/
 │   │   ├── page.tsx      # Landing Page
 │   │   ├── globals.css   # Import Tailwind v4 & @theme config
 │   │   ├── not-found.tsx # Custom 404 page
+│   │   ├── sitemap.ts    # Generated sitemap (Metadata convention)
+│   │   ├── robots.ts     # Generated robots.txt (Metadata convention)
+│   │   ├── opengraph-image.tsx # Dynamic OG image
 │   │   └── (routes)/     # Route groups (about, contact...)
 │   ├── components/
 │   │   ├── layout/       # Header, Footer
@@ -40,6 +45,7 @@ project-name/
 │       └── utils.ts      # Helper functions (cn, formatters)
 ├── content/              # Markdown/MDX content
 ├── public/               # Static assets (images, fonts)
+├── DESIGN.md             # Visual source-of-truth tokens & rationale (MANDATORY before UI)
 ├── next.config.ts        # Next.js Config (TypeScript)
 └── package.json
 ```

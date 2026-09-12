@@ -5,15 +5,17 @@ description: Turborepo monorepo template principles. pnpm workspaces, shared pac
 
 # Turborepo Monorepo Template
 
+> Versions reflect the latest stable line verified 2026-05. Pin to the current stable when scaffolding.
+
 ## Tech Stack
 
-| Component       | Technology               |
-| --------------- | ------------------------ |
-| Build System    | Turborepo                |
-| Package Manager | pnpm                     |
-| Apps            | Next.js, Express         |
-| Packages        | Shared UI, Config, Types |
-| Language        | TypeScript               |
+| Component       | Technology                      |
+| --------------- | ------------------------------- |
+| Build System    | Turborepo 2.x                   |
+| Package Manager | pnpm                            |
+| Apps            | Next.js, Express                |
+| Packages        | Shared UI, Config, Types, Utils |
+| Language        | TypeScript                      |
 
 ---
 
@@ -26,29 +28,32 @@ project-name/
 │   ├── api/             # Express API
 │   └── docs/            # Documentation
 ├── packages/
-│   ├── ui/              # Shared components
-│   ├── config/          # ESLint, TS, Tailwind
-│   ├── types/           # Shared types
-│   └── utils/           # Shared utilities
-├── turbo.json
+│   ├── ui/              # Shared components (@repo/ui)
+│   ├── config/          # ESLint, TS, Tailwind presets (@repo/config)
+│   ├── types/           # Shared types (@repo/types)
+│   └── utils/           # Shared utilities (@repo/utils)
+├── turbo.json           # "tasks" key (renamed from "pipeline" in v2)
 ├── pnpm-workspace.yaml
-└── package.json
+└── package.json         # requires "packageManager" field
 ```
 
 ---
 
 ## Key Concepts
 
-| Concept      | Description               |
-| ------------ | ------------------------- |
-| Workspaces   | pnpm-workspace.yaml       |
-| Pipeline     | turbo.json task graph     |
-| Caching      | Remote/local task caching |
-| Dependencies | `workspace:*` protocol    |
+| Concept      | Description                                                     |
+| ------------ | --------------------------------------------------------------- |
+| Workspaces   | Globs declared in `pnpm-workspace.yaml`                         |
+| Pipeline     | `turbo.json` `tasks` graph (NOT `pipeline` — renamed in v2)     |
+| Caching      | Remote/local task caching                                       |
+| Dependencies | `workspace:*` protocol, `@repo/*` namespace                     |
+| Env mode     | v2 is strict — declare task `env`/`globalEnv` or caching breaks |
 
 ---
 
-## Turbo Pipeline
+## Turbo Tasks (turbo.json)
+
+> `tasks` is the v2 key. The `pipeline` key was renamed — migrate with `npx @turbo/codemod rename-pipeline`.
 
 | Task  | Depends On                  |
 | ----- | --------------------------- |
@@ -84,7 +89,9 @@ project-name/
 
 ## Best Practices
 
-- Shared configs in packages/config
-- Shared types in packages/types
-- Internal packages with `workspace:*`
+- Split `apps/` (deployable) from `packages/` (libraries, shared config)
+- Namespace internal packages with `@repo/*`; reference via `workspace:*`
+- Define entrypoints with the `exports` field (better tree-shaking than barrel files)
+- Share tsconfig/eslint from `packages/config`
+- Declare task `env`/`globalEnv` explicitly (v2 strict env mode)
 - Use Turbo remote caching for CI

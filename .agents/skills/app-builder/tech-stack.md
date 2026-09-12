@@ -1,8 +1,3 @@
----
-name: "tech-stack"
-description: "Advanced tech stack selection techniques for modern applications"
----
-
 # Tech Stack Selection (2026)
 
 > Default and alternative technology choices for web applications.
@@ -15,10 +10,11 @@ Frontend:
   language: TypeScript 5.7+
   styling: Tailwind CSS v4
   state: React 19 Actions / Server Components
-  bundler: Turbopack (Stable for Dev)
+  caching: Next.js 16 Cache Components (Stable)
+  bundler: Turbopack (Stable for Dev & Build)
 
 Backend:
-  runtime: Node.js 23
+  runtime: Node.js 24 (Krypton LTS)
   framework: Next.js API Routes / Hono (for Edge)
   validation: Zod / TypeBox
 
@@ -36,10 +32,26 @@ Monorepo:
 
 ## Alternative Options
 
-| Need         | Default | Alternative                  |
-| ------------ | ------- | ---------------------------- |
-| Real-time    | -       | Supabase Realtime, Socket.io |
-| File storage | -       | Cloudinary, S3               |
-| Payment      | Stripe  | LemonSqueezy, Paddle         |
-| Email        | -       | Resend, SendGrid             |
-| Search       | -       | Algolia, Typesense           |
+| Need            | Default                                   | Alternative                                 |
+| --------------- | ----------------------------------------- | ------------------------------------------- |
+| Real-time       | Supabase Realtime                         | Socket.io, Ably                             |
+| File storage    | Supabase Storage                          | Cloudinary, AWS S3                          |
+| Payment         | Stripe                                    | LemonSqueezy, Paddle                        |
+| Email           | Resend                                    | SendGrid, Postmark                          |
+| Search          | Algolia                                   | Typesense, Orama                            |
+| AI / LLM SDK    | Vercel AI SDK (`ai` + `@ai-sdk/*`)        | LangChain.js, direct REST API               |
+| Vector Database | PostgreSQL (pgvector via Supabase / Neon) | Pinecone, Qdrant                            |
+| ORM (SQL-first) | Prisma ORM                                | Drizzle ORM (`drizzle-orm` + `drizzle-kit`) |
+
+---
+
+## AI Application Pattern (2026 JINC Standard)
+
+> 🛡️ **JINC Governance:** AI application guidance must include schema validation, rate limiting, secrets isolation, explicit prompt/input trust boundaries, and no fabricated provider capabilities.
+
+When building an AI or LLM-powered application:
+
+- **Streaming**: Use Vercel AI SDK `streamText` / `streamUI` in Route Handlers or Server Actions.
+- **UI State**: Leverage `useChat` / `useCompletion` with React 19 optimistic updates.
+- **Embeddings & Vector**: Store vectors in PostgreSQL using `pgvector` extension; query via cosine similarity.
+- **Safety & Rate Limits**: Protect AI endpoints with rate limiting (`@[skills/api-patterns/rate-limiting]`) and Zod schema parsing.

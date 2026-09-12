@@ -5,17 +5,20 @@ description: Next.js full-stack template principles. App Router, Prisma, Tailwin
 
 # Next.js Full-Stack Template (2026 Edition)
 
+> Versions reflect the latest stable line verified 2026-05. Pin to the current stable when scaffolding.
+
 ## Tech Stack
 
-| Component  | Technology          | Version / Notes                  |
-| ---------- | ------------------- | -------------------------------- |
-| Framework  | Next.js             | v16+ (App Router, Turbopack)     |
-| Language   | TypeScript          | v5+ (Strict Mode)                |
-| Database   | PostgreSQL          | Prisma ORM (Serverless friendly) |
-| Styling    | Tailwind CSS        | v4.0 (Zero-config, CSS-first)    |
-| Auth       | Clerk / Better Auth | Middleware Protected Routes      |
-| UI Logic   | React 19            | Server Actions, useActionState   |
-| Validation | Zod                 | Schema validation (API & Forms)  |
+| Component  | Technology                            | Version / Notes                  |
+| ---------- | ------------------------------------- | -------------------------------- |
+| Framework  | Next.js                               | v16+ (App Router, Turbopack)     |
+| Runtime    | Node.js                               | v24 (Krypton LTS)                |
+| Language   | TypeScript                            | v5+ (Strict Mode)                |
+| Database   | PostgreSQL                            | Prisma ORM (Serverless friendly) |
+| Styling    | Tailwind CSS                          | v4.0 (Zero-config, CSS-first)    |
+| Auth       | Auth.js v5 (`next-auth@beta`) / Clerk | Protected routes via `proxy.ts`  |
+| UI Logic   | React 19                              | Server Actions, useActionState   |
+| Validation | Zod                                   | Schema validation (API & Forms)  |
 
 ---
 
@@ -43,6 +46,7 @@ project-name/
 │   ├── actions/            # Server Actions (Mutations)
 │   └── types/              # Global TS Types
 ├── public/
+├── DESIGN.md               # Visual source-of-truth tokens & rationale (MANDATORY before UI)
 ├── next.config.ts          # TypeScript Config
 └── package.json
 ```
@@ -63,12 +67,13 @@ project-name/
 
 ## Environment Variables
 
-| Variable                          | Purpose                               |
-| --------------------------------- | ------------------------------------- |
-| DATABASE_URL                      | PostgreSQL connection string (Prisma) |
-| NEXT_PUBLIC_APP_URL               | Public application URL                |
-| NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY | Auth (if using Clerk)                 |
-| CLERK_SECRET_KEY                  | Auth Secret (Server only)             |
+| Variable                          | Purpose                                    |
+| --------------------------------- | ------------------------------------------ |
+| DATABASE_URL                      | PostgreSQL connection string (Prisma)      |
+| NEXT_PUBLIC_APP_URL               | Public application URL                     |
+| AUTH_SECRET                       | Auth.js v5 session secret (default auth)   |
+| NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY | Auth (if using Clerk instead)              |
+| CLERK_SECRET_KEY                  | Clerk secret (server only, if using Clerk) |
 
 ---
 
