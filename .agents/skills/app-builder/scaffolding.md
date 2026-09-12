@@ -55,6 +55,8 @@ project-name/
 
 ## Structure Principles
 
+> 🛡️ **JINC ARCHITECTURE GOVERNANCE:** The `components/`, `lib/`, `actions/` topology above is a recommended default for Next.js App Router applications. However, it is not a rigid mandate. The previous JINC `features/` topology (isolating `components`, `actions`, and `queries` by business domain) remains fully valid and is preferred for highly complex or scalable projects. Select the structure that best supports maintainability, isolation, and server/client boundaries for the specific project scope.
+
 | Principle                        | Implementation                                                           |
 | -------------------------------- | ------------------------------------------------------------------------ |
 | **Thin routes**                  | `app/` only for routing + layouts, logic lives in `actions/` and `lib/`  |

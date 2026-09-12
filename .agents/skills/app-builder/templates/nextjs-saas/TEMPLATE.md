@@ -1,23 +1,23 @@
 ---
 name: nextjs-saas
-description: Next.js SaaS template principles (2026 Standards). React 19, Server Actions, Auth.js v5.
+description: Next.js SaaS template principles (2026 Standards). React 19, Server Actions, Better Auth.
 ---
 
 # Next.js SaaS Template (Updated 2026)
 
-> Versions reflect the latest stable line verified 2026-05. Pin to the current stable when scaffolding.
+> Version examples reflect the documented stable major line at the time this template was reviewed. Before scaffolding, verify the current supported release using authoritative documentation.
 
 ## Tech Stack
 
-| Component | Technology   | Version / Notes                                              |
-| --------- | ------------ | ------------------------------------------------------------ |
-| Framework | Next.js      | v16+ (App Router, React Compiler)                            |
-| Runtime   | Node.js      | v24 (Krypton LTS)                                            |
-| Auth      | Auth.js      | v5 (`next-auth@beta`, formerly NextAuth). Alternative: Clerk |
-| Payments  | Stripe API   | Latest                                                       |
-| Database  | PostgreSQL   | Prisma v7+ (Serverless Driver)                               |
-| Email     | Resend       | React Email                                                  |
-| UI        | Tailwind CSS | v4 (Oxide Engine, no config file)                            |
+| Component | Technology   | Version / Notes                                                                                                                                   |
+| --------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Framework | Next.js      | v16+ (App Router, React Compiler)                                                                                                                 |
+| Runtime   | Node.js      | v24 (Krypton LTS)                                                                                                                                 |
+| Auth      | Auth.js      | Better Auth — stable self-hosted/default option. Clerk — managed alternative. Auth.js v5 — optional beta alternative when explicitly appropriate. |
+| Payments  | Stripe API   | Latest                                                                                                                                            |
+| Database  | PostgreSQL   | Prisma v7+ (Serverless Driver)                                                                                                                    |
+| Email     | Resend       | React Email                                                                                                                                       |
+| UI        | Tailwind CSS | v4 (Oxide Engine, no config file)                                                                                                                 |
 
 ---
 
@@ -43,7 +43,7 @@ project-name/
 │   │   ├── forms/       # Client components using useActionState (React 19)
 │   │   └── ui/          # Shadcn UI
 │   ├── lib/
-│   │   ├── auth.ts      # Auth.js v5 config
+│   │   ├── auth.ts      # Better Auth config
 │   │   ├── db.ts        # Prisma Singleton
 │   │   ├── data/        # Data Access Layer (server-only reads)
 │   │   └── stripe.ts    # Stripe Singleton
@@ -58,7 +58,7 @@ project-name/
 
 | Feature       | Implementation                     |
 | ------------- | ---------------------------------- |
-| Auth          | Auth.js v5 + Passkeys + OAuth      |
+| Auth          | Better Auth + Passkeys + OAuth     |
 | Data Mutation | Server Actions (No API routes)     |
 | Subscriptions | Stripe Checkout & Customer Portal  |
 | Webhooks      | Asynchronous Stripe event handling |
@@ -79,14 +79,14 @@ project-name/
 
 ## Environment Variables
 
-| Variable              | Purpose                               |
-| --------------------- | ------------------------------------- |
-| DATABASE_URL          | Prisma connection string (Postgres)   |
-| AUTH_SECRET           | Replaces NEXTAUTH_SECRET (Auth.js v5) |
-| STRIPE_SECRET_KEY     | Payments (Server-side)                |
-| STRIPE_WEBHOOK_SECRET | Webhook verification                  |
-| RESEND_API_KEY        | Email sending                         |
-| NEXT_PUBLIC_APP_URL   | Application Canonical URL             |
+| Variable              | Purpose                             |
+| --------------------- | ----------------------------------- |
+| DATABASE_URL          | Prisma connection string (Postgres) |
+| BETTER_AUTH_SECRET    | Better Auth session secret          |
+| STRIPE_SECRET_KEY     | Payments (Server-side)              |
+| STRIPE_WEBHOOK_SECRET | Webhook verification                |
+| RESEND_API_KEY        | Email sending                       |
+| NEXT_PUBLIC_APP_URL   | Application Canonical URL           |
 
 ---
 
@@ -101,7 +101,7 @@ project-name/
 2. Install core libraries:
 
    ```bash
-   npm install next-auth@beta stripe resend @prisma/client
+   npm install better-auth stripe resend @prisma/client
    ```
 
 3. Install Tailwind v4 (Add to globals.css):

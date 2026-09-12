@@ -5,7 +5,7 @@ description: React Native mobile app template principles. Expo, TypeScript, navi
 
 # React Native App Template (2026 Edition)
 
-> Modern mobile app, optimized for New Architecture and React 19. Versions reflect the latest stable line verified 2026-05; NativeWind v5 is pre-release — pin deliberately when scaffolding.
+> Modern mobile app, optimized for New Architecture and React 19. Version examples reflect the documented stable major line at the time this template was reviewed. Before scaffolding, verify the current supported release using authoritative documentation; NativeWind v5 is pre-release — pin deliberately when scaffolding.
 
 ## Tech Stack
 

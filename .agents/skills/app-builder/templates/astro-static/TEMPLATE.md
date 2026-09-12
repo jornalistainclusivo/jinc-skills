@@ -5,7 +5,7 @@ description: Astro static site template principles. Content-focused websites, bl
 
 # Astro Static Site Template
 
-> Versions reflect the latest stable line verified 2026-05. Pin to the current stable when scaffolding.
+> Version examples reflect the documented stable major line at the time this template was reviewed. Before scaffolding, verify the current supported release using authoritative documentation.
 
 ## Tech Stack
 

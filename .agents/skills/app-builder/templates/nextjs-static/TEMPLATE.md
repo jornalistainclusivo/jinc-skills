@@ -5,7 +5,7 @@ description: Modern template for Next.js 16, React 19 & Tailwind v4. Optimized f
 
 # Next.js Static Site Template (Modern Edition)
 
-> Versions reflect the latest stable line verified 2026-05. Pin to the current stable when scaffolding.
+> Version examples reflect the documented stable major line at the time this template was reviewed. Before scaffolding, verify the current supported release using authoritative documentation.
 
 ## Tech Stack
 

@@ -5,20 +5,20 @@ description: Next.js full-stack template principles. App Router, Prisma, Tailwin
 
 # Next.js Full-Stack Template (2026 Edition)
 
-> Versions reflect the latest stable line verified 2026-05. Pin to the current stable when scaffolding.
+> Version examples reflect the documented stable major line at the time this template was reviewed. Before scaffolding, verify the current supported release using authoritative documentation.
 
 ## Tech Stack
 
-| Component  | Technology                            | Version / Notes                  |
-| ---------- | ------------------------------------- | -------------------------------- |
-| Framework  | Next.js                               | v16+ (App Router, Turbopack)     |
-| Runtime    | Node.js                               | v24 (Krypton LTS)                |
-| Language   | TypeScript                            | v5+ (Strict Mode)                |
-| Database   | PostgreSQL                            | Prisma ORM (Serverless friendly) |
-| Styling    | Tailwind CSS                          | v4.0 (Zero-config, CSS-first)    |
-| Auth       | Auth.js v5 (`next-auth@beta`) / Clerk | Protected routes via `proxy.ts`  |
-| UI Logic   | React 19                              | Server Actions, useActionState   |
-| Validation | Zod                                   | Schema validation (API & Forms)  |
+| Component  | Technology                                                         | Version / Notes                  |
+| ---------- | ------------------------------------------------------------------ | -------------------------------- |
+| Framework  | Next.js                                                            | v16+ (App Router, Turbopack)     |
+| Runtime    | Node.js                                                            | v24 (Krypton LTS)                |
+| Language   | TypeScript                                                         | v5+ (Strict Mode)                |
+| Database   | PostgreSQL                                                         | Prisma ORM (Serverless friendly) |
+| Styling    | Tailwind CSS                                                       | v4.0 (Zero-config, CSS-first)    |
+| Auth       | Better Auth (stable default) / Clerk (managed) / Auth.js v5 (beta) | Protected routes via `proxy.ts`  |
+| UI Logic   | React 19                                                           | Server Actions, useActionState   |
+| Validation | Zod                                                                | Schema validation (API & Forms)  |
 
 ---
 
@@ -71,7 +71,7 @@ project-name/
 | --------------------------------- | ------------------------------------------ |
 | DATABASE_URL                      | PostgreSQL connection string (Prisma)      |
 | NEXT_PUBLIC_APP_URL               | Public application URL                     |
-| AUTH_SECRET                       | Auth.js v5 session secret (default auth)   |
+| AUTH_SECRET                       | Better Auth session secret (default auth)  |
 | NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY | Auth (if using Clerk instead)              |
 | CLERK_SECRET_KEY                  | Clerk secret (server only, if using Clerk) |
 

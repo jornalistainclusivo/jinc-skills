@@ -31,7 +31,7 @@
 ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
 │ DATABASE        │ │ BACKEND         │ │ DESIGN SOURCE   │
 │ ARCHITECT       │ │ SPECIALIST      │ │ OF TRUTH        │
-│                 │ │                 │ │                 │
+│ (if required)   │ │ (if required)   │ │                 │
 │ • Schema design │ │ • API routes    │ │ • Read design-  │
 │ • Migrations    │ │ • Controllers   │ │   spec & refs   │
 │ • Seed data     │ │ • Middleware    │ │ • Create        │
@@ -40,12 +40,12 @@
           │                   │                   │
           │                   │                   ▼
           │                   │         ┌─────────────────┐
-          │                   │         │ FRONTEND        │
-          │                   │         │ SPECIALIST      │
+          │                   │         │ UI IMPLEMENTER  │
           │                   │         │                 │
-          │                   │         │ • UI Components │
-          │                   │         │ • Pages         │
-          │                   │         │ • Strict tokens │
+          │                   │         │ • Frontend Spec.│
+          │                   │         │   (if web UI)   │
+          │                   │         │ • Mobile Dev    │
+          │                   │         │   (if mobile UI)│
           │                   │         └─────────────────┘
           │                   │                   │
           └───────────────────┼───────────────────┘
@@ -68,17 +68,18 @@
 
 ## Execution Order
 
-| Phase | Agent(s) / Step                 | Parallel? | Prerequisite                    | CHECKPOINT                       |
-| ----- | ------------------------------- | --------- | ------------------------------- | -------------------------------- |
-| 0     | Socratic Gate                   | ❌        | -                               | ✅ Ask 3 questions               |
-| 1     | Project Planner                 | ❌        | Questions answered              | ✅ **{task-slug}.md created**    |
-| 1.5   | **PLAN VERIFICATION**           | ❌        | {task-slug}.md exists           | ✅ **File exists in root**       |
-| 1.8   | **DESIGN SOURCE-OF-TRUTH**      | ❌        | Plan verified (UI projects)     | ✅ **DESIGN.md created at root** |
-| 2     | Database Architect              | ❌        | Plan ready                      | Schema defined                   |
-| 3     | Backend Specialist              | ❌        | Schema ready                    | API routes created               |
-| 4     | Frontend Specialist             | ✅        | DESIGN.md + API ready (partial) | UI components match tokens       |
-| 5     | Security Auditor, Test Engineer | ✅        | Code ready                      | Tests & audit pass               |
-| 6     | DevOps Engineer                 | ❌        | All code ready                  | Deployment & preview ready       |
+| Phase | Agent(s) / Step                 | Parallel? | Prerequisite                | CHECKPOINT                                                                                                                                                                                                 |
+| ----- | ------------------------------- | --------- | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0     | Socratic Gate                   | ❌        | -                           | ✅ Ask only decision-critical questions when material information is missing. Do not re-ask information already provided. When clarification is needed, keep it minimal and proportional to the ambiguity. |
+| 1     | Project Planner                 | ❌        | Questions answered          | ✅ **{task-slug}.md created**                                                                                                                                                                              |
+| 1.5   | **PLAN VERIFICATION**           | ❌        | {task-slug}.md exists       | ✅ **File exists in root**                                                                                                                                                                                 |
+| 1.8   | **DESIGN SOURCE-OF-TRUTH**      | ❌        | Plan verified (UI projects) | ✅ **DESIGN.md created at root**                                                                                                                                                                           |
+| 2     | Database Architect              | ❌        | Plan ready                  | Schema defined (if persistence exists)                                                                                                                                                                     |
+| 3     | Backend Specialist              | ❌        | Schema ready                | API routes created (if backend exists)                                                                                                                                                                     |
+| 4     | Frontend Specialist             | ✅        | DESIGN.md + API ready       | UI components match tokens (if web UI exists)                                                                                                                                                              |
+| 4.5   | Mobile Developer                | ✅        | DESIGN.md + API ready       | Mobile UI components (if mobile app)                                                                                                                                                                       |
+| 5     | Security Auditor, Test Engineer | ✅        | Code ready                  | Tests & audit pass                                                                                                                                                                                         |
+| 6     | DevOps Engineer                 | ❌        | All code ready              | Deployment & preview ready                                                                                                                                                                                 |
 
 > 🔴 **CRITICAL:** Phase 1.5 and Phase 1.8 are MANDATORY gates.
 >
